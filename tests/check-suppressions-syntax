@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+set -u
+set -x
+
+die() {
+    echo "$@"
+    exit 1
+}
+
+# First, ensure Valgrind works:
+if [ ! "$(command -v valgrind)" ] ; then
+    die "Valgrind does not appear to be in \$PATH"
+fi
+
+valgrind /bin/true || die "Valgrind failed for /bin/true"
+
+# Now, check that individual files are working:
+for file in valgrind-suppressions-*
+do
+    valgrind --suppressions="$file" /bin/true || die "file $file appears broken"
+done
+
+echo "Tests succeeded"
