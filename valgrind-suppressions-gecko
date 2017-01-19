@@ -1,0 +1,462 @@
+{
+   bug_36902
+   Memcheck:Cond
+   fun:nsFocusManager::Release
+   ...
+   fun:nsLayoutStatics::Initialize
+   fun:nsComponentManagerImpl::CreateInstanceByContractID
+   fun:nsComponentManagerImpl::GetServiceByContractID
+   fun:CallGetService
+   fun:NS_InitXPCOM2
+   fun:init_xpcom
+   fun:load_gecko
+   fun:create_nscontainer
+   fun:HTMLDocument_Create
+   fun:ClassFactory_CreateInstance
+   fun:CoCreateInstance
+   fun:create_mime_object
+   fun:create_object
+   fun:report_data
+   fun:InternetProtocolSink_ReportData
+   fun:ProtocolSinkHandler_ReportData
+   ...
+}
+{
+   bug_36903
+   Memcheck:Cond
+   ...
+   fun:nsDocShell::EnsureScriptEnvironment
+   fun:nsDocShell::GetInterface
+   fun:nsGetInterface::operator()
+   fun:nsCOMPtr_base::assign_from_helper
+   fun:nsWebBrowser::GetContentDOMWindow
+   fun:nsWebBrowser::Create
+   fun:init_nscontainer
+   fun:create_nscontainer
+   fun:HTMLDocument_Create
+   fun:ClassFactory_CreateInstance
+   fun:CoCreateInstance
+   fun:create_mime_object
+   fun:create_object
+   fun:report_data
+   fun:InternetProtocolSink_ReportData
+   fun:ProtocolSinkHandler_ReportData
+   fun:report_data_proc
+   fun:process_tasks
+   ...
+}
+{
+   bug_36904_x
+   Memcheck:Cond
+   fun:js::frontend::FunctionBox::FunctionBox<js::frontend::FullParseHandler>
+   ...
+}
+{
+   bug_36904_x
+   Memcheck:Cond
+   fun:js::frontend::Parser<js::frontend::FullParseHandler>::leaveFunction
+}
+{
+   bug_36904_x
+   Memcheck:Cond
+   fun:js::frontend::Parser<js::frontend::FullParseHandler>::memberExpr
+}
+{
+   bug_36904_x
+   Memcheck:Cond
+   fun:js::frontend::Parser<js::frontend::FullParseHandler>::newFunction
+}
+{
+   bug_36904_x
+   Memcheck:Cond
+   fun:js::frontend::Parser<js::frontend::FullParseHandler>::primaryExpr
+}
+{
+   bug_36905_x
+   Memcheck:Cond
+   fun:nsGlobalWindow::Release
+}
+{
+   bug_36905_x
+   Memcheck:Cond
+   fun:nsGlobalWindow::Release
+   fun:nsWebBrowser::Create
+   fun:init_nscontainer
+   fun:create_nscontainer
+   fun:HTMLDocument_Create
+   fun:ClassFactory_CreateInstance
+   fun:CoCreateInstance
+   fun:create_mime_object
+   fun:create_object
+   fun:report_data
+   fun:InternetProtocolSink_ReportData
+   fun:ProtocolSinkHandler_ReportData
+   fun:report_data_proc
+   fun:process_tasks
+   fun:notif_wnd_proc
+   obj:*/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   fun:IEWinMain
+}
+{
+   bug_36906
+   Memcheck:Cond
+   fun:nsDocument::Release
+}
+{
+   bug_36907_x
+   Memcheck:Cond
+   fun:nsEventStateManager::Release
+}
+{
+   bug_36907_x
+   Memcheck:Cond
+   fun:nsEventStateManager::Release
+   ...
+   fun:mozilla::Preferences::AddWeakObserver
+   fun:nsPresContext::Init
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36908_x
+   Memcheck:Cond
+   fun:nsWindowRoot::Release
+}
+{
+   bug_36908_x
+   Memcheck:Cond
+   fun:nsWindowRoot::Release
+   fun:nsGlobalWindow::SetNewDocument
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36909_x
+   Memcheck:Cond
+   fun:nsJSContext::Release
+   fun:mozilla::AutoCxPusher::AutoCxPusher
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36909_x
+   Memcheck:Cond
+   fun:nsJSContext::Release
+}
+{
+   bug_36910
+   Memcheck:Cond
+   ...
+   fun:mozilla::dom::DOMStorageManager::GetStorageInternal
+   fun:mozilla::dom::DOMStorageManager::PrecacheStorage
+   fun:nsGlobalWindow::SetNewDocument
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36911
+   Memcheck:Cond
+   fun:nsCSSStyleSheet::Release
+   ...
+   fun:`anonymous namespace'::CSSParserImpl::ProcessImport
+   fun:`anonymous namespace'::CSSParserImpl::ParseImportRule
+   obj:*
+}
+{
+   bug_36918
+   Memcheck:Cond
+   fun:nsXBLDocumentInfo::Release
+}
+{
+   bug_36919
+   Memcheck:Value4
+   fun:randomByte
+}
+{
+   bug_36920_x
+   Memcheck:Cond
+   fun:nsCSSStyleSheet::Release
+}
+{
+   bug_36920_x
+   Memcheck:Cond
+   fun:nsCSSStyleSheet::Release
+   fun:PresShell::SetPrefNoScriptRule
+   fun:PresShell::SetPreferenceStyleRules
+   fun:nsDocument::doCreateShell
+   fun:nsHTMLDocument::CreateShell
+   fun:nsDocumentViewer::InitPresentationStuff
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36920_x
+   Memcheck:Cond
+   fun:nsCSSStyleSheet::Release
+   fun:PresShell::SetPrefLinkRules
+   fun:nsWeakReference::QueryReferent
+}
+{
+   bug_36921_x
+   Memcheck:Cond
+   fun:mozilla::Selection::Release
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36921_x
+   Memcheck:Cond
+   fun:mozilla::Selection::Release
+   fun:PresShell::Init
+   fun:nsDocument::doCreateShell
+   fun:nsHTMLDocument::CreateShell
+   fun:nsDocumentViewer::InitPresentationStuff
+   fun:nsDocumentViewer::InitInternal
+   fun:nsDocumentViewer::Init
+   fun:nsCOMPtr_base::assign_from_qi_with_error
+   obj:*
+}
+{
+   bug_36921_x
+   Memcheck:Cond
+   fun:mozilla::Selection::Release
+}
+{
+   bug_36922_x
+   Memcheck:Cond
+   fun:nsDOMEvent::Release
+}
+{
+   bug_36922_x
+   Memcheck:Cond
+   fun:nsDOMEvent::Release
+   fun:nsGlobalWindow::DispatchDOMWindowCreated
+   obj:*
+}
+{
+   bug_36923_x
+   Memcheck:Cond
+   fun:nsEventListenerManager::Release
+}
+{
+   bug_36923_x
+   Memcheck:Cond
+   fun:nsEventListenerManager::Release
+   obj:*
+}
+{
+   bug_36924_x
+   Memcheck:Cond
+   fun:nsPresContext::Release
+}
+{
+   bug_36924_x
+   Memcheck:Cond
+   fun:nsPresContext::Release
+   obj:*
+}
+{
+   bug_36924_x
+   Memcheck:Cond
+   fun:nsPresContext::Release
+   fun:nsDocument::OnPageHide
+   fun:nsDocumentViewer::PageHide
+   fun:nsDocShell::FirePageHideNotification
+   fun:nsDocShell::CreateContentViewer
+   fun:nsDSURIContentListener::DoContent
+   fun:nsDocumentOpenInfo::TryContentListener
+   fun:nsDocumentOpenInfo::DispatchContent
+   obj:*
+}
+{
+   bug_36924_x
+   Memcheck:Cond
+   fun:nsPresContext::Release
+   fun:nsContentUtils::DispatchEvent
+   fun:nsContentUtils::DispatchTrustedEvent
+   fun:nsDocument::UpdateVisibilityState
+   fun:nsDocument::OnPageHide
+   fun:nsDocumentViewer::PageHide
+   fun:nsDocShell::FirePageHideNotification
+   fun:nsDocShell::CreateContentViewer
+   fun:nsDSURIContentListener::DoContent
+   fun:nsDocumentOpenInfo::TryContentListener
+   fun:nsDocumentOpenInfo::DispatchContent
+   obj:*
+}
+{
+   bug_36925_x
+   Memcheck:Cond
+   fun:bestBtreeIndex
+   fun:sqlite3WhereBegin
+   fun:sqlite3Select
+}
+{
+   bug_36925_x
+   Memcheck:Cond
+   fun:bestOrClauseIndex
+   fun:bestBtreeIndex
+   fun:sqlite3WhereBegin
+   fun:sqlite3Select
+}
+{
+   bug_36926
+   Memcheck:Cond
+   fun:codeOneLoopStart
+}
+{
+   bug_36928_x
+   Memcheck:Cond
+   fun:ccref_decr
+   fun:htmldoc_release
+   fun:release_inner_window
+   fun:HTMLWindow2_Release
+   fun:detach_inner_window
+   fun:update_window_doc
+   fun:on_start_nsrequest
+   fun:read_stream_data
+   fun:nsChannelBSC_read_data
+   fun:BindStatusCallback_OnDataAvailable
+   fun:BindStatusCallback_OnDataAvailable
+   fun:report_data
+   fun:start_binding
+   fun:bind_to_storage
+   fun:URLMoniker_BindToStorage
+   fun:start_binding
+   fun:PersistMoniker_Load
+   fun:load_doc_mon
+   fun:create_mime_object
+   fun:create_object
+}
+{
+   bug_36928_x
+   Memcheck:Cond
+   fun:HTMLDOMNode_Release
+   fun:htmldoc_release
+   fun:release_inner_window
+   fun:HTMLWindow2_Release
+   fun:detach_inner_window
+   fun:update_window_doc
+   fun:on_start_nsrequest
+   fun:read_stream_data
+   fun:nsChannelBSC_read_data
+   fun:BindStatusCallback_OnDataAvailable
+   fun:BindStatusCallback_OnDataAvailable
+   fun:report_data
+   fun:start_binding
+   fun:bind_to_storage
+   fun:URLMoniker_BindToStorage
+   fun:start_binding
+   fun:PersistMoniker_Load
+   fun:load_doc_mon
+   fun:create_mime_object
+   fun:create_object
+}
+{
+   bug_36928_x
+   Memcheck:Cond
+   fun:ccref_decr
+   fun:htmldoc_release
+   fun:update_window_doc
+   fun:on_start_nsrequest
+   fun:read_stream_data
+   fun:nsChannelBSC_read_data
+   fun:BindStatusCallback_OnDataAvailable
+   fun:BindStatusCallback_OnDataAvailable
+   fun:report_data
+   fun:start_binding
+   fun:bind_to_storage
+   fun:URLMoniker_BindToStorage
+   fun:start_binding
+   fun:PersistMoniker_Load
+   fun:load_doc_mon
+   fun:create_mime_object
+   fun:create_object
+   fun:report_data
+   fun:InternetProtocolSink_ReportData
+   fun:ProtocolSinkHandler_ReportData
+}
+{
+   bug_36928_x
+   Memcheck:Cond
+   fun:HTMLDOMNode_Release
+   fun:htmldoc_release
+   fun:update_window_doc
+   fun:on_start_nsrequest
+   fun:read_stream_data
+   fun:nsChannelBSC_read_data
+   fun:BindStatusCallback_OnDataAvailable
+   fun:BindStatusCallback_OnDataAvailable
+   fun:report_data
+   fun:start_binding
+   fun:bind_to_storage
+   fun:URLMoniker_BindToStorage
+   fun:start_binding
+   fun:PersistMoniker_Load
+   fun:load_doc_mon
+   fun:create_mime_object
+   fun:create_object
+   fun:report_data
+   fun:InternetProtocolSink_ReportData
+   fun:ProtocolSinkHandler_ReportData
+}
+{
+   bug_36929
+   Memcheck:Cond
+   fun:nsHtml5StreamParser::Release
+   fun:stop_request_proc
+   fun:hidden_proc
+   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   fun:nsAppShell::ProcessNextNativeEvent
+   fun:nsBaseAppShell::DoProcessNextNativeEvent
+   fun:nsThread::ProcessNextEvent
+   fun:NS_ProcessPendingEvents
+   fun:nsBaseAppShell::NativeEventCallback
+}
+{
+   bug_36929_x
+   Memcheck:Cond
+   fun:nsHtml5StreamParser::Release
+}
+{
+   bug_36930
+   Memcheck:Cond
+   fun:nsFrameSelection::Release
+   fun:nsDocumentViewer::Destroy
+   fun:nsDocumentViewer::Show
+   fun:nsDocShell::SetVisibility
+   fun:activate_window
+   fun:OleDocumentView_Show
+   fun:OleDocumentSite_ActivateMe
+   fun:OleObject_DoVerb
+   fun:HlinkTarget_Navigate
+   fun:object_available
+   fun:object_available_proc
+   fun:process_dochost_tasks
+   fun:ie_window_proc
+   obj:*/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   fun:IEWinMain
+   fun:wWinMain
+   fun:wmain
+}
