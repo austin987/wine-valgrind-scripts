@@ -14,12 +14,20 @@ if [ ! "$(command -v valgrind)" ] ; then
     die "Valgrind does not appear to be in \$PATH"
 fi
 
-valgrind /bin/true || die "Valgrind failed for /bin/true"
+if [ -x /bin/true ] ; then
+    TRUE="/bin/true"
+elif [ -x /usr/bin/true ] ; then
+    TRUE="/usr/bin/true"
+else
+    die "Couldn't find true binary!"
+fi
+
+valgrind "$TRUE" || die "Valgrind failed for $TRUE"
 
 # Now, check that individual files are working:
 for file in valgrind-suppressions-*
 do
-    valgrind --suppressions="$file" /bin/true || die "file $file appears broken"
+    valgrind --suppressions="$file" "$TRUE" || die "file $file appears broken"
 done
 
 echo "Tests succeeded"
