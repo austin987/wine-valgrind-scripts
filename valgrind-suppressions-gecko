@@ -1,4 +1,3 @@
-{
    bug_36902
    Memcheck:Cond
    fun:nsFocusManager::Release
