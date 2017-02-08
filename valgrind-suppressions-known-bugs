@@ -7324,44 +7324,6 @@
    fun:main
 }
 {
-   bug_36662_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:WS2_ConnectEx
-   fun:test_ConnectEx
-   fun:func_sock
-   fun:run_test
-   fun:main
-}
-{
-   bug_36662_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:WS2_recv_base
-   fun:WSARecv
-   fun:test_completion_port
-   fun:func_sock
-   fun:run_test
-   fun:main
-}
-{
-   bug_36662_3
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:WS2_sendto
-   fun:WSASend
-   fun:test_send
-   fun:func_sock
-   fun:run_test
-   fun:main
-}
-{
    bug_36670
    Memcheck:Cond
    ...
