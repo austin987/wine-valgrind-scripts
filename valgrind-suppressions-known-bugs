@@ -3220,14 +3220,6 @@
    ...
 }
 {
-   bug_36213
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:func_sip
-   ...
-}
-{
    bug_36239
    Memcheck:Leak
    match-leak-kinds: possible
