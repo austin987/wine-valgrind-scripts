@@ -6521,19 +6521,6 @@
    fun:main
 }
 {
-   bug_36608
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:heap_alloc
-   fun:CreateXmlWriterOutputWithEncodingName
-   fun:test_writeroutput
-   fun:func_writer
-   fun:run_test
-   fun:main
-}
-{
    bug_36609
    Memcheck:Param
    write(buf)
