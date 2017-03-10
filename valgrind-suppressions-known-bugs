@@ -6508,19 +6508,6 @@
    fun:main
 }
 {
-   bug_36600
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:heap_alloc_zero
-   fun:WinHttpOpen
-   fun:test_Timeouts
-   fun:func_winhttp
-   fun:run_test
-   fun:main
-}
-{
    bug_36609
    Memcheck:Param
    write(buf)
