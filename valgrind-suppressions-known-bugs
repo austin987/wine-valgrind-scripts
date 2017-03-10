@@ -1773,58 +1773,6 @@
    fun:main
 }
 {
-   bug_36136_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:alloc_bstr
-   fun:SysAllocStringByteLen
-   fun:VarBstrCat
-   fun:VarCat
-   fun:test_VarCat
-   fun:func_vartest
-   fun:run_test
-   fun:main
-}
-{
-   bug_36136_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:VARIANT_CopyIRecordInfo
-   fun:VariantCopy
-   ...
-   fun:func_vartest
-   fun:run_test
-   fun:main
-}
-{
-   bug_36136_3
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:alloc_bstr
-   fun:SysAllocStringLen
-   fun:test_VarCat
-   fun:func_vartest
-   fun:run_test
-   fun:main
-}
-{
-   bug_36136_4
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:RtlAllocateHeap
-   fun:VARIANT_CopyIRecordInfo
-   fun:VariantCopy
-   fun:func_vartest
-   fun:run_test
-   fun:main
-}
-{
    bug_36137_1
    Memcheck:Leak
    ...
