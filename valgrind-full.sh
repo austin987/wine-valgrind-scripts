@@ -218,7 +218,6 @@ then
     touch dlls/user32/tests/menu.ok # https://bugs.winehq.org/show_bug.cgi?id=36677 
     touch dlls/user32/tests/msg.ok # https://bugs.winehq.org/show_bug.cgi?id=36586 msg.c:11369: Test failed: expected -32000,-32000 got 21,714
     touch dlls/user32/tests/winstation.ok # https://bugs.winehq.org/show_bug.cgi?id=36676 / https://bugs.winehq.org/show_bug.cgi?id=36587
-    touch dlls/winhttp/tests/winhttp.ok # https://bugs.winehq.org/show_bug.cgi?id=36599 winhttp.c:879: Test failed: failed to receive response 12152
     touch dlls/wininet/tests/http.ok # https://bugs.winehq.org/show_bug.cgi?id=36637 
     touch dlls/ws2_32/tests/sock.ok # https://bugs.winehq.org/show_bug.cgi?id=36681 sock.c:2270: Test failed: Expected 10047, received 10043
     touch programs/xcopy/tests/xcopy.ok # https://bugs.winehq.org/show_bug.cgi?id=36172

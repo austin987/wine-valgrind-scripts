@@ -6490,24 +6490,6 @@
    fun:clone
 }
 {
-   bug_36599_1
-   Memcheck:Cond
-   ...
-   fun:test_secure_connection
-   fun:func_winhttp
-   fun:run_test
-   fun:main
-}
-{
-   bug_36599_2
-   Memcheck:Value4
-   ...
-   fun:test_secure_connection
-   fun:func_winhttp
-   fun:run_test
-   fun:main
-}
-{
    bug_36609
    Memcheck:Param
    write(buf)
