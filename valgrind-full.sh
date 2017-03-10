@@ -39,7 +39,7 @@ gecko_version="2.36"
 wine_version=$(git describe)
 
 # disable BSTR cache
-export OANOCACHE=1 
+export OANOCACHE=1
 
 # reduce spam:
 export WINEDEBUG=-all
@@ -53,12 +53,12 @@ skip_slow=0
 suppress_known=""
 virtual_desktop=""
 
-mkdir -p ${WINESRC}/logs
-echo "started with: $0 $@" > ${WINESRC}/logs/${wine_version}.log
-git log -n 1 >> ${WINESRC}/logs/${wine_version}.log
+mkdir -p "${WINESRC}/logs"
+echo "started with: $0 $*" > "${WINESRC}/logs/${wine_version}.log"
+git log -n 1 >> "${WINESRC}/logs/${wine_version}.log"
 # Valgrind only reports major version info (or -SVN, but no rev #):
 # https://bugs.kde.org/show_bug.cgi?id=352395
-echo "Using $(${WINETEST_WRAPPER} --version)" >> ${WINESRC}/logs/${wine_version}.log
+echo "Using $(${WINETEST_WRAPPER} --version)" >> "${WINESRC}/logs/${wine_version}.log"
 
 while [ ! -z "$1" ]
 do
@@ -75,22 +75,22 @@ case $arg in
 esac
 done
 
-cd $WINESRC
+cd "${WINESRC}"
 
-if test ! -f $WINESRC/configure 
+if test ! -f "${WINESRC}/configure"
 then
-    echo "couldn't find $WINESRC/configure"
+    echo "couldn't find ${WINESRC}/configure"
     exit 1
 fi
 
 # We grep error messages, so make them all English
 LANG=C
 
-if [ -f $WINESERVER ]
+if [ -f "${WINESERVER}" ]
 then
-    $WINESERVER -k || true
+    "${WINESERVER}" -k || true
 fi
-rm -rf $WINEPREFIX
+rm -rf "${WINEPREFIX}"
 
 # Build a fresh wine, if desired/needed:
 if test ! -f Makefile || test "$rebuild_wine" = "1"
@@ -128,12 +128,12 @@ then
         wget http://downloads.sourceforge.net/project/wine/Wine%20Gecko/${gecko_version}/wine_gecko-${gecko_version}-x86-dbg-msvc.tar.bz2
     fi
 
-    tar xjmvf $WINESRC/wine_gecko-${gecko_version}-x86-dbg-msvc-pdb.tar.bz2 -C $WINEPREFIX/drive_c
+    tar xjmvf "$WINESRC/wine_gecko-${gecko_version}-x86-dbg-msvc-pdb.tar.bz2" -C "${WINEPREFIX}/drive_c"
 
-    cd $WINEPREFIX/drive_c/windows/system32/gecko/${gecko_version}
+    cd "${WINEPREFIX}/drive_c/windows/system32/gecko/${gecko_version}"
     rm -rf wine_gecko
-    tar xjmvf $WINESRC/wine_gecko-${gecko_version}-x86-dbg-msvc.tar.bz2
-    cd $WINESRC
+    tar xjmvf "${WINESRC}/wine_gecko-${gecko_version}-x86-dbg-msvc.tar.bz2"
+    cd "${WINESRC}"
 fi
 
 # make sure our settings took effect:
@@ -198,7 +198,7 @@ then
         touch dlls/comctl32/tests/propsheet.ok # https://bugs.winehq.org/show_bug.cgi?id=36238
         touch dlls/user32/tests/win.ok # https://bugs.winehq.org/show_bug.cgi?id=36682 win.c:2244: Test succeeded inside todo block: GetActiveWindow() = 0x1200c4
     fi
-    
+
     touch dlls/d3d8/tests/visual.ok # https://bugs.winehq.org/show_bug.cgi?id=35862 visual.c:13837: Test failed: Expected color 0x000000ff, 0x000000ff, 0x00ff00ff or 0x00ff7f00 for instruction "rcp1", got 0x00ff0000 (nvidia)
     touch dlls/d3d9/tests/device.ok # https://bugs.kde.org/show_bug.cgi?id=335563 device.c:3587: Test failed: cw is 0xf7f, expected 0xf60.
     touch dlls/d3d9/tests/visual.ok # https://bugs.winehq.org/show_bug.cgi?id=35862 visual.c:13837: Test failed: Expected color 0x000000ff, 0x000000ff, 0x00ff00ff or 0x00ff7f00 for instruction "rcp1", got 0x00ff0000.
@@ -215,10 +215,10 @@ then
     touch dlls/oleaut32/tests/vartype.ok # test fails https://bugs.winehq.org/show_bug.cgi?id=28820
     touch dlls/shell32/tests/shlexec.ok # https://bugs.winehq.org/show_bug.cgi?id=36678 shlexec.c:139: Test failed: ShellExecute(verb="", file=""C:\users\austin\Temp\wt952f.tmp\drawback_file.noassoc foo.shlexec"") WaitForSingleObject returned 258
     touch dlls/urlmon/tests/protocol.ok # https://bugs.winehq.org/show_bug.cgi?id=36675 protocol.c:329: Test failed: dwResponseCode=0, expected 200
-    touch dlls/user32/tests/menu.ok # https://bugs.winehq.org/show_bug.cgi?id=36677 
+    touch dlls/user32/tests/menu.ok # https://bugs.winehq.org/show_bug.cgi?id=36677
     touch dlls/user32/tests/msg.ok # https://bugs.winehq.org/show_bug.cgi?id=36586 msg.c:11369: Test failed: expected -32000,-32000 got 21,714
     touch dlls/user32/tests/winstation.ok # https://bugs.winehq.org/show_bug.cgi?id=36676 / https://bugs.winehq.org/show_bug.cgi?id=36587
-    touch dlls/wininet/tests/http.ok # https://bugs.winehq.org/show_bug.cgi?id=36637 
+    touch dlls/wininet/tests/http.ok # https://bugs.winehq.org/show_bug.cgi?id=36637
     touch dlls/ws2_32/tests/sock.ok # https://bugs.winehq.org/show_bug.cgi?id=36681 sock.c:2270: Test failed: Expected 10047, received 10043
     touch programs/xcopy/tests/xcopy.ok # https://bugs.winehq.org/show_bug.cgi?id=36172
 fi
@@ -233,7 +233,7 @@ export VALGRIND_OPTS="-q --trace-children=yes --track-origins=yes --gen-suppress
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
-time make -k test >> ${WINESRC}/logs/${wine_version}.log 2>&1 || true
+time make -k test >> "${WINESRC}/logs/${wine_version}.log 2>&1" || true
 
 # Kill off winemine and any stragglers
 $WINESERVER -k || true
