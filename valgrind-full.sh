@@ -23,6 +23,9 @@
 set -x
 set -e
 
+# Note: if building on Gentoo, make sure -march=* is not in global CFLAGS, see
+# https://bugs.kde.org/show_bug.cgi?id=380869
+
 # Must be run from the wine tree
 WINESRC="$HOME/wine-valgrind"
 # Prepare for calling winetricks
@@ -36,7 +39,7 @@ export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
 #WINETEST_WRAPPER=valgrind
 
 gecko_version="2.36"
-wine_version=$(git describe)
+wine_version=$(git describe HEAD^1)
 
 # disable BSTR cache
 export OANOCACHE=1
@@ -55,7 +58,16 @@ virtual_desktop=""
 
 mkdir -p "${WINESRC}/logs"
 echo "started with: $0 $*" > "${WINESRC}/logs/${wine_version}.log"
+
+# shellcheck disable=SC2129
+echo "HEAD is:" >> "${WINESRC}/logs/${wine_version}.log"
 git log -n 1 >> "${WINESRC}/logs/${wine_version}.log"
+
+echo "commit before HEAD is:" >> "${WINESRC}/logs/${wine_version}.log"
+git show HEAD^1 >> "${WINESRC}/logs/${wine_version}.log"
+
+# Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
+# https://bugs.kde.org/show_bug.cgi?id=352395
 echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "${WINESRC}/logs/${wine_version}.log"
 
 while [ ! -z "$1" ]
