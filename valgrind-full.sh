@@ -265,3 +265,5 @@ time make -k test >> "${WINESRC}/logs/${wine_version}.log" 2>&1 || true
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
+
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
