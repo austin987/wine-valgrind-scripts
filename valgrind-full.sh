@@ -62,6 +62,7 @@ while [ ! -z "$1" ]
 do
 arg="$1"
 case $arg in
+    # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
     --fatal-warnings) fatal_warnings="--error-exitcode=1" ; shift ;;
     --gecko-pdb) gecko_pdb=1 ; shift ;;
     --rebuild) rebuild_wine=1 ; shift ;;
@@ -146,6 +147,7 @@ $WINE start /min winemine
 make testclean
 
 # valgrind bugs:
+# FIXME: ddraw stuff should be checked, may be driver bugs?
 touch dlls/ddraw/tests/ddraw1.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddraw2.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddraw4.ok # valgrind assertion failure https://bugs.winehq.org/show_bug.cgi?id=36261
