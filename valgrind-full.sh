@@ -264,4 +264,4 @@ export WINE_HEAP_TAIL_REDZONE=32
 time make -k test >> "${WINESRC}/logs/${wine_version}.log" 2>&1 || true
 
 # Kill off winemine and any stragglers
-$WINESERVER -k || true
+"$WINESERVER" -k || true
