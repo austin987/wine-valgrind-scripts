@@ -40,6 +40,28 @@ usage() {
         printf "%s\n" "--virtual-desktop: run tests in a virtual desktop"
 }
 
+fatal_warnings=""
+gecko_pdb=0
+rebuild_wine=0
+skip_crashes=0
+skip_failures=0
+skip_slow=0
+suppress_known=""
+virtual_desktop=""
+
+# FIXME: allow override
+# Must be run from the wine tree
+WINESRC="$HOME/wine-valgrind"
+# Prepare for calling winetricks
+export WINEPREFIX="$HOME/.wine-valgrind"
+export WINE="$WINESRC/wine"
+# Convenience variable
+WINESERVER="$WINESRC/server/wineserver"
+
+# Choose which version of valgrind you want to use:
+export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
+#WINETEST_WRAPPER=valgrind
+
 while [ ! -z "$1" ] ; do
     arg="$1"
     shift
@@ -58,18 +80,6 @@ while [ ! -z "$1" ] ; do
     esac
 done
 
-# Must be run from the wine tree
-WINESRC="$HOME/wine-valgrind"
-# Prepare for calling winetricks
-export WINEPREFIX="$HOME/.wine-valgrind"
-export WINE="$WINESRC/wine"
-# Convenience variable
-WINESERVER="$WINESRC/server/wineserver"
-
-# Choose which version of valgrind you want to use:
-export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
-#WINETEST_WRAPPER=valgrind
-
 gecko_version="2.36"
 wine_version=$(git describe HEAD^1)
 
@@ -78,15 +88,6 @@ export OANOCACHE=1
 
 # reduce spam:
 export WINEDEBUG=-all
-
-fatal_warnings=""
-gecko_pdb=0
-rebuild_wine=0
-skip_crashes=0
-skip_failures=0
-skip_slow=0
-suppress_known=""
-virtual_desktop=""
 
 mkdir -p "${WINESRC}/logs"
 echo "started with: $0 $*" > "${WINESRC}/logs/${wine_version}.log"
