@@ -2,7 +2,7 @@
 # Script to run wine's conformance tests under valgrind
 # Usage: ./tools/valgrind/valgrind-full.sh [--fatal-warnings] [--rebuild] [--skip-crashes] [--skip-failures] [--skip-slow] [--suppress-known] [--virtual-desktop]
 #
-# Copyright: 2014 Austin English <austinenglish@gmail.com>
+# Copyright: 2014-2017 Austin English <austinenglish@gmail.com>
 #
 # This library is free software; you can redistribute it and/or
 # modify it under the terms of the GNU Lesser General Public
@@ -19,7 +19,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 #
 # Based on Dan Kegel's original scripts: https://code.google.com/p/winezeug/source/browse/trunk/valgrind/
-#
+
 set -x
 set -e
 
