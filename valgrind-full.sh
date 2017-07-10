@@ -26,6 +26,38 @@ set -e
 # Note: if building on Gentoo, make sure -march=* is not in global CFLAGS, see
 # https://bugs.kde.org/show_bug.cgi?id=380869
 
+usage() {
+        printf "%s\n" "$0: run Wine's conformance tests under Valgrind"
+        printf "%s\n" "Available options:"
+        printf "%s\n" "--fatal-warnings: make all Valgrind warnings fatal"
+        printf "%s\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
+        printf "%s\n" "-h/--help: print this help"
+        printf "%s\n" "--rebuild: rebuild Wine before running tests"
+        printf "%s\n" "--skip-crashes: skip any tests that crash under Valgrind"
+        printf "%s\n" "--skip-failures: skip any tests that fail under Valgrind"
+        printf "%s\n" "--skip-slow: skip tests that fail on slow machines"
+        printf "%s\n" "--suppress-known: suppress known bugs in Wine"
+        printf "%s\n" "--virtual-desktop: run tests in a virtual desktop"
+}
+
+while [ ! -z "$1" ] ; do
+    arg="$1"
+    shift
+    case "${arg}" in
+        -h|--help) usage; exit 0;;
+        # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
+        --fatal-warnings) fatal_warnings="--error-exitcode=1";;
+        --gecko-pdb) gecko_pdb=1;;
+        --rebuild) rebuild_wine=1;;
+        --skip-crashes) skip_crashes=1;;
+        --skip-failures) skip_failures=1;;
+        --skip-slow) skip_slow=1;;
+        --suppress-known) suppress_known="--suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-gecko --suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-known-bugs";;
+        --virtual-desktop|--vd) virtual_desktop="vd=1024x768";;
+        *) echo "invalid option $1 passed!"; usage; exit 1;;
+    esac
+done
+
 # Must be run from the wine tree
 WINESRC="$HOME/wine-valgrind"
 # Prepare for calling winetricks
@@ -69,22 +101,6 @@ git show HEAD^1 >> "${WINESRC}/logs/${wine_version}.log"
 # Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
 # https://bugs.kde.org/show_bug.cgi?id=352395
 echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "${WINESRC}/logs/${wine_version}.log"
-
-while [ ! -z "$1" ]
-do
-arg="$1"
-case $arg in
-    # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
-    --fatal-warnings) fatal_warnings="--error-exitcode=1" ; shift ;;
-    --gecko-pdb) gecko_pdb=1 ; shift ;;
-    --rebuild) rebuild_wine=1 ; shift ;;
-    --skip-crashes) skip_crashes=1 ; shift ;;
-    --skip-failures) skip_failures=1 ; shift ;;
-    --skip-slow) skip_slow=1 ; shift ;;
-    --suppress-known) suppress_known="--suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-gecko --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-known-bugs" ; shift ;;
-    --virtual-desktop|--vd) virtual_desktop="vd=1024x768" ; shift ;;
-esac
-done
 
 cd "${WINESRC}"
 
