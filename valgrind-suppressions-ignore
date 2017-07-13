@@ -1543,3 +1543,57 @@
    fun:run_test
    fun:main
 }
+{
+   bug_43340_1
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:ralloc_size
+   fun:rzalloc_size
+   fun:_mesa_hash_table_rehash
+   fun:hash_table_insert
+   fun:si_shader_cache_insert_shader
+   fun:si_init_shader_selector_async
+   fun:util_queue_thread_func
+   fun:impl_thrd_routine
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43340_2
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:read_chunk
+   fun:si_load_shader_binary
+   fun:si_shader_cache_load_shader
+   fun:si_init_shader_selector_async
+   fun:util_queue_thread_func
+   fun:impl_thrd_routine
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43340_3
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   ...
+   fun:si_init_shader_selector_async
+   fun:util_queue_thread_func
+   fun:impl_thrd_routine
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43340_4
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:si_get_tgsi_binary
+   fun:si_init_shader_selector_async
+   fun:util_queue_thread_func
+   fun:impl_thrd_routine
+   fun:start_thread
+   fun:clone
+}

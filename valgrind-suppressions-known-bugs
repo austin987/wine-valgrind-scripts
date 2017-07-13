@@ -2547,13 +2547,70 @@
    fun:main
 }
 {
-   bug_36183
+   bug_36183_1
    Memcheck:Leak
    match-leak-kinds: possible
    ...
    fun:func_atl
    fun:run_test
    fun:main
+}
+{
+   bug_36183_2
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:RtlInitializeCriticalSectionEx
+   fun:InitializeCriticalSectionEx
+   fun:InitializeCriticalSectionAndSpinCount
+   obj:*
+}
+{
+   bug_36183_3
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:rpcrt4_conn_np_alloc
+   fun:RPCRT4_CreateConnection
+   fun:rpcrt4_protseq_ncalrpc_open_endpoint
+   fun:RPCRT4_use_protseq
+   fun:RpcServerUseProtseqEpExW
+   fun:RpcServerUseProtseqEpW
+   fun:RPC_StartRemoting
+   fun:StdMarshalImpl_MarshalInterface
+   fun:IMarshal_MarshalInterface
+   fun:CoMarshalInterface
+   fun:RegisterDragDrop
+   obj:*
+}
+{
+   bug_36183_4
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   fun:alloc_bstr
+   fun:SysAllocStringLen
+   fun:pre_process_uri
+   fun:CreateUri
+   fun:create_uri
+   fun:nsIOServiceHook_NewURI
+   obj:*
+}
+{
+   bug_36183_5
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlReAllocateHeap
+   fun:msvcrt_heap_realloc
+   fun:MSVCRT_realloc
+   obj:*
 }
 {
    bug_36184
@@ -2855,10 +2912,12 @@
    fun:_dl_open
    fun:do_dlopen
    fun:_dl_catch_error
+   ...
    fun:__libc_dlopen_mode
    fun:pthread_cancel_init
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
+   ...
    fun:pthread_exit
    fun:terminate_thread
    obj:*/dlls/ntdll/ntdll.dll.so
@@ -3116,7 +3175,7 @@
    ...
 }
 {
-   bug_36201
+   bug_36201_1
    Memcheck:Leak
    match-leak-kinds: definite
    fun:RtlAllocateHeap
@@ -3131,41 +3190,18 @@
    ...
 }
 {
-   bug_36212_1
+   bug_36201_2
    Memcheck:Leak
-   match-leak-kinds: possible
-   ...
+   match-leak-kinds: definite
+   fun:notify_alloc
    fun:RtlAllocateHeap
    fun:CryptMemAlloc
-   ...
-   fun:CryptInstallOIDFunctionAddress
-   fun:test_installOIDFunctionAddress
-   fun:func_oid
-   ...
-}
-{
-   bug_36212_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:CryptMemAlloc
-   fun:CryptInitOIDFunctionSet
-   fun:test_oidFunctionSet
-   fun:func_oid
-   ...
-}
-{
-   bug_36212_3
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:CryptMemAlloc
-   fun:CryptInitOIDFunctionSet
-   fun:test_getDefaultOIDFunctionAddress
-   fun:func_oid
-   ...
+   fun:Context_CreateDataContext
+   fun:CertCreateCertificateContext
+   fun:testEmptyStore
+   fun:func_store
+   fun:run_test
+   fun:main
 }
 {
    bug_36239
@@ -6079,7 +6115,7 @@
    match-leak-kinds: definite
    ...
    fun:RtlAllocateHeap
-   fun:SECUR32_makeSecHandle
+   ...
    fun:InitializeSecurityContextW
    fun:netcon_secure_connect_setup
    fun:NETCON_secure_connect
@@ -6139,7 +6175,7 @@
    fun:main
 }
 {
-   bug_36578_4
+   bug_36578_5
    Memcheck:Leak
    match-leak-kinds: possible
    ...
@@ -6153,7 +6189,7 @@
    fun:main
 }
 {
-   bug_36578_5
+   bug_36578_6
    Memcheck:Leak
    match-leak-kinds: definite
    ...
@@ -6164,6 +6200,27 @@
    fun:func_url
    fun:run_test
    fun:main
+}
+{
+   bug_36578_7
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_alloc_zero
+   fun:create_netconn
+   fun:open_http_connection
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
 }
 {
    bug_36581_1
@@ -6195,7 +6252,7 @@
    fun:RtlAllocateHeap
    fun:list_window_children
    fun:WIN_ListChildren
-   fun:WIN_SendDestroyMsg
+   ...
    fun:DestroyWindow
    fun:WINMM_DevicesThreadDone
    fun:WINMM_DevicesThreadProc
@@ -6438,7 +6495,7 @@
    fun:clone
 }
 {
-   bug_36609
+   bug_36609_1
    Memcheck:Param
    write(buf)
    obj:/*lib*/libpthread-2.*.so
@@ -6460,105 +6517,21 @@
    fun:clone
 }
 {
-   bug_36612
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:heap_alloc
-   fun:WinHttpReadData
-   fun:test_async
-   fun:func_notification
-   fun:run_test
-   fun:main
-}
-{
-   bug_36613_1
+   bug_36609_2
    Memcheck:Param
-   write(buf)
-   obj:/*/libpthread-2.*.so
+   writev(vector[...])
+   obj:*/libc-2.*.so
    fun:send_request
    fun:wine_server_call
-   fun:NtSetEvent
-   fun:SetEvent
-   fun:check_notification
-   fun:send_callback
-   fun:release_object
-   fun:request_destroy
-   fun:release_object
-   fun:task_thread
-   fun:worker_thread_proc
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
-   bug_36613_2
-   Memcheck:Addr4
-   fun:ntdll_get_thread_data
-   fun:abort_thread
-   fun:wait_select_reply
-   fun:server_select
-   fun:NtWaitForKeyedEvent
-   fun:RtlSleepConditionVariableCS
-   fun:worker_thread_proc
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
-   bug_36613_3
-   Memcheck:Addr4
-   fun:ntdll_get_thread_data
-   fun:terminate_thread
-   obj:*/dlls/ntdll/ntdll.dll.so
-   obj:*
-   fun:start_thread
-   fun:clone
-}
-{
-   bug_36613_4
-   Memcheck:Addr4
-   fun:terminate_thread
-   obj:*/dlls/ntdll/ntdll.dll.so
-   obj:*
-   fun:start_thread
-   fun:clone
-}
-{
-   bug_36613_5
-   Memcheck:Addr4
-   fun:check_notification
-   fun:send_callback
-   fun:release_object
-   fun:connect_destroy
-   fun:release_object
-   fun:request_destroy
-   fun:release_object
-   fun:task_thread
-   fun:worker_thread_proc
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
-   bug_36613_6
-   Memcheck:Addr4
-   fun:abort_thread
-   fun:wait_select_reply
-   fun:server_select
-   fun:NtWaitForKeyedEvent
-   fun:RtlSleepConditionVariableCS
-   fun:worker_thread_proc
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:rpcrt4_conn_np_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   ...
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
@@ -6934,7 +6907,7 @@
    fun:main
 }
 {
-   bug_36638
+   bug_36638_1
    Memcheck:Leak
    match-leak-kinds: definite
    fun:notify_alloc
@@ -6947,6 +6920,25 @@
    fun:func_http
    fun:run_test
    fun:main
+}
+{
+   bug_36638_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   ...
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
 }
 {
    bug_36639
@@ -7490,16 +7482,12 @@
    bug_38674
    Memcheck:Param
    writev(vector[...])
-   obj:/usr/lib/libc-2.21.so
+   obj:*/libc-2.*.so
    fun:send_request
    fun:wine_server_call
    fun:wine_server_call_err
    fun:WriteConsoleInputW
-   fun:WriteConsoleInputA
-   fun:test_WriteConsoleInputA
-   fun:func_console
-   fun:run_test
-   fun:main
+   ...
 }
 {
    bug_38675
@@ -7609,6 +7597,229 @@
    fun:mozilla::LookAndFeel::GetColor
 }
 {
+   bug_38724_3
+   Memcheck:Addr2
+   fun:memchrW
+   fun:InternetCrackUrlW
+   fun:get_redirect_url
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_4
+   Memcheck:Addr2
+   fun:memchrW
+   fun:InternetCrackUrlW
+   fun:get_redirect_url
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_5
+   Memcheck:Addr2
+   fun:memchrW
+   fun:InternetCrackUrlW
+   fun:get_redirect_url
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_6
+   Memcheck:Addr2
+   fun:memchrW
+   fun:InternetCrackUrlW
+   fun:get_redirect_url
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_7
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:GlobalAlloc
+   fun:OLEClipbrd_Initialize
+   fun:OleInitialize
+   fun:func_webbrowser
+   fun:run_test
+   fun:main
+}
+{
+   bug_38724_8
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:alloc_fileio
+   fun:server_ioctl_file
+   fun:NtFsControlFile
+   fun:rpcrt4_protseq_np_get_wait_array
+   fun:RPCRT4_server_thread
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_9
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_alloc
+   fun:heap_strdupW
+   fun:update_travellog
+   fun:ClOleCommandTarget_Exec
+   fun:IOleCommandTarget_Exec
+   fun:notify_travellog_update
+   fun:set_current_mon
+   fun:navigate_proc
+   fun:hidden_proc
+   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   obj:*
+}
+{
+   bug_38724_10
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:CreateStreamOnHGlobal
+   fun:get_travellog_stream
+   fun:update_travellog
+   fun:ClOleCommandTarget_Exec
+   fun:IOleCommandTarget_Exec
+   fun:notify_travellog_update
+   fun:set_current_mon
+   fun:navigate_proc
+   fun:hidden_proc
+   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   obj:*
+}
+{
+   bug_38724_11
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_alloc_zero
+   fun:create_netconn
+   fun:open_http_connection
+   fun:HTTP_HttpSendRequestW
+   fun:AsyncHttpSendRequestProc
+   fun:INTERNET_WorkerThreadFunc
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_38724_12
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_alloc
+   fun:heap_strdupW
+   fun:update_travellog
+   fun:ClOleCommandTarget_Exec
+   fun:IOleCommandTarget_Exec
+   fun:notify_travellog_update
+   fun:set_current_mon
+   fun:navigate_proc
+   fun:hidden_proc
+   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_call_window
+   fun:DispatchMessageW
+   obj:*
+}
+{
+   bug_38724_13
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   fun:alloc_bstr
+   fun:SysAllocStringLen
+   fun:combine_uri
+   fun:CoInternetCombineUrlEx
+   fun:combine_url
+   fun:nsIOServiceHook_NewURI
+   obj:*
+}
+{
+   bug_38724_14
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   fun:alloc_bstr
+   fun:SysAllocStringLen
+   fun:SysAllocString
+   fun:combine_uri
+   fun:CoInternetCombineUrlEx
+   fun:combine_url
+   fun:nsIOServiceHook_NewURI
+   obj:*
+}
+{
    bug_38727_1
    Memcheck:Addr2
    ...
@@ -7643,6 +7854,21 @@
 {
    bug_38727_3
    Memcheck:Addr2
+   ...
+   fun:ItemMenu_Constructor
+   fun:ShellFolder2_GetUIObjectOf
+   fun:IShellFolder_GetUIObjectOf
+   fun:FolderItemVerbs_Constructor
+   fun:FolderItemImpl_Verbs
+   fun:FolderItem_Verbs
+   fun:test_Verbs
+   fun:func_shelldispatch
+   fun:run_test
+   fun:main
+}
+{
+   bug_38727_4
+   Memcheck:Addr1
    ...
    fun:ItemMenu_Constructor
    fun:ShellFolder2_GetUIObjectOf
@@ -7793,9 +8019,7 @@
    fun:mciSendCommandW
    fun:mciSendCommandA
    fun:test_openclose
-   fun:func_mcicda
-   fun:run_test
-   fun:main
+   ...
 }
 {
    bug_39522
@@ -7807,7 +8031,674 @@
    fun:IFileDialogCustomize_fnAddControlItem
    fun:IFileDialogCustomize_AddControlItem
    fun:test_customize
-   fun:func_itemdlg
+   ...
+}
+{
+   bug_43308_1
+   Memcheck:Param
+   writev(vector[...])
+   obj:*/libc-2*.so
+   fun:send_request
+   fun:wine_server_call
+   fun:NtCreateEvent
+   fun:CreateEventExW
+   fun:CreateEventExA
+   fun:CreateEventA
+}
+{
+   bug_43308_1
+   Memcheck:Param
+   writev(vector[...])
+   obj:*/libc-2*.so
+   fun:send_request
+   fun:wine_server_call
+   fun:NtDuplicateToken
+   fun:DuplicateTokenEx
+   ...
+}
+{
+   bug_43310_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:ConvertSidToStringSidA
+   fun:test_token_label
+   ...
+}
+{
+   bug_43310_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:GetSecurityInfo
+   fun:test_system_security_access
+   ...
+}
+{
+   bug_43310_3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:GetSecurityInfo
+   fun:test_GetSecurityInfo
+   ...
+}
+{
+   bug_43310_4
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:ConvertSidToStringSidA
+   fun:test_token_label
+   ...
+}
+{
+   bug_43310_5
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:GetSecurityInfo
+   fun:test_system_security_access
+   ...
+}
+{
+   bug_43310_6
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:test_token_security_descriptor
+   ...
+}
+{
+   bug_43310_7
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:LocalAlloc
+   fun:GetSecurityInfo
+   fun:test_GetSecurityInfo
+   ...
+}
+{
+   bug_43313_1
+   Memcheck:Param
+   write(buf)
+   obj:*/libpthread-2.*.so
+   fun:JoystickWImpl_Acquire
+   ...
+}
+{
+   bug_43313_2
+   Memcheck:Param
+   write(buf)
+   obj:*/libpthread-2.*.so
+   fun:JoystickWImpl_Unacquire
+   ...
+}
+{
+   bug_43342
+   Memcheck:Param
+   writev(vector[...])
+   fun:__writev_nocancel
+   fun:send_request
+   fun:wine_server_call
+   fun:server_ioctl_file
+   fun:NtDeviceIoControlFile
+   fun:DeviceIoControl
+   fun:HidD_GetPreparsedData
+   fun:test_device_info
+   fun:run_for_each_device
+   fun:func_device
    fun:run_test
    fun:main
+}
+{
+   bug_43345
+   Memcheck:Free
+   fun:notify_realloc
+   fun:RtlReAllocateHeap
+   fun:CryptMemRealloc
+   fun:test_cryptAllocate
+   fun:func_main
+   fun:run_test
+   fun:main
+}
+{
+   bug_43347
+   Memcheck:Param
+   ioctl(SIOCGIFINDEX)
+   fun:ioctl
+   fun:if_nametoindex
+   fun:getInterfaceIndexByName
+   fun:IPHLP_if_nametoindex
+   fun:test_interface_identifier_conversion
+   fun:func_iphlpapi
+   fun:run_test
+   fun:main
+}
+{
+   bug_43348
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:test_acmFormatChoose
+   fun:func_msacm
+   fun:run_test
+   fun:main
+}
+{
+   bug_43371_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:Direct3DRMCreate
+   fun:test_create_texture_from_surface
+   fun:func_d3drm
+   fun:run_test
+   fun:main
+}
+{
+   bug_43371_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:Direct3DRMCreate
+   fun:test_destroy_callback
+   fun:test_object
+   fun:func_d3drm
+   fun:run_test
+   fun:main
+}
+{
+   bug_43372
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:D3DXCreateTextureShader
+   fun:test_texture_shader
+   fun:func_texture
+   fun:run_test
+   fun:main
+}
+{
+   bug_43373
+   Memcheck:Free
+   fun:notify_free
+   fun:RtlFreeHeap
+   fun:heap_free
+   fun:factory_release_cached_fontface
+   fun:dwritefontface_Release
+   fun:IDWriteFontFace1_Release
+   fun:test_GetUnicodeRanges
+   fun:func_font
+   fun:run_test
+   fun:main
+}
+{
+   bug_43374
+   Memcheck:Addr2
+   fun:DispCallFunc
+   fun:invoke_builtin_function
+   fun:function_invoke
+   fun:invoke_builtin_prop
+   fun:DispatchEx_InvokeEx
+   fun:IDispatchEx_InvokeEx
+   fun:disp_call
+   fun:exprval_call
+   fun:interp_call_member
+   fun:enter_bytecode
+   fun:exec_source
+   fun:invoke_source
+   fun:Function_invoke
+   fun:invoke_prop_func
+   fun:DispatchEx_InvokeEx
+   fun:IDispatchEx_InvokeEx
+   fun:call_disp_func
+   fun:call_event_handlers
+   fun:fire_event_obj
+   fun:fire_event
+   fun:handle_load
+   obj:*
+}
+{
+   bug_43375
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_alloc
+   fun:set_script_elem_readystate
+   fun:doc_insert_script
+   ...
+   fun:nsRunnable_Run
+   ...
+}
+{
+   bug_43376
+   Memcheck:Addr1
+   ...
+   fun:test_strstreambuf
+   fun:func_msvcirt
+   fun:run_test
+   fun:main
+}
+{
+   bug_43377
+   Memcheck:Free
+   fun:notify_free
+   fun:RtlFreeHeap
+   fun:heap_free
+   fun:free_properties
+   fun:xmldoc_release_refs
+   fun:xmldoc_release
+   fun:destroy_xmlnode
+   fun:domdoc_Release
+   fun:IXMLDOMDocument2_Release
+   fun:test_get_ownerDocument
+   fun:func_domdoc
+   fun:run_test
+   fun:main
+}
+{
+   bug_43378
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:xmlNewNs
+   fun:domdoc_createNode
+   fun:IXMLDOMDocument_createNode
+   fun:test_create_attribute
+   fun:func_domdoc
+   fun:run_test
+   fun:main
+}
+{
+   bug_43379
+   Memcheck:Addr1
+   fun:virtual_check_buffer_for_write
+   fun:NtReadFile
+   fun:test_read_write
+   fun:func_file
+   fun:run_test
+   fun:main
+}
+{
+   bug_43380_1
+   Memcheck:Param
+   write(buf)
+   obj:*/libpthread-2.*.so
+   fun:NtWriteFile
+   fun:WriteFile
+   fun:read_pipe_test
+   fun:func_pipe
+   fun:run_test
+   fun:main
+}
+{
+   bug_43380_2
+   Memcheck:Param
+   writev(vector[...])
+   obj:*/libpthread-2.*.so
+   obj:*/libc-2.*.so
+   fun:send_request
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:WriteFile
+   fun:read_pipe_test
+   fun:func_pipe
+   fun:run_test
+   fun:main
+}
+{
+   bug_43381
+   Memcheck:Param
+   writev(vector[...])
+   obj:*/libc-2.*.so
+   fun:send_request
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:rpcrt4_conn_np_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   fun:process_request_packet
+   fun:RPCRT4_process_packet
+   fun:RPCRT4_worker_thread
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43382
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:VARIANT_CopyIRecordInfo
+   fun:VariantCopy
+   fun:test_VariantCopy
+   fun:func_vartest
+   fun:run_test
+   fun:main
+}
+{
+   bug_43383_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   obj:*
+   fun:IMediaSample_SetMediaType
+   fun:media_thread
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43383_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   fun:IMemInputPin_Receive
+   fun:media_thread
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43384
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:RPCRT4_io_thread
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43385_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:relative_path
+   fun:GetLinkLocation
+   fun:InvokeShellLinker
+   fun:Process_Link
+   fun:wWinMain
+   fun:wmain
+   fun:__wine_spec_exe_wentry
+   obj:*/dlls/kernel32/kernel32.dll.so
+   fun:start_process
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_process
+   obj:*/libs/wine/libwine.so.1.0
+}
+
+{
+   bug_43385_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:heap_printf
+   fun:platform_write_icon
+   fun:extract_icon
+   fun:InvokeShellLinker
+   fun:Process_Link
+   fun:wWinMain
+   fun:wmain
+   fun:__wine_spec_exe_wentry
+   obj:*/dlls/kernel32/kernel32.dll.so
+   fun:start_process
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_process
+   obj:*/libs/wine/libwine.so.1.0
+}
+{
+   bug_43386
+   Memcheck:Param
+   writev(vector[...])
+   obj:*/libc-2.*.so
+   fun:send_request
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:rpcrt4_conn_np_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   fun:I_RpcSend
+   fun:I_RpcSendReceive
+   fun:rpc_sendreceive_thread
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43387_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:MetadataQueryReader_CreateInstance
+   fun:mqr_GetMetadataByName
+   fun:IWICMetadataQueryReader_GetMetadataByName
+   ...
+   fun:func_metadata
+   fun:run_test
+   fun:main
+}
+{
+   bug_43387_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:GlobalAlloc
+   fun:create_stream
+   fun:test_metadata_gif
+   fun:func_metadata
+   fun:run_test
+   fun:main
+}
+{
+   bug_43388
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:IMalloc_fnAlloc
+   fun:IMalloc_Alloc
+   fun:CoTaskMemAlloc
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_thread
+   fun:start_thread
+   fun:clone
+}
+{
+   bug_43389
+   Memcheck:Addr2
+   ...
+   fun:CompareStringEx
+   fun:CompareStringW
+   fun:lstrcmpW
+   fun:is_prefix_unique
+   fun:IWSDXMLContextImpl_AddNamespace
+   fun:IWSDXMLContext_AddNamespace
+   fun:XMLContext_AddNamespace_tests
+   fun:func_xml
+   fun:run_test
+   fun:main
+}
+{
+   bug_43390_1
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:XAudio2Create
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
+{
+   bug_43390_2
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:CreateAudioVolumeMeter
+   ...
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
+{
+   bug_43390_3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:CreateAudioReverb
+   fun:test_xapo_creation_modern
+   fun:test_xapo_creation
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
+{
+   bug_43390_4
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   obj:*
+   obj:*
+   fun:test_xapo_creation_legacy
+   fun:test_xapo_creation
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
+{
+   bug_43390_5
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:CreateFX
+   fun:test_xapo_creation_modern
+   fun:test_xapo_creation
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
+{
+   bug_43391
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:quoted_value_name_state
+   fun:import_registry_file
+   fun:PerformRegAction
+   fun:ProcessCmdLine
+   fun:wWinMain
+   fun:wmain
+   fun:__wine_spec_exe_wentry
+   obj:*/dlls/kernel32/kernel32.dll.so
+   fun:start_process
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_process
+   obj:*/libs/wine/libwine.so.1.0
+}
+{
+   bug_43392
+   Memcheck:Addr2
+   fun:REGPROC_unescape_string
+   ...
+   fun:import_registry_file
+   fun:PerformRegAction
+   fun:ProcessCmdLine
+   fun:wWinMain
+   fun:wmain
+   fun:__wine_spec_exe_wentry
+   obj:*/dlls/kernel32/kernel32.dll.so
+   fun:start_process
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:start_process
+   obj:*/libs/wine/libwine.so.1.0
 }
