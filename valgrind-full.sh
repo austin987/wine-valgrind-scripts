@@ -187,7 +187,12 @@ touch dlls/kernel32/tests/virtual.ok # valgrind assertion failure after https://
 touch dlls/msvcrt/tests/string.ok # valgrind wontfix: https://bugs.winehq.org/show_bug.cgi?id=36165
 
 # hanging bugs:
-touch dlls/ieframe/tests/ie.ok # FIXME: hangs
+touch dlls/comdlg32/tests/filedlg.ok # FIXME: hangs, need bug
+touch dlls/comdlg32/tests/itemdlg.ok # FIXME: hangs, need bug
+touch dlls/dinput8/tests/device.ok # FIXME: hangs, need bug
+touch dlls/dsound/tests/duplex.ok # FIXME: hangs, need bug
+touch dlls/ieframe/tests/ie.ok # FIXME: hangs, need bug
+touch dlls/kernel32/tests/virtual.ok # https://bugs.winehq.org/show_bug.cgi?id=43352 infinite loop under valgrind
 touch dlls/mshtml/tests/events.ok # https://bugs.winehq.org/show_bug.cgi?id=37157 hangs under valgrind
 touch dlls/mshtml/tests/htmldoc.ok # FIXME: hangs
 touch dlls/mshtml/tests/htmllocation.ok # FIXME: hangs
@@ -217,6 +222,7 @@ then
     touch dlls/kernel32/tests/debugger.ok # intentional
     touch dlls/ntdll/tests/exception.ok # https://bugs.winehq.org/show_bug.cgi?id=28735
     touch dlls/user32/tests/dde.ok # https://bugs.winehq.org/show_bug.cgi?id=39257
+    touch dlls/wbemprox/tests/query.ok # https://bugs.winehq.org/show_bug.cgi?id=43354
 fi
 
 if [ $skip_failures -eq 1 ]
