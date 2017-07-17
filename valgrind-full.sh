@@ -76,7 +76,7 @@ while [ ! -z "$1" ] ; do
         --skip-slow) skip_slow=1;;
         --suppress-known) suppress_known="--suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-gecko --suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-known-bugs";;
         --virtual-desktop|--vd) virtual_desktop="vd=1024x768";;
-        *) echo "invalid option $1 passed!"; usage; exit 1;;
+        *) echo "invalid option $arg passed!"; usage; exit 1;;
     esac
 done
 
