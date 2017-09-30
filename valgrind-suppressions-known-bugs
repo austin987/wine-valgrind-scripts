@@ -144,19 +144,6 @@
    fun:main
 }
 {
-   bug_26046_1
-   Memcheck:Cond
-   fun:CompareFileTime
-   fun:MONTHCAL_CompareSystemTime
-   fun:MONTHCAL_CompareMonths
-   ...
-   fun:MONTHCAL_GetDayRect
-   fun:MONTHCAL_UpdateToday
-   fun:MONTHCAL_SetToday
-   fun:MONTHCAL_WindowProc
-   ...
-}
-{
    bug_26049
    Memcheck:Leak
    match-leak-kinds: definite
@@ -5238,35 +5225,6 @@
    ...
 }
 {
-   bug_36359_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:func_dsound
-   ...
-}
-{
-   bug_36359_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:get_mmdevenum
-   fun:GetDeviceID
-   fun:DirectSoundDevice_Initialize
-   fun:IDirectSound8Impl_Initialize
-   fun:IDirectSound_test
-   fun:func_dsound
-   fun:run_test
-   fun:main
-}
-{
    bug_36360_1
    Memcheck:Leak
    match-leak-kinds: definite
@@ -8195,17 +8153,6 @@
    fun:main
 }
 {
-   bug_43348
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:test_acmFormatChoose
-   fun:func_msacm
-   fun:run_test
-   fun:main
-}
-{
    bug_43371_1
    Memcheck:Leak
    match-leak-kinds: definite
@@ -8239,20 +8186,6 @@
    fun:D3DXCreateTextureShader
    fun:test_texture_shader
    fun:func_texture
-   fun:run_test
-   fun:main
-}
-{
-   bug_43373
-   Memcheck:Free
-   fun:notify_free
-   fun:RtlFreeHeap
-   fun:heap_free
-   fun:factory_release_cached_fontface
-   fun:dwritefontface_Release
-   fun:IDWriteFontFace1_Release
-   fun:test_GetUnicodeRanges
-   fun:func_font
    fun:run_test
    fun:main
 }
@@ -8585,21 +8518,6 @@
    fun:clone
 }
 {
-   bug_43389
-   Memcheck:Addr2
-   ...
-   fun:CompareStringEx
-   fun:CompareStringW
-   fun:lstrcmpW
-   fun:is_prefix_unique
-   fun:IWSDXMLContextImpl_AddNamespace
-   fun:IWSDXMLContext_AddNamespace
-   fun:XMLContext_AddNamespace_tests
-   fun:func_xml
-   fun:run_test
-   fun:main
-}
-{
    bug_43390_1
    Memcheck:Leak
    match-leak-kinds: definite
@@ -8661,44 +8579,4 @@
    fun:func_xaudio2
    fun:run_test
    fun:main
-}
-{
-   bug_43391
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:quoted_value_name_state
-   fun:import_registry_file
-   fun:PerformRegAction
-   fun:ProcessCmdLine
-   fun:wWinMain
-   fun:wmain
-   fun:__wine_spec_exe_wentry
-   obj:*/dlls/kernel32/kernel32.dll.so
-   fun:start_process
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
-}
-{
-   bug_43392
-   Memcheck:Addr2
-   fun:REGPROC_unescape_string
-   ...
-   fun:import_registry_file
-   fun:PerformRegAction
-   fun:ProcessCmdLine
-   fun:wWinMain
-   fun:wmain
-   fun:__wine_spec_exe_wentry
-   obj:*/dlls/kernel32/kernel32.dll.so
-   fun:start_process
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
 }

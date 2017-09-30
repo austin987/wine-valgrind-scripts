@@ -315,11 +315,6 @@
    fun:sqlite3Select
 }
 {
-   bug_36926
-   Memcheck:Cond
-   fun:codeOneLoopStart
-}
-{
    bug_36928_x
    Memcheck:Cond
    fun:ccref_decr
