@@ -1473,3 +1473,73 @@
    fun:set_default_locale
    fun:main
 }
+{
+   bug_36640_1
+   Memcheck:Param
+   ioctl(generic)
+   fun:syscall
+   obj:/usr/lib/libv4lconvert.so.0.0.0
+   obj:/usr/lib/libv4lconvert.so.0.0.0
+   fun:v4lconvert_create_with_dev_ops
+   fun:v4l2_fd_open
+   fun:v4l1_open
+   obj:/usr/lib/sane/libsane-v4l.so.1.0.24
+   fun:sane_v4l_init
+   obj:/usr/lib/libsane.so.1.0.24
+   fun:sane_dll_get_devices
+   fun:sane_get_devices
+   fun:detect_sane_devices
+   fun:SANE_GetIdentity
+   fun:SANE_SourceControlHandler
+   fun:DS_Entry
+   fun:twain_add_onedriver
+   fun:twain_autodetect
+   fun:TWAIN_IdentityGetFirst
+   fun:TWAIN_SourceManagerHandler
+   fun:DSM_Entry
+}
+{
+   bug_36640_2
+   Memcheck:Param
+   ioctl(generic)
+   fun:syscall
+   obj:/usr/lib/libv4lconvert.so.0.0.0
+   fun:v4l2_ioctl
+   fun:v4l1_open
+   obj:/usr/lib/sane/libsane-v4l.so.1.0.24
+   fun:sane_v4l_init
+   obj:/usr/lib/libsane.so.1.0.24
+   fun:sane_dll_get_devices
+   fun:sane_get_devices
+   fun:detect_sane_devices
+   fun:SANE_GetIdentity
+   fun:SANE_SourceControlHandler
+   fun:DS_Entry
+   fun:twain_add_onedriver
+   fun:twain_autodetect
+   fun:TWAIN_IdentityGetFirst
+   fun:TWAIN_SourceManagerHandler
+   fun:DSM_Entry
+   fun:test_sources
+   fun:func_dsm
+}
+{
+   bug_36640_3
+   Memcheck:Leak
+   match-leak-kinds: definite
+   ...
+   fun:test_sources
+   fun:func_dsm
+   fun:run_test
+   fun:main
+}
+{
+   bug_36640_4
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   fun:test_sources
+   fun:func_dsm
+   fun:run_test
+   fun:main
+}
