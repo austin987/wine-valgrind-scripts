@@ -8580,3 +8580,25 @@
    fun:run_test
    fun:main
 }
+{
+   fixme-bug-all-arm-tests
+   Memcheck:Param
+   epoll_ctl(event)
+   fun:epoll_ctl
+   fun:set_fd_epoll_events
+   fun:set_fd_events
+   ...
+   fun:main
+}
+{
+   fixme-bug-all-arm-tests
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:RtlAllocateHeap
+   fun:build_argv
+   fun:exec_loader
+   fun:create_process
+   fun:create_process_impl
+   ...
+   fun:main
+}

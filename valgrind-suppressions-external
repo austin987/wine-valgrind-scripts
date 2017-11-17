@@ -1112,3 +1112,10 @@
    fun:segv_handler
    obj:/*lib*/libpthread-2.*.so
 }
+{
+   fontconfig-1.8.0
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   obj:*/libfontconfig.so.1.*
+}
