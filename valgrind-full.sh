@@ -97,10 +97,16 @@ echo "started with: $0 $*" > "${WINESRC}/logs/${wine_version}.log"
 
 # shellcheck disable=SC2129
 echo "HEAD is:" >> "${WINESRC}/logs/${wine_version}.log"
-git log -n 1 >> "${WINESRC}/logs/${wine_version}.log"
+git log -n 1 HEAD >> "${WINESRC}/logs/${wine_version}.log"
 
-echo "commit before HEAD is:" >> "${WINESRC}/logs/${wine_version}.log"
-git show HEAD^1 >> "${WINESRC}/logs/${wine_version}.log"
+echo "origin/master is:" >> "${WINESRC}/logs/${wine_version}.log"
+git log -n 1 origin/master >> "${WINESRC}/logs/${wine_version}.log"
+
+echo "git log between origin/master and HEAD:" >> "${WINESRC}/logs/${wine_version}.log"
+git log origin/master..HEAD >> "${WINESRC}/logs/${wine_version}.log"
+
+echo "git diff between origin/master and HEAD:" >> "${WINESRC}/logs/${wine_version}.log"
+git diff origin/master HEAD >> "${WINESRC}/logs/${wine_version}.log"
 
 # Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
 # https://bugs.kde.org/show_bug.cgi?id=352395
