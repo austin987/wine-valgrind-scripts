@@ -30,4 +30,12 @@ do
     valgrind --suppressions="$file" "$TRUE" || die "file $file appears broken"
 done
 
+# Avoid any absolute library paths:
+for file in valgrind-suppressions-*
+do
+    if grep -e '/lib.*/' -e '/home/' "$file"; then
+        die "file $file contains absolute library paths, should be relative"
+    fi
+done
+
 echo "Tests succeeded"

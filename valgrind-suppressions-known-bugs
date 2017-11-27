@@ -1599,7 +1599,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36122_2
@@ -1618,7 +1618,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36122_3
@@ -1642,7 +1642,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36123_1
@@ -2456,7 +2456,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36173_7
@@ -2806,8 +2806,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:/*/lib*/gcc/*/libgcc_s.so.1
-   obj:/*/lib*/gcc/*/libgcc_s.so.1
+   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so.1
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -6542,8 +6542,8 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_621
    fun:context_create
    fun:swapchain_init
@@ -6565,11 +6565,11 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:malloc
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6590,10 +6590,10 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6615,9 +6615,9 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:malloc
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6687,10 +6687,10 @@
    bug_36621_2
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/usr/lib/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.1.0.0
    fun:drm_intel_bo_map
    ...
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
    fun:glTexSubImage2D
    fun:surface_upload_data
@@ -6774,15 +6774,15 @@
    bug_36631
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/usr/lib/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.1.0.0
    fun:drm_intel_bo_map
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -7387,7 +7387,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_38670
@@ -7419,7 +7419,7 @@
    bug_38673
    Memcheck:Param
    writev(vector[...])
-   obj:/usr/lib/libc-2.21.so
+   obj:*/libc-2.21.so
    fun:send_request
    fun:wine_server_call
    fun:server_select
@@ -8417,7 +8417,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 
 {
@@ -8440,7 +8440,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_43386

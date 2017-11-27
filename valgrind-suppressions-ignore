@@ -1478,14 +1478,14 @@
    Memcheck:Param
    ioctl(generic)
    fun:syscall
-   obj:/usr/lib/libv4lconvert.so.0.0.0
-   obj:/usr/lib/libv4lconvert.so.0.0.0
+   obj:*/libv4lconvert.so.0.0.0
+   obj:*/libv4lconvert.so.0.0.0
    fun:v4lconvert_create_with_dev_ops
    fun:v4l2_fd_open
    fun:v4l1_open
-   obj:/usr/lib/sane/libsane-v4l.so.1.0.24
+   obj:*/sane/libsane-v4l.so.1.0.24
    fun:sane_v4l_init
-   obj:/usr/lib/libsane.so.1.0.24
+   obj:*/libsane.so.1.0.24
    fun:sane_dll_get_devices
    fun:sane_get_devices
    fun:detect_sane_devices
@@ -1503,12 +1503,12 @@
    Memcheck:Param
    ioctl(generic)
    fun:syscall
-   obj:/usr/lib/libv4lconvert.so.0.0.0
+   obj:*/libv4lconvert.so.0.0.0
    fun:v4l2_ioctl
    fun:v4l1_open
-   obj:/usr/lib/sane/libsane-v4l.so.1.0.24
+   obj:*/sane/libsane-v4l.so.1.0.24
    fun:sane_v4l_init
-   obj:/usr/lib/libsane.so.1.0.24
+   obj:*/libsane.so.1.0.24
    fun:sane_dll_get_devices
    fun:sane_get_devices
    fun:detect_sane_devices

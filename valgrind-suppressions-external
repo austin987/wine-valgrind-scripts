@@ -129,14 +129,14 @@
    d3d8_visual
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/usr/lib/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.1.0.0
    fun:drm_intel_bo_map
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_372
    fun:wined3d_volume_upload_data
    fun:device_update_volume
@@ -152,16 +152,16 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/usr/lib/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc_tiled
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:shared_dispatch_stub_371
    fun:wined3d_volume_allocate_texture
    fun:wined3d_volume_load
@@ -279,7 +279,7 @@
    dbus_4
    Memcheck:Jump
    ...
-   obj:/usr/lib/libdbus-1.so.*
+   obj:*/libdbus-1.so.*
    ...
    fun:__run_exit_handlers
    fun:exit
@@ -323,10 +323,10 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:call_init.part.0
    fun:_dl_init
    fun:dl_open_worker
@@ -336,10 +336,10 @@
    fun:_dl_catch_error
    fun:_dlerror_run
    fun:dlopen@@GLIBC_2.1
-   obj:/usr/lib/libGL.so.1.2.0
-   obj:/usr/lib/libGL.so.1.2.0
-   obj:/usr/lib/libGL.so.1.2.0
-   obj:/usr/lib/libGL.so.1.2.0
+   obj:*/libGL.so.1.2.0
+   obj:*/libGL.so.1.2.0
+   obj:*/libGL.so.1.2.0
+   obj:*/libGL.so.1.2.0
    fun:glXChooseVisual
    fun:X11DRV_WineGL_InitOpenglInfo
 }
@@ -373,7 +373,7 @@
    match-leak-kinds: definite
    fun:malloc
    fun:g_malloc
-   obj:/usr/lib64/libglib-2.0.so.*
+   obj:*/libglib-2.0.so.*
    fun:g_option_context_parse
    obj:/usr/bin/update-desktop-database
    ...
@@ -530,8 +530,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:/lib/i386-linux-gnu/libgcc_s.so.1
-   obj:/lib/i386-linux-gnu/libgcc_s.so.1
+   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so.1
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -549,12 +549,12 @@
    match-leak-kinds: definite
    fun:g_type_create_instance
    fun:gst_mini_object_new
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/usr/lib/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/libglib-2.0.so.0.4200.1
    fun:start_thread
    fun:clone
 }
@@ -565,14 +565,14 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
    fun:gst_tag_list_new
    fun:gst_riff_parse_info
-   obj:/usr/lib/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/libglib-2.0.so.0.4200.1
    fun:start_thread
    fun:clone
 }
@@ -583,7 +583,7 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
    fun:gst_structure_id_new
    ...
 }
@@ -594,14 +594,14 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
    fun:gst_tag_list_new
-   obj:/usr/lib/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:/usr/lib/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/usr/lib/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
-   obj:/lib/i386-linux-gnu/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
+   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/libglib-2.0.so.0.4200.1
    fun:start_thread
    fun:clone
 }
@@ -609,7 +609,7 @@
    mesa_1
    Memcheck:Addr4
    ...
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
    fun:glXCreateContext
    fun:X11DRV_WineGL_InitOpenglInfo
@@ -631,7 +631,7 @@
    Memcheck:Param
    ioctl(generic)
    ...
-   obj:/usr/lib/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.1.0.0
    ...
    fun:glXChooseVisual
    fun:X11DRV_WineGL_InitOpenglInfo
@@ -1079,23 +1079,23 @@
    fun:drmIoctl
    fun:drmPrimeHandleToFD
    fun:drm_intel_bo_gem_export_to_prime
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
 }
 {
    i965_d3d8_visual_fog_test
    Memcheck:Cond
    fun:bcmp
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
-   obj:/usr/lib/dri/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
    fun:glClear
    fun:device_clear_render_targets
    fun:wined3d_cs_exec_clear

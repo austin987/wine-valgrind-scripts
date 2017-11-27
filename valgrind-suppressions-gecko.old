@@ -168,7 +168,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36394_4
@@ -239,7 +239,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36394_8
@@ -263,7 +263,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libs/wine/libwine.so.1.0
+   obj:*/libwine.so.1.0
 }
 {
    bug_36394_9
