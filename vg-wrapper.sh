@@ -25,6 +25,7 @@ export WINESRC="$HOME/wine-valgrind"
 export WINE="$WINESRC/wine"
 export WINESERVER="$WINESRC/server/wineserver"
 
+#export WINETEST_WRAPPER=$HOME/src/valgrind/vg-in-place
 export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
 #export WINETEST_WRAPPER=valgrind
 
