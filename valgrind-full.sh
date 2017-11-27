@@ -66,6 +66,27 @@ WINESERVER="$WINESRC/server/wineserver"
 export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
 #WINETEST_WRAPPER=valgrind
 
+# In theory, wine + valgrind can work on (at least):
+# win32/linux86 (worked a long time ago, haven't tested recently)
+# win32/linux64 (works, usual platform)
+# win64/linux64 (works, not frequently tested)
+# win32/macosx (doesn't work) # https://bugs.kde.org/show_bug.cgi?id=349804
+# win64/macosx (doesn't work) # https://bugs.kde.org/show_bug.cgi?id=349804
+# win32/solaris86 (untested)
+# win32/solaris64 (untested)
+# win32/arm32 (semi works, a lot of hanging tests and other issues)
+# win64/arm64 (seems to work, only lightly tested)
+#
+# So we need arch/os to:
+# A) distinguish logs
+# B) allow for platform specific workarounds/bugs
+
+arch="$(uname -m)"
+os="$(uname -s)"
+
+mkdir -p "${WINESRC}/logs"
+logfile="${WINESRC}/logs/${wine_version}-${os}-${arch}.log"
+
 while [ ! -z "$1" ] ; do
     arg="$1"
     shift
@@ -91,25 +112,24 @@ export OANOCACHE=1
 # reduce spam:
 export WINEDEBUG=-all
 
-mkdir -p "${WINESRC}/logs"
-echo "started with: $0 $*" > "${WINESRC}/logs/${wine_version}.log"
+echo "started with: $0 $*" > "$logfile"
 
 # shellcheck disable=SC2129
-echo "HEAD is:" >> "${WINESRC}/logs/${wine_version}.log"
-git log -n 1 HEAD >> "${WINESRC}/logs/${wine_version}.log"
+echo "HEAD is:" >> "$logfile"
+git log -n 1 HEAD >> "$logfile"
 
-echo "origin/master is:" >> "${WINESRC}/logs/${wine_version}.log"
-git log -n 1 origin/master >> "${WINESRC}/logs/${wine_version}.log"
+echo "origin/master is:" >> "$logfile"
+git log -n 1 origin/master >> "$logfile"
 
-echo "git log between origin/master and HEAD:" >> "${WINESRC}/logs/${wine_version}.log"
-git log origin/master..HEAD >> "${WINESRC}/logs/${wine_version}.log"
+echo "git log between origin/master and HEAD:" >> "$logfile"
+git log origin/master..HEAD >> "$logfile"
 
-echo "git diff between origin/master and HEAD:" >> "${WINESRC}/logs/${wine_version}.log"
-git diff origin/master HEAD >> "${WINESRC}/logs/${wine_version}.log"
+echo "git diff between origin/master and HEAD:" >> "$logfile"
+git diff origin/master HEAD >> "$logfile"
 
 # Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
 # https://bugs.kde.org/show_bug.cgi?id=352395
-echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "${WINESRC}/logs/${wine_version}.log"
+echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "$logfile"
 
 cd "${WINESRC}"
 
@@ -276,7 +296,7 @@ export VALGRIND_OPTS="-q --trace-children=yes --track-origins=yes --gen-suppress
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
-time make -k test >> "${WINESRC}/logs/${wine_version}.log" 2>&1 || true
+time make -k test >> "$logfile" 2>&1 || true
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
