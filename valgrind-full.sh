@@ -154,7 +154,7 @@ if test ! -f Makefile || test "$rebuild_wine" = "1"
 then
     make distclean || true
     ./configure CFLAGS="-g -O0 -fno-inline"
-    time make -j4
+    time make -j"$(nproc)"
 fi
 
 # Disable the crash dialog and enable heapchecking
