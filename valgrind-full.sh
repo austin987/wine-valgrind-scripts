@@ -38,18 +38,20 @@ usage() {
         printf "%s\n" "--skip-failures: skip any tests that fail under Valgrind"
         printf "%s\n" "--skip-slow: skip tests that fail on slow machines"
         printf "%s\n" "--suppress-known: suppress known bugs in Wine"
+        printf "%s\n" "--verbose: use valgrind verbose mode (-v -v -v) instead of --quiet"
         printf "%s\n" "--virtual-desktop: run tests in a virtual desktop"
 }
 
 fatal_warnings=""
 gecko_pdb=0
+leak_style=""
 rebuild_wine=0
 skip_crashes=0
 skip_failures=0
 skip_slow=0
 suppress_known=""
+verbose_mode="-q"
 virtual_desktop=""
-leak_style=""
 
 gecko_version="2.36"
 wine_version="$(git describe origin/master)"
@@ -102,6 +104,7 @@ while [ ! -z "$1" ] ; do
         --skip-failures) skip_failures=1;;
         --skip-slow) skip_slow=1;;
         --suppress-known) suppress_known="--suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-gecko --suppressions=${WINESRC}/tools/valgrind/valgrind-suppressions-known-bugs";;
+        --verbose) verbose_mode="-v -v -v";;
         --virtual-desktop|--vd) virtual_desktop="vd=1024x768";;
         *) echo "invalid option $arg passed!"; usage; exit 1;;
     esac
@@ -333,7 +336,7 @@ then
 fi
 
 # Finally run the tests:
-export VALGRIND_OPTS="-q --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20  --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access"
+export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20  --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access"
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
