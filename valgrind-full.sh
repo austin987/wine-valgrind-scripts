@@ -228,6 +228,45 @@ touch dlls/ole32/tests/clipboard.ok # FIXME: hangs
 touch dlls/ole32/tests/marshal.ok # FIXME: hangs
 touch dlls/user32/tests/win.ok # https://bugzilla.redhat.com/show_bug.cgi?id=1248314
 
+# These only hangs on my (arm32) chromebook:
+if [ "$arch" = "armv7l" ]; then
+    touch dlls/comctl32/tests/imagelist.ok # hangs
+    touch dlls/comctl32/tests/toolbar.ok # 10m errors
+    touch dlls/comctl32/tests/treeview.ok # hangs
+    touch dlls/crypt32/tests/cert.ok # max error
+    touch dlls/crypt32/tests/encode.ok # hangs
+    touch dlls/d3d8/tests/visual.ok # hangs
+    touch dlls/d3d9/tests/d3d9ex.ok # hangs
+
+    touch dlls/imm32/tests/imm32.ok # hangs
+    touch dlls/kernel32/tests/file.ok # hangs
+    touch dlls/msacm32/tests/msacm.ok # hangs
+    touch dlls/msvcirt/tests/msvcirt.ok # 10m errors
+    touch dlls/msvcp140/tests/msvcp140.ok # 10m errors
+    touch dlls/msvcp90/tests/misc.ok # valgrind bug (unhandled instruction), FIXME, file bug
+    touch dlls/msvcr100/tests/msvcr100.ok # 10m errors
+    touch dlls/ntdll/tests/file.ok # hangs
+    touch dlls/ntdll/tests/info.ok # 10m errors
+    touch dlls/ntdll/tests/time.ok # hangs
+    touch dlls/oleaut32/tests/safearray.ok # hangs
+    touch dlls/oleaut32/tests/tmarshal.ok # hangs
+    touch dlls/rpcrt4/tests/cstub.ok # makes a gajillion unrecognized symbol errors (all ???)
+    touch dlls/user32/tests/class.ok # 10m errors
+    touch dlls/user32/tests/menu.ok # hangs (FIXME there's a bug in test, hangs when submenu is waiting for a mouse click. Clicking bypasses it, but skipping for now)
+    touch dlls/vcomp/tests/vcomp.ok # hangs (actually, process was sleeping?)
+    touch dlls/wininet/tests/http.ok # 10m errors
+    touch dlls/ws2_32/tests/sock.ok # hangs
+
+    # Things that fail without gecko (FIXME: move to own exclusion, enable for arm):
+    touch dlls/ieframe/tests/webbrowser.ok # hangs
+    touch dlls/mshtml/tests/xmlhttprequest.ok # hangs
+    touch dlls/msxml3/tests/xmlview.ok # hangs
+
+    # Things that fail without mono (FIXME ^):
+    touch dlls/mscoree/tests/metahost.ok # hangs
+    touch dlls/mscoree/tests/mscoree.ok # hangs
+fi
+
 # wine bugs:
 touch dlls/winmm/tests/mci.ok # https://bugs.winehq.org/show_bug.cgi?id=30557
 
