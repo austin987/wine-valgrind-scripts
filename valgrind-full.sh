@@ -51,7 +51,9 @@ suppress_known=""
 virtual_desktop=""
 leak_style=""
 
-# FIXME: allow override
+gecko_version="2.36"
+wine_version="$(git describe origin/master)"
+
 # Must be run from the wine tree
 WINESRC="$HOME/wine-valgrind"
 # Prepare for calling winetricks
@@ -82,9 +84,6 @@ while [ ! -z "$1" ] ; do
         *) echo "invalid option $arg passed!"; usage; exit 1;;
     esac
 done
-
-gecko_version="2.36"
-wine_version=$(git describe HEAD^1)
 
 # disable BSTR cache
 export OANOCACHE=1
