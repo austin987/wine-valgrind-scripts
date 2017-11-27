@@ -416,7 +416,7 @@
    fun:nsHtml5StreamParser::Release
    fun:stop_request_proc
    fun:hidden_proc
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:DispatchMessageW

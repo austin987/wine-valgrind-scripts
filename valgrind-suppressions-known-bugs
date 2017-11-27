@@ -659,7 +659,7 @@
    fun:RegisterDragDrop
    fun:ShellView_OnCreate
    fun:ShellView_WndProc
-   obj:*-known/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:call_window_proc
@@ -1022,7 +1022,7 @@
    fun:dlopen_doit
    fun:_dl_catch_error
    fun:_dlerror_run
-   fun:dlopen@@GLIBC_2.1
+   fun:dlopen@@GLIBC_2*
    fun:wine_dlopen
    fun:dlopen_dll
    fun:wine_dll_load
@@ -1260,7 +1260,7 @@
    bug_36103_8
    Memcheck:Addr4
    fun:set_test_val
-   obj:/*lib*/ld-2.*.so
+   obj:/*lib*/ld-*.so
    fun:NtDelayExecution
    fun:SleepEx
    fun:Sleep
@@ -1599,13 +1599,13 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36122_2
    Memcheck:Leak
    ...
-   fun:convert_to_native_icon.isra.5.constprop.11
+   fun:convert_to_native_icon.isra.5.constprop*1
    fun:extract_icon
    fun:InvokeShellLinker
    fun:Process_Link
@@ -1618,7 +1618,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36122_3
@@ -1642,7 +1642,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36123_1
@@ -2456,7 +2456,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36173_7
@@ -2806,8 +2806,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:*/libgcc_s.so.1
-   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so*
+   obj:*/libgcc_s.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -2838,7 +2838,7 @@
 {
    bug_36199_3
    Memcheck:Jump
-   obj:*/libresolv-2.*.so
+   obj:*/libresolv-*.so
    ...
    fun:__run_exit_handlers
    fun:exit
@@ -2857,7 +2857,7 @@
 {
    bug_36199_5
    Memcheck:Jump
-   obj:*/libnss_dns-2.*.so
+   obj:*/libnss_dns-*.so
    fun:__run_exit_handlers
    fun:exit
    fun:NtTerminateProcess
@@ -2918,8 +2918,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:/*lib*/libgcc_s-*.so.1
-   obj:/*lib*/libgcc_s-*.so.1
+   obj:/*lib*/libgcc_s-*.so*
+   obj:/*lib*/libgcc_s-*.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -2933,8 +2933,8 @@
 {
    bug_36199_9
    Memcheck:Jump
-   obj:/*lib*/libresolv-2.*.so
-   obj:/*lib*/libresolv-2.*.so
+   obj:/*lib*/libresolv-*.so
+   obj:/*lib*/libresolv-*.so
    fun:_dl_fini
    fun:__run_exit_handlers
    fun:exit
@@ -3305,7 +3305,7 @@
    fun:create_glxcontext.isra.0
    fun:X11DRV_wglCreateContextAttribsARB
    fun:wglCreateContextAttribsARB
-   fun:wined3d_adapter_init.constprop.18
+   fun:wined3d_adapter_init.constprop*8
    fun:wined3d_init
    fun:wined3d_create
    fun:dxgi_factory_create
@@ -3835,7 +3835,7 @@
    bug_36282
    Memcheck:Param
    write(buf)
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:NtWriteFile
    fun:WriteFile
    fun:rpcrt4_conn_np_write
@@ -4095,7 +4095,7 @@
    match-leak-kinds: definite
    fun:malloc
    fun:xmlNewDocProp
-   obj:/*lib*/libxml2.so.2.9.1
+   obj:/*lib*/libxml2.so.*
    fun:XDR_E_Schema
    fun:XDR_to_XSD_doc
    fun:cache_entry_from_xdr_doc
@@ -6357,7 +6357,7 @@
    bug_36586_6
    Memcheck:Param
    write(buf)
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
    fun:send_request
    fun:wine_server_call
    fun:close_handle
@@ -6456,7 +6456,7 @@
    bug_36609_1
    Memcheck:Param
    write(buf)
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
    fun:NtWriteFile
    fun:WriteFile
    fun:rpcrt4_conn_np_write
@@ -6478,7 +6478,7 @@
    bug_36609_2
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-2.*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:server_write_file
@@ -6687,7 +6687,7 @@
    bug_36621_2
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:*/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
    ...
    obj:*/i965_dri.so
@@ -6774,7 +6774,7 @@
    bug_36631
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:*/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
    obj:*/i965_dri.so
    obj:*/i965_dri.so
@@ -7387,7 +7387,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_38670
@@ -7403,7 +7403,7 @@
    bug_38671
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-2.*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:FILE_CreateFile
@@ -7440,7 +7440,7 @@
    bug_38674
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-2.*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:wine_server_call_err
@@ -7565,9 +7565,9 @@
    fun:INTERNET_WorkerThreadFunc
    fun:process_rtl_work_item
    fun:threadpool_worker_proc
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7583,9 +7583,9 @@
    fun:INTERNET_WorkerThreadFunc
    fun:process_rtl_work_item
    fun:threadpool_worker_proc
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7601,9 +7601,9 @@
    fun:INTERNET_WorkerThreadFunc
    fun:process_rtl_work_item
    fun:threadpool_worker_proc
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7619,9 +7619,9 @@
    fun:INTERNET_WorkerThreadFunc
    fun:process_rtl_work_item
    fun:threadpool_worker_proc
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7651,9 +7651,9 @@
    fun:NtFsControlFile
    fun:rpcrt4_protseq_np_get_wait_array
    fun:RPCRT4_server_thread
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7673,7 +7673,7 @@
    fun:set_current_mon
    fun:navigate_proc
    fun:hidden_proc
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:DispatchMessageW
@@ -7694,7 +7694,7 @@
    fun:set_current_mon
    fun:navigate_proc
    fun:hidden_proc
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:DispatchMessageW
@@ -7714,9 +7714,9 @@
    fun:INTERNET_WorkerThreadFunc
    fun:process_rtl_work_item
    fun:threadpool_worker_proc
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -7736,7 +7736,7 @@
    fun:set_current_mon
    fun:navigate_proc
    fun:hidden_proc
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:DispatchMessageW
@@ -8099,7 +8099,7 @@
    bug_43313_1
    Memcheck:Param
    write(buf)
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:JoystickWImpl_Acquire
    ...
 }
@@ -8107,7 +8107,7 @@
    bug_43313_2
    Memcheck:Param
    write(buf)
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:JoystickWImpl_Unacquire
    ...
 }
@@ -8281,7 +8281,7 @@
    bug_43380_1
    Memcheck:Param
    write(buf)
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:NtWriteFile
    fun:WriteFile
    fun:read_pipe_test
@@ -8293,8 +8293,8 @@
    bug_43380_2
    Memcheck:Param
    writev(vector[...])
-   obj:*/libpthread-2.*.so
-   obj:*/libc-2.*.so
+   obj:*/libpthread-*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:server_write_file
@@ -8309,7 +8309,7 @@
    bug_43381
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-2.*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:server_write_file
@@ -8391,9 +8391,9 @@
    fun:notify_alloc
    fun:RtlAllocateHeap
    fun:RPCRT4_io_thread
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -8417,7 +8417,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 
 {
@@ -8440,13 +8440,13 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_43386
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-2.*.so
+   obj:*/libc-*.so
    fun:send_request
    fun:wine_server_call
    fun:server_write_file

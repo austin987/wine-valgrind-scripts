@@ -1370,7 +1370,7 @@
    fun:dlopen_doit
    fun:_dl_catch_error
    fun:_dlerror_run
-   fun:dlopen@@GLIBC_2.1
+   fun:dlopen@@GLIBC_2*
    fun:wine_dlopen
    fun:dlopen_dll
    fun:wine_dll_load
@@ -1443,7 +1443,7 @@
    fun:MSVCRT_malloc
    obj:*
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -1478,14 +1478,14 @@
    Memcheck:Param
    ioctl(generic)
    fun:syscall
-   obj:*/libv4lconvert.so.0.0.0
-   obj:*/libv4lconvert.so.0.0.0
+   obj:*/libv4lconvert.so.*
+   obj:*/libv4lconvert.so.*
    fun:v4lconvert_create_with_dev_ops
    fun:v4l2_fd_open
    fun:v4l1_open
-   obj:*/sane/libsane-v4l.so.1.0.24
+   obj:*/sane/libsane-v4l.so.*
    fun:sane_v4l_init
-   obj:*/libsane.so.1.0.24
+   obj:*/libsane.so.*
    fun:sane_dll_get_devices
    fun:sane_get_devices
    fun:detect_sane_devices
@@ -1503,12 +1503,12 @@
    Memcheck:Param
    ioctl(generic)
    fun:syscall
-   obj:*/libv4lconvert.so.0.0.0
+   obj:*/libv4lconvert.so.*
    fun:v4l2_ioctl
    fun:v4l1_open
-   obj:*/sane/libsane-v4l.so.1.0.24
+   obj:*/sane/libsane-v4l.so.*
    fun:sane_v4l_init
-   obj:*/libsane.so.1.0.24
+   obj:*/libsane.so.*
    fun:sane_dll_get_devices
    fun:sane_get_devices
    fun:detect_sane_devices

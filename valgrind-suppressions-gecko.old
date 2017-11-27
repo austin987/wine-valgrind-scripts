@@ -168,7 +168,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36394_4
@@ -239,7 +239,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36394_8
@@ -263,7 +263,7 @@
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_process
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    bug_36394_9
@@ -324,7 +324,7 @@
    match-leak-kinds: definite
    fun:calloc
    fun:_dl_allocate_tls
-   fun:pthread_create@@GLIBC_2.1
+   fun:pthread_create@@GLIBC_2*
    fun:RtlCreateUserThread
    fun:CreateRemoteThread
    fun:CreateThread
@@ -432,7 +432,7 @@
    fun:calloc
    fun:allocate_dtv
    fun:_dl_allocate_tls
-   fun:pthread_create@@GLIBC_2.1
+   fun:pthread_create@@GLIBC_2*
    fun:RtlCreateUserThread
    fun:CreateRemoteThread
    fun:CreateThread
@@ -640,15 +640,15 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:disp_get_id
    fun:interp_memberid
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
    fun:nsRunnable_Run
@@ -799,7 +799,7 @@
    fun:ITypeInfo_fnGetRefTypeInfo
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfo_fnGetFuncDesc
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:HTMLElement_getAttribute
@@ -822,7 +822,7 @@
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfo_fnGetFuncDesc
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -831,7 +831,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
 }
 {
    gecko_x
@@ -846,7 +846,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:HTMLElement_getAttribute
@@ -868,7 +868,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -877,7 +877,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
 }
 {
@@ -958,7 +958,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -967,7 +967,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
 }
 {
    gecko_x
@@ -1010,7 +1010,7 @@
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfo_fnGetFuncDesc
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1034,7 +1034,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1087,7 +1087,7 @@
    fun:compile_function.isra.34
    fun:compile_script
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
    fun:nsRunnable_Run
@@ -1154,7 +1154,7 @@
    fun:compile_function.isra.34
    fun:compile_script
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
    fun:nsRunnable_Run
@@ -1169,7 +1169,7 @@
    fun:SysAllocString
    fun:compiler_alloc_bstr
    fun:push_instr_bstr_uint.constprop.40
-   fun:compile_assign_expression.isra.16
+   fun:compile_assign_expression.isra*6
    fun:compile_expression
    fun:compile_statement
    fun:compile_statement
@@ -1180,7 +1180,7 @@
    fun:compile_function.isra.34
    fun:compile_script
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
 }
@@ -1193,15 +1193,15 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:disp_get_id
    fun:interp_memberid
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
    fun:nsRunnable_Run
@@ -1218,7 +1218,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:HTMLElement_getAttribute
@@ -1236,7 +1236,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1245,9 +1245,9 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
    fun:doc_insert_script
    fun:run_insert_script
    fun:nsRunnable_Run
@@ -1261,7 +1261,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1280,7 +1280,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1299,7 +1299,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1318,7 +1318,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1339,7 +1339,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1361,7 +1361,7 @@
    fun:SysAllocStringLen
    fun:SysAllocString
    fun:ITypeInfo_fnGetDocumentation
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:invoke_builtin_prop
    fun:DispatchEx_InvokeEx
    fun:_test_disp_value
@@ -1403,7 +1403,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1412,7 +1412,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    ...
 }
 {
@@ -1450,7 +1450,7 @@
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfo_fnGetFuncDesc
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1459,7 +1459,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
 }
 {
@@ -1474,7 +1474,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1483,9 +1483,9 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
-   fun:parse_text.isra.11
+   fun:parse_text.isra*1
 }
 {
    gecko_x
@@ -1501,7 +1501,7 @@
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfoImpl_GetInternalDispatchFuncDesc
    fun:ITypeInfo_fnGetFuncDesc
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1510,7 +1510,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
 }
 {
    gecko_x
@@ -1525,7 +1525,7 @@
    fun:LoadRegTypeLib
    fun:load_typelib
    fun:get_typeinfo
-   fun:get_dispex_data.part.10
+   fun:get_dispex_data.part*0
    fun:get_builtin_id
    fun:DispatchEx_GetDispID
    fun:WindowDispEx_GetDispID
@@ -1534,7 +1534,7 @@
    fun:identifier_eval
    fun:interp_ident
    fun:exec_source
-   fun:exec_global_code.isra.11
+   fun:exec_global_code.isra*1
    fun:JScriptParse_ParseScriptText
 }
 {
@@ -3039,7 +3039,7 @@
    obj:*/drive_c/windows/system32/gecko/*/wine_gecko/xul.dll
    obj:*/drive_c/windows/system32/gecko/*/wine_gecko/xul.dll
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -3112,7 +3112,7 @@
    fun:report_data_proc
    fun:process_tasks
    fun:notif_wnd_proc
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
 }
 {
    ieframe_test_ie_x
@@ -3126,7 +3126,7 @@
    obj:*
    obj:*
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:start_thread
    fun:start_thread
    fun:clone
@@ -3176,7 +3176,7 @@
    obj:*
    obj:*
    obj:*
-   obj:/home/austin/wine-valgrind/dlls/user32/user32.dll.so
+   obj:*/dlls/user32/user32.dll.so
    fun:call_window_proc
    fun:WINPROC_call_window
    fun:DispatchMessageW
@@ -3184,11 +3184,11 @@
    fun:wWinMain
    fun:wmain
    fun:__wine_spec_exe_wentry
-   obj:/home/austin/wine-valgrind/dlls/kernel32/kernel32.dll.so
+   obj:*/dlls/kernel32/kernel32.dll.so
    fun:start_process
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
-   obj:/home/austin/wine-valgrind/dlls/ntdll/ntdll.dll.so
+   obj:*/dlls/ntdll/ntdll.dll.so
 }
 {
    ieframe_test_ie_x
@@ -3218,7 +3218,7 @@
    ieframe_test_ie_x
    Memcheck:Cond
    fun:__pthread_enable_asynccancel
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:terminate_thread
    obj:*/dlls/ntdll/ntdll.dll.so
    obj:*
@@ -3230,7 +3230,7 @@
    ieframe_test_ie_x
    Memcheck:Cond
    fun:__pthread_enable_asynccancel
-   obj:*/libpthread-2.*.so
+   obj:*/libpthread-*.so
    fun:terminate_thread
    obj:*/dlls/ntdll/ntdll.dll.so
    obj:*

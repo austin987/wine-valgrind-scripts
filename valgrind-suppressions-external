@@ -24,7 +24,7 @@
    Memcheck:Leak
    match-leak-kinds: possible
    ...
-   obj:/*lib*/libasound.so.2.*
+   obj:/*lib*/libasound.so.*
    ...
 }
 {
@@ -47,20 +47,20 @@
    Memcheck:Addr4
    ...
    fun:usr1_handler
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
 }
 {
    bug_36124_2
    Memcheck:Addr2
    ...
    fun:usr1_handler
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
 }
 {
    bug_36124_3
    Memcheck:Addr4
    fun:segv_handler
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
 }
 {
    bug_36124_4
@@ -68,14 +68,14 @@
    match-leak-kinds: possible
    fun:calloc
    ...
-   fun:pthread_create@@GLIBC_2.1
+   fun:pthread_create@@GLIBC_2*
    ...
 }
 {
    bug_36199_6
    Memcheck:Addr1
    ...
-   obj:*/libresolv-2.*.so
+   obj:*/libresolv-*.so
    fun:_dl_fini
    fun:__run_exit_handlers
    fun:exit
@@ -110,7 +110,7 @@
    Memcheck:Addr2
    fun:_dl_fixup
    fun:_dl_runtime_resolve
-   obj:*/libresolv-2.*.so
+   obj:*/libresolv-*.so
    fun:_dl_fini
    fun:__run_exit_handlers
    fun:exit
@@ -123,13 +123,13 @@
    Memcheck:Addr2
    fun:init_handler
    fun:usr1_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    d3d8_visual
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:*/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
    obj:*/i965_dri.so
    obj:*/i965_dri.so
@@ -335,11 +335,11 @@
    fun:dlopen_doit
    fun:_dl_catch_error
    fun:_dlerror_run
-   fun:dlopen@@GLIBC_2.1
-   obj:*/libGL.so.1.2.0
-   obj:*/libGL.so.1.2.0
-   obj:*/libGL.so.1.2.0
-   obj:*/libGL.so.1.2.0
+   fun:dlopen@@GLIBC_2*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
    fun:glXChooseVisual
    fun:X11DRV_WineGL_InitOpenglInfo
 }
@@ -401,7 +401,7 @@
    fun:dl_main
    fun:_dl_sysdep_start
    fun:_dl_start
-   obj:/*lib*/ld-2.*.so
+   obj:/*lib*/ld-*.so
 }
 {
    glibc_2
@@ -413,7 +413,7 @@
    fun:dl_main
    fun:_dl_sysdep_start
    fun:_dl_start
-   obj:/*lib*/ld-2.*.so
+   obj:/*lib*/ld-*.so
    obj:*
    obj:*
    obj:*
@@ -483,7 +483,7 @@
    libgcc_1
    Memcheck:Addr1
    ...
-   obj:*libgcc_s.so.1*
+   obj:*libgcc_s.so.*
    ...
    fun:__run_exit_handlers
    fun:exit
@@ -496,8 +496,8 @@
    Memcheck:Cond
    fun:_Unwind_Find_registered_FDE
    fun:_Unwind_Find_FDE
-   obj:*/libgcc_s.so.1
-   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so*
+   obj:*/libgcc_s.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -512,7 +512,7 @@
 {
    libgcc_3
    Memcheck:Value4
-   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -530,8 +530,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:*/libgcc_s.so.1
-   obj:*/libgcc_s.so.1
+   obj:*/libgcc_s.so*
+   obj:*/libgcc_s.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -549,12 +549,12 @@
    match-leak-kinds: definite
    fun:g_type_create_instance
    fun:gst_mini_object_new
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/libglib-2.0.so.0.4200.1
-   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/i386-linux-gnu/gstreamer-0*0/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/libglib-2.0.so.*
+   obj:*/libglib-2.0.so.*
    fun:start_thread
    fun:clone
 }
@@ -565,14 +565,14 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
    fun:gst_tag_list_new
    fun:gst_riff_parse_info
-   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/libglib-2.0.so.0.4200.1
-   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/gstreamer-0*0/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/libglib-2.0.so.*
+   obj:*/libglib-2.0.so.*
    fun:start_thread
    fun:clone
 }
@@ -583,7 +583,7 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
    fun:gst_structure_id_new
    ...
 }
@@ -594,14 +594,14 @@
    fun:malloc
    fun:g_malloc
    fun:g_slice_alloc
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
    fun:gst_tag_list_new
-   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:*/i386-linux-gnu/gstreamer-0.10/libgstavi.so
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/i386-linux-gnu/libgstreamer-0.10.so.0.30.0
-   obj:*/libglib-2.0.so.0.4200.1
-   obj:*/libglib-2.0.so.0.4200.1
+   obj:*/i386-linux-gnu/gstreamer-0*0/libgstavi.so
+   obj:*/i386-linux-gnu/gstreamer-0*0/libgstavi.so
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/i386-linux-gnu/libgstreamer-0*0.so.*
+   obj:*/libglib-2.0.so.*
+   obj:*/libglib-2.0.so.*
    fun:start_thread
    fun:clone
 }
@@ -631,7 +631,7 @@
    Memcheck:Param
    ioctl(generic)
    ...
-   obj:*/libdrm_intel.so.1.0.0
+   obj:*/libdrm_intel.so.*
    ...
    fun:glXChooseVisual
    fun:X11DRV_WineGL_InitOpenglInfo
@@ -752,7 +752,7 @@
    rpcrt4_ndr_marshal_bug_36706
    Memcheck:Addr1
    ...
-   obj:*libgcc_s.so.1*
+   obj:*libgcc_s.so.*
    ...
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
@@ -768,7 +768,7 @@
    rpcrt4_ndr_marshal_bug_36706
    Memcheck:Addr4
    ...
-   obj:*libgcc_s.so.1*
+   obj:*libgcc_s.so.*
    ...
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
@@ -784,7 +784,7 @@
    rpcrt4_ndr_marshal_bug_36706
    Memcheck:Jump
    ...
-   obj:*libgcc_s.so.1*
+   obj:*libgcc_s.so.*
    ...
    fun:_dl_fini
    fun:__run_exit_handlers
@@ -827,54 +827,54 @@
    user32_class_x
    Memcheck:Addr2
    fun:segv_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:get_error_code
    fun:segv_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:get_trap_code
    fun:segv_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:init_handler
    fun:quit_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:init_handler
    fun:segv_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:quit_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:setup_exception_record
    fun:segv_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    user32_class_x
    Memcheck:Addr4
    fun:__x86.get_pc_thunk.bx
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    valgrind_bug_264785_1_urlmon_url
@@ -904,7 +904,7 @@
    Memcheck:Addr4
    fun:abort_thread
    fun:quit_handler
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
 }
 {
    # These leaks are (probably) caused by https://bugs.kde.org/show_bug.cgi?id=264785
@@ -957,7 +957,7 @@
    fun:process_attach
    fun:process_attach
    fun:attach_process_dlls
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    # These leaks are (probably) caused by https://bugs.kde.org/show_bug.cgi?id=264785
@@ -975,7 +975,7 @@
    fun:process_attach
    fun:process_attach
    fun:attach_process_dlls
-   obj:*/libwine.so.1.0
+   obj:*/libwine.so.*
 }
 {
    wine_bug_20549
@@ -1037,7 +1037,7 @@
    Memcheck:Addr2
    fun:init_handler
    fun:quit_handler
-   obj:/*/libpthread-2.*.so
+   obj:/*/libpthread-*.so
 }
 {
    <insert_a_suppression_name_here>
@@ -1063,10 +1063,10 @@
    Memcheck:Param
    write(buf)
    fun:__write_nocancel
-   fun:_IO_file_write@@GLIBC_2.1
+   fun:_IO_file_write@@GLIBC_2*
    fun:new_do_write
-   fun:_IO_do_write@@GLIBC_2.1
-   fun:_IO_file_sync@@GLIBC_2.1
+   fun:_IO_do_write@@GLIBC_2*
+   fun:_IO_file_sync@@GLIBC_2*
    fun:fflush
    obj:*libnvidia-glcore.so.*
    ...
@@ -1110,12 +1110,12 @@
    crypt32_msg
    Memcheck:Addr1
    fun:segv_handler
-   obj:/*lib*/libpthread-2.*.so
+   obj:/*lib*/libpthread-*.so
 }
 {
    fontconfig-1.8.0
    Memcheck:Leak
    match-leak-kinds: definite
    fun:malloc
-   obj:*/libfontconfig.so.1.*
+   obj:*/libfontconfig.so.*
 }

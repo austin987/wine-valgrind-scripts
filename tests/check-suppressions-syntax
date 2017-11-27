@@ -38,4 +38,13 @@ do
     fi
 done
 
+# Avoid any absolute library versions
+# (better to be overly broad with external libraries, some of which frequently change):
+for file in valgrind-suppressions-*
+do
+    if grep '\.so.[0-9]' "$file"; then
+       die "file $file contains version specific suppressions; should be generic"
+    fi
+done
+
 echo "Tests succeeded"
