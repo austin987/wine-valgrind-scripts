@@ -215,18 +215,19 @@ touch dlls/kernel32/tests/virtual.ok # valgrind assertion failure after https://
 touch dlls/msvcrt/tests/string.ok # valgrind wontfix: https://bugs.winehq.org/show_bug.cgi?id=36165
 
 # hanging bugs:
-touch dlls/comdlg32/tests/filedlg.ok # FIXME: hangs, need bug
-touch dlls/comdlg32/tests/itemdlg.ok # FIXME: hangs, need bug
-touch dlls/dinput8/tests/device.ok # FIXME: hangs, need bug
-touch dlls/dsound/tests/duplex.ok # FIXME: hangs, need bug
-touch dlls/ieframe/tests/ie.ok # FIXME: hangs, need bug
-touch dlls/kernel32/tests/virtual.ok # https://bugs.winehq.org/show_bug.cgi?id=43352 infinite loop under valgrind
-touch dlls/mshtml/tests/events.ok # https://bugs.winehq.org/show_bug.cgi?id=37157 hangs under valgrind
-touch dlls/mshtml/tests/htmldoc.ok # FIXME: hangs
-touch dlls/mshtml/tests/htmllocation.ok # FIXME: hangs
-touch dlls/ole32/tests/clipboard.ok # FIXME: hangs
-touch dlls/ole32/tests/marshal.ok # FIXME: hangs
-touch dlls/user32/tests/win.ok # https://bugzilla.redhat.com/show_bug.cgi?id=1248314
+# With valgrind-3.14.0.GIT-9608f6681d, wine-2.19-495-ga7ba456587, gcc-5.4.0 and glibc-2.25, not hanging
+#touch dlls/comdlg32/tests/filedlg.ok # FIXME: hangs, need bug
+#touch dlls/comdlg32/tests/itemdlg.ok # FIXME: hangs, need bug
+#touch dlls/dinput8/tests/device.ok # FIXME: hangs, need bug
+#touch dlls/dsound/tests/duplex.ok # FIXME: hangs, need bug
+#touch dlls/ieframe/tests/ie.ok # FIXME: hangs, need bug
+#touch dlls/kernel32/tests/virtual.ok # https://bugs.winehq.org/show_bug.cgi?id=43352 infinite loop under valgrind
+#touch dlls/mshtml/tests/events.ok # https://bugs.winehq.org/show_bug.cgi?id=37157 hangs under valgrind
+#touch dlls/mshtml/tests/htmldoc.ok # FIXME: hangs
+#touch dlls/mshtml/tests/htmllocation.ok # FIXME: hangs
+#touch dlls/ole32/tests/clipboard.ok # FIXME: hangs
+#touch dlls/ole32/tests/marshal.ok # FIXME: hangs
+#touch dlls/user32/tests/win.ok # https://bugzilla.redhat.com/show_bug.cgi?id=1248314
 
 # These only hangs on my (arm32) chromebook:
 if [ "$arch" = "armv7l" ]; then
