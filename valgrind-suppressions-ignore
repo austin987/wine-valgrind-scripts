@@ -1483,7 +1483,7 @@
    fun:v4lconvert_create_with_dev_ops
    fun:v4l2_fd_open
    fun:v4l1_open
-   obj:*/sane/libsane-v4l.so.*
+   obj:*/libsane-v4l.so.*
    fun:sane_v4l_init
    obj:*/libsane.so.*
    fun:sane_dll_get_devices
@@ -1506,7 +1506,7 @@
    obj:*/libv4lconvert.so.*
    fun:v4l2_ioctl
    fun:v4l1_open
-   obj:*/sane/libsane-v4l.so.*
+   obj:*/libsane-v4l.so.*
    fun:sane_v4l_init
    obj:*/libsane.so.*
    fun:sane_dll_get_devices

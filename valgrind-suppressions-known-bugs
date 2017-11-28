@@ -1046,18 +1046,10 @@
    bug_36096_4
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_662
    fun:wined3d_surface_blt
    fun:wined3d_device_set_render_state
@@ -1098,11 +1090,10 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_682
    fun:wined3d_buffer_map
    fun:d3d9_device_DrawPrimitiveUP
@@ -1260,7 +1251,7 @@
    bug_36103_8
    Memcheck:Addr4
    fun:set_test_val
-   obj:/*lib*/ld-*.so
+   obj:*/ld-*.so
    fun:NtDelayExecution
    fun:SleepEx
    fun:Sleep
@@ -2918,8 +2909,8 @@
    fun:_Unwind_IteratePhdrCallback
    fun:dl_iterate_phdr
    fun:_Unwind_Find_FDE
-   obj:/*lib*/libgcc_s-*.so*
-   obj:/*lib*/libgcc_s-*.so*
+   obj:*/libgcc_s-*.so*
+   obj:*/libgcc_s-*.so*
    fun:_Unwind_ForcedUnwind
    fun:_Unwind_ForcedUnwind
    fun:__pthread_unwind
@@ -2933,8 +2924,8 @@
 {
    bug_36199_9
    Memcheck:Jump
-   obj:/*lib*/libresolv-*.so
-   obj:/*lib*/libresolv-*.so
+   obj:*/libresolv-*.so
+   obj:*/libresolv-*.so
    fun:_dl_fini
    fun:__run_exit_handlers
    fun:exit
@@ -2977,7 +2968,7 @@
    fun:exit
    fun:NtTerminateProcess
    fun:RtlExitUserProcess
-   obj:/*/dlls/kernel32/kernel32.dll.so
+   obj:*/dlls/kernel32/kernel32.dll.so
 }
 {
    bug_36199_12
@@ -3298,9 +3289,9 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
    fun:create_glxcontext.isra.0
    fun:X11DRV_wglCreateContextAttribsARB
@@ -3856,7 +3847,7 @@
    fun:memcpy
    fun:FT_Stream_ReadAt
    ...
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    ...
    fun:FT_Load_Sfnt_Table
    fun:get_font_data
@@ -3880,7 +3871,7 @@
    bug_36283_2
    Memcheck:Addr1
    ...
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    ...
    fun:FT_Load_Glyph
    fun:get_glyph_outline
@@ -3904,7 +3895,7 @@
    bug_36283_2
    Memcheck:Addr1
    ...
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    ...
    fun:FT_Load_Glyph
    fun:get_glyph_outline
@@ -3925,7 +3916,7 @@
    bug_36283_3
    Memcheck:Addr1
    ...
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    ...
    fun:FT_Get_Char_Index
    fun:get_glyph_index
@@ -3989,7 +3980,7 @@
    Memcheck:Leak
    match-leak-kinds: definite
    fun:malloc
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    fun:ft_mem_qalloc
    fun:ft_mem_alloc
    ...
@@ -4095,7 +4086,7 @@
    match-leak-kinds: definite
    fun:malloc
    fun:xmlNewDocProp
-   obj:/*lib*/libxml2.so.*
+   obj:*/libxml2.so.*
    fun:XDR_E_Schema
    fun:XDR_to_XSD_doc
    fun:cache_entry_from_xdr_doc
@@ -4621,7 +4612,7 @@
    bug_36328_1
    Memcheck:Leak
    ...
-   obj:/*lib*/libfreetype.so.*
+   obj:*/libfreetype.so.*
    fun:ft_mem_qalloc
    fun:ft_mem_alloc
    ...
@@ -4761,19 +4752,10 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:glBindTexture
    fun:context_bind_texture
    fun:draw_textured_quad
@@ -4785,15 +4767,10 @@
    bug_36340_4
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+    ...
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -4810,15 +4787,10 @@
    bug_36340_5
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -4956,11 +4928,10 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_462
    fun:surface_prepare_map_memory
    fun:surface_realize_palette
@@ -4976,15 +4947,10 @@
    bug_36343_10
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -5001,15 +4967,10 @@
    bug_36343_11
    Memcheck:Leak
    match-leak-kinds: definite
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
+   ...
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -5050,7 +5011,7 @@
    bug_36346_1
    Memcheck:Leak
    ...
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
    fun:wined3d_init
    fun:wined3d_create
@@ -5085,9 +5046,9 @@
    Memcheck:Leak
    match-leak-kinds: possible
    fun:calloc
-   obj:/*lib*/libdrm_intel.so.*
+   obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_alloc
-   obj:/*lib*/dri/i965_dri.so
+   obj:*/i965_dri.so
    ...
    fun:X11DRV_wglCreateContextAttribsARB
    fun:wglCreateContextAttribsARB
@@ -6357,7 +6318,7 @@
    bug_36586_6
    Memcheck:Param
    write(buf)
-   obj:/*/libpthread-*.so
+   obj:*/libpthread-*.so
    fun:send_request
    fun:wine_server_call
    fun:close_handle
@@ -6456,7 +6417,7 @@
    bug_36609_1
    Memcheck:Param
    write(buf)
-   obj:/*lib*/libpthread-*.so
+   obj:*/libpthread-*.so
    fun:NtWriteFile
    fun:WriteFile
    fun:rpcrt4_conn_np_write
@@ -6543,7 +6504,7 @@
    match-leak-kinds: possible
    fun:calloc
    obj:*/i965_dri.so
-   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_621
    fun:context_create
    fun:swapchain_init
@@ -6566,10 +6527,7 @@
    match-leak-kinds: possible
    fun:malloc
    obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6591,9 +6549,7 @@
    match-leak-kinds: possible
    fun:calloc
    obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6616,8 +6572,7 @@
    match-leak-kinds: possible
    fun:malloc
    obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
+   ...
    fun:shared_dispatch_stub_639
    fun:context_create
    fun:swapchain_init
@@ -6777,12 +6732,7 @@
    obj:*/libdrm_intel.so.*
    fun:drm_intel_bo_map
    obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
+   ...
    fun:glTexSubImage2D
    fun:surface_upload_data
    fun:surface_load_texture
@@ -6836,7 +6786,7 @@
    bug_36635
    Memcheck:Cond
    ...
-   obj:/*lib*/libgnutls.so.*
+   obj:*/libgnutls.so.*
    ...
    fun:gnutls_handshake
    fun:schan_imp_handshake
@@ -7055,7 +7005,7 @@
 {
    bug_36658
    Memcheck:Addr4
-   obj:/tmp/.gl*
+   obj:*/.gl*
    fun:fixup_extensions
    fun:wined3d_adapter_init_gl_caps
    fun:wined3d_adapter_init
