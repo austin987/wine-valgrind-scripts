@@ -156,7 +156,7 @@ rm -rf "${WINEPREFIX}"
 if test ! -f Makefile || test "$rebuild_wine" = "1"
 then
     make distclean || true
-    ./configure CFLAGS="-g -O0 -fno-inline"
+    ./configure CFLAGS="-g -ggdb -Og -fno-inline"
     time make -j"$(nproc)"
 fi
 
