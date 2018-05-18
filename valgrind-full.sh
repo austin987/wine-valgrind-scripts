@@ -59,7 +59,7 @@ wine_version="$(git describe origin/master)"
 # Must be run from the wine tree
 WINESRC="${WINESRC:-$HOME/wine-valgrind}"
 # Prepare for calling winetricks
-export WINEPREFIX="$HOME/.wine-valgrind"
+export WINEPREFIX="${WINEPREFIX:-$HOME/.wine-valgrind}"
 export WINE="$WINESRC/wine"
 # Convenience variable
 WINESERVER="$WINESRC/server/wineserver"
