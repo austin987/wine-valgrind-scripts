@@ -57,7 +57,7 @@ gecko_version="2.36"
 wine_version="$(git describe origin/master)"
 
 # Must be run from the wine tree
-WINESRC="$HOME/wine-valgrind"
+WINESRC="${WINESRC:-$HOME/wine-valgrind}"
 # Prepare for calling winetricks
 export WINEPREFIX="$HOME/.wine-valgrind"
 export WINE="$WINESRC/wine"
