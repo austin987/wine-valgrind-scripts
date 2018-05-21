@@ -340,7 +340,7 @@ export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --g
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
-time make -k test >> "$logfile" 2>&1 || true
+time sh -c "make -k test 2>&1 | tee \"$logfile\" || true"
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
