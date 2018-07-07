@@ -21,7 +21,7 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA
 
-export WINESRC="$HOME/wine-valgrind"
+export WINESRC="${WINESRC:-$HOME/wine-valgrind}"
 export WINE="$WINESRC/wine"
 export WINESERVER="$WINESRC/server/wineserver"
 
