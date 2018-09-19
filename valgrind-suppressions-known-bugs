@@ -7878,22 +7878,6 @@
    fun:clone
 }
 {
-   bug_38849
-   Memcheck:Cond
-   ...
-   fun:FormatMessageW
-   fun:WCMD_output_stderr
-   fun:WCMD_assoc
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   fun:WCMD_batch
-   fun:WCMD_run_program
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   fun:wmain
-   ...
-}
-{
    bug_38912
    Memcheck:Leak
    match-leak-kinds: possible
