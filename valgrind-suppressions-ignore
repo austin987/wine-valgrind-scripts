@@ -1597,3 +1597,48 @@
    fun:start_thread
    fun:clone
 }
+# GCC
+{
+   gcc_value8
+   Memcheck:Value8
+   ...
+   fun:do_compile
+   fun:_ZN6toplev4mainEiPPc
+   fun:main
+}
+# binutils
+{
+   binutils_perform_an_assembly_pass
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:xcalloc
+   fun:subseg_get
+   fun:subseg_new
+   ...
+   fun:perform_an_assembly_pass
+   fun:main
+}
+{
+   binutils_write_object_file
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:calloc
+   fun:xcalloc
+   fun:write_relocs
+   fun:bfd_map_over_sections
+   fun:write_object_file
+   fun:main
+}
+{
+   binutils_dwarf2_finish
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:xmalloc
+   fun:xstrdup
+   fun:out_file_list
+   fun:out_debug_line
+   fun:dwarf2_finish
+   fun:main
+}
