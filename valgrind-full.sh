@@ -33,6 +33,9 @@ usage() {
         printf "%s\\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
         printf "%s\\n" "-h/--help: print this help"
         printf "%s\\n" "--only-definite-leaks: don't show possible leaks, only definite ones"
+        # Doesn't work yet, see:
+        # https://bugs.winehq.org/show_bug.cgi?id=46243
+        printf "%s\\n" "--progress: have valgrind print statistics every 60s. Requires valgrind-3.14+ (currently broken in Wine)"
         printf "%s\\n" "--rebuild: rebuild Wine before running tests"
         printf "%s\\n" "--skip-crashes: skip any tests that crash under Valgrind"
         printf "%s\\n" "--skip-failures: skip any tests that fail under Valgrind"
@@ -99,6 +102,9 @@ while [ ! -z "$1" ] ; do
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
         --gecko-pdb) gecko_pdb=1;;
         --only-definite-leaks) leak_style="--show-leak-kinds=definite";;
+        # Doesn't work yet, see:
+        # https://bugs.winehq.org/show_bug.cgi?id=46243
+        --progress) progress="--progress-interval=60";;
         --rebuild) rebuild_wine=1;;
         --skip-crashes) skip_crashes=1;;
         --skip-failures) skip_failures=1;;
@@ -336,7 +342,7 @@ then
 fi
 
 # Finally run the tests:
-export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20  --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access"
+export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access"
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
