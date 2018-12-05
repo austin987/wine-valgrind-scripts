@@ -65,7 +65,7 @@ export WINE="$WINESRC/wine"
 WINESERVER="$WINESRC/server/wineserver"
 
 # Choose which version of valgrind you want to use:
-export WINETEST_WRAPPER=/opt/valgrind/bin/valgrind
+export WINETEST_WRAPPER="${WINETEST_WRAPPER:-/opt/valgrind/bin/valgrind}"
 #export WINETEST_WRAPPER=valgrind
 #export WINETEST_WRAPPER=$HOME/src/valgrind/vg-in-place
 
