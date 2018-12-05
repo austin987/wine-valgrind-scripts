@@ -27,19 +27,19 @@ set -e
 # https://bugs.kde.org/show_bug.cgi?id=380869
 
 usage() {
-        printf "%s\n" "$0: run Wine's conformance tests under Valgrind"
-        printf "%s\n" "Available options:"
-        printf "%s\n" "--fatal-warnings: make all Valgrind warnings fatal"
-        printf "%s\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
-        printf "%s\n" "-h/--help: print this help"
-        printf "%s\n" "--only-definite-leaks: don't show possible leaks, only definite ones"
-        printf "%s\n" "--rebuild: rebuild Wine before running tests"
-        printf "%s\n" "--skip-crashes: skip any tests that crash under Valgrind"
-        printf "%s\n" "--skip-failures: skip any tests that fail under Valgrind"
-        printf "%s\n" "--skip-slow: skip tests that fail on slow machines"
-        printf "%s\n" "--suppress-known: suppress known bugs in Wine"
-        printf "%s\n" "--verbose: use valgrind verbose mode (-v -v -v) instead of --quiet"
-        printf "%s\n" "--virtual-desktop: run tests in a virtual desktop"
+        printf "%s\\n" "$0: run Wine's conformance tests under Valgrind"
+        printf "%s\\n" "Available options:"
+        printf "%s\\n" "--fatal-warnings: make all Valgrind warnings fatal"
+        printf "%s\\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
+        printf "%s\\n" "-h/--help: print this help"
+        printf "%s\\n" "--only-definite-leaks: don't show possible leaks, only definite ones"
+        printf "%s\\n" "--rebuild: rebuild Wine before running tests"
+        printf "%s\\n" "--skip-crashes: skip any tests that crash under Valgrind"
+        printf "%s\\n" "--skip-failures: skip any tests that fail under Valgrind"
+        printf "%s\\n" "--skip-slow: skip tests that fail on slow machines"
+        printf "%s\\n" "--suppress-known: suppress known bugs in Wine"
+        printf "%s\\n" "--verbose: use valgrind verbose mode (-v -v -v) instead of --quiet"
+        printf "%s\\n" "--virtual-desktop: run tests in a virtual desktop"
 }
 
 fatal_warnings=""
