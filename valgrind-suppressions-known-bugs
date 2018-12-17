@@ -46,6 +46,7 @@
 {
    bug_26044_1
    Memcheck:Cond
+   ...
    fun:USER_SetWindowPos
    fun:SetWindowPos
    fun:activate_inplace
@@ -154,72 +155,6 @@
    fun:func_sock
    fun:run_test
    fun:main
-}
-{
-   bug_26070_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:DIALOG_get_info
-   fun:DIALOG_CreateIndirect
-   fun:CreateDialogIndirectParamAorW
-   fun:CreateDialogIndirectParamA
-   fun:CreateDialogParamA
-   fun:CreateDialogParamTest
-   fun:func_class
-   fun:run_test
-   fun:main
-}
-{
-   bug_26070_2
-   Memcheck:Leak
-   ...
-   ...
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:GlobalAlloc
-   fun:LocalAlloc
-   fun:EDIT_WM_NCCreate
-   fun:EditWndProc_common
-   fun:EditWndProcW
-   obj:*/dlls/user32/user32.dll.so
-   fun:call_window_proc
-   fun:WINPROC_call_window
-   fun:call_window_proc
-   fun:send_message
-   fun:SendMessageW
-   fun:WIN_CreateWindowEx
-   fun:CreateWindowExW
-   fun:IPADDRESS_Create
-   fun:IPADDRESS_WindowProc
-   obj:*/dlls/user32/user32.dll.so
-   fun:call_window_proc
-}
-{
-   bug_26070_3
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:GlobalAlloc
-   fun:LocalAlloc
-   fun:Alloc
-   fun:SetWindowSubclass
-   fun:COMBOEX_Create
-   fun:COMBOEX_WindowProc
-   obj:*/dlls/user32/user32.dll.so
-   fun:call_window_proc
-   fun:WINPROC_CallProcAtoW
-   fun:WINPROC_call_window
-   fun:call_window_proc
-   fun:send_message
-   fun:SendMessageA
-   fun:WIN_CreateWindowEx
-   fun:CreateWindowExA
-   fun:test_comctl32_class
-   fun:func_class
 }
 {
    bug_26108_1
@@ -707,8 +642,9 @@
    bug_28220_2
    Memcheck:Param
    write(buf)
-   fun:__write_nocancel
+   ...
    fun:send_request
+   ...
    fun:wine_server_call
    fun:wine_server_call_err
    fun:SetConsoleMode
@@ -721,8 +657,9 @@
    bug_28220_3
    Memcheck:Param
    write(buf)
-   fun:__write_nocancel
+   ...
    fun:send_request
+   ...
    fun:wine_server_call
    fun:wine_server_call_err
    fun:SetConsoleMode
@@ -888,58 +825,6 @@
    fun:test_basics
    fun:func_itemdlg
    fun:run_test
-   fun:main
-}
-{
-   bug_28766_1
-   Memcheck:Cond
-   ...
-   fun:GetDIBits
-   ...
-}
-{
-   bug_28766_2
-   Memcheck:Overlap
-   ...
-   fun:GetDIBits
-   ...
-}
-{
-   bug_28766_3
-   Memcheck:Leak
-   ...
-   fun:BitBlt
-   ...
-}
-{
-   bug_28766_4
-   Memcheck:Leak
-   ...
-   fun:PatBlt
-   ...
-}
-{
-   bug_28766_1
-   Memcheck:Addr4
-   fun:memcpy
-   fun:select_pattern_brush
-   fun:pattern_brush
-   fun:dibdrv_PatBlt
-   fun:PatBlt
-   fun:test_palette_brush
-   fun:func_brush
-   fun:main
-}
-{
-   bug_28766_2
-   Memcheck:Addr4
-   fun:CreatePolyPolygonRgn
-   fun:PATH_PathToRegion
-   fun:PATH_FillPath
-   fun:nulldrv_FillPath
-   fun:FillPath
-   fun:test_path_state
-   fun:func_path
    fun:main
 }
 {
@@ -1121,55 +1006,6 @@
    Memcheck:Leak
    ...
    fun:init_format_fbo_compat_info
-   ...
-}
-{
-   bug_36097_1
-   Memcheck:Leak
-   ...
-   fun:glXCreateContext
-   ...
-}
-{
-   bug_36097_2
-   Memcheck:Leak
-   ...
-   fun:glTexImage2D
-   ...
-}
-{
-   bug_36097_3
-   Memcheck:Leak
-   ...
-   fun:match_broken_arb_fog
-   ...
-}
-{
-   bug_36097_4
-   Memcheck:Leak
-   ...
-   fun:glXMakeContextCurrent
-   ...
-}
-{
-   bug_36097_5
-   Memcheck:Leak
-   ...
-   fun:check_fbo_compat
-   ...
-}
-{
-   bug_36097_5
-   Memcheck:Leak
-   ...
-   fun:fixup_extensions
-   ...
-}
-{
-   bug_36097_6
-   Memcheck:Leak
-   ...
-   fun:glXMakeCurrent
    ...
 }
 {
@@ -2104,19 +1940,6 @@
    ...
 }
 {
-   bug_36162
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   fun:WCMD_batch
-   fun:WCMD_run_program
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   ...
-}
-{
    bug_36166_1
    Memcheck:Leak
    match-leak-kinds: possible
@@ -2621,35 +2444,6 @@
    fun:func_path
    fun:run_test
    fun:main
-}
-{
-   bug_36191_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:CertAddCertificateContextToStore
-   fun:CertAddEncodedCertificateToStore
-   fun:testAddCert
-   fun:func_cert
-   ...
-}
-{
-   bug_36191_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:CryptMemAlloc
-   fun:ContextPropertyList_SetProperty
-   fun:CertContext_SetProperty
-   fun:CertContext_GetHashProp
-   fun:CertContext_GetProperty
-   fun:CertGetCertificateContextProperty
-   fun:add_cert_to_store
-   fun:CertAddCertificateContextToStore
-   fun:testAddCert
-   fun:func_cert
-   ...
 }
 {
    bug_36193_1
@@ -3842,101 +3636,6 @@
    fun:clone
 }
 {
-   bug_36283_1
-   Memcheck:Addr4
-   fun:memcpy
-   fun:FT_Stream_ReadAt
-   ...
-   obj:*/libfreetype.so.*
-   ...
-   fun:FT_Load_Sfnt_Table
-   fun:get_font_data
-   fun:get_gasp_flags
-   fun:freetype_SelectFont
-   fun:X11DRV_SelectFont
-   fun:xrenderdrv_SelectFont
-   fun:FONT_SelectObject
-   fun:SelectObject
-   fun:get_text_metr_size
-   fun:normalize_nonclientmetrics
-   fun:SystemParametersInfoW
-   fun:GetSystemMetrics
-   fun:GetSystemMetrics
-   fun:WINPOS_GetMinMaxInfo
-   fun:WIN_CreateWindowEx
-   fun:CreateWindowExA
-   fun:test_ImmDefaultHwnd
-}
-{
-   bug_36283_2
-   Memcheck:Addr1
-   ...
-   obj:*/libfreetype.so.*
-   ...
-   fun:FT_Load_Glyph
-   fun:get_glyph_outline
-   fun:freetype_GetGlyphOutline
-   fun:GetGlyphOutlineW
-   fun:cache_glyph_bitmap
-   fun:render_string
-   fun:dibdrv_ExtTextOut
-   fun:windrv_ExtTextOut
-   fun:ExtTextOutW
-   fun:DrawTextExW
-   fun:DrawTextW
-   fun:NC_DrawCaption
-   fun:NC_DoNCPaint
-   fun:NC_HandleNCActivate
-   fun:DEFWND_DefWinProc
-   fun:DefWindowProcW
-   ...
-}
-{
-   bug_36283_2
-   Memcheck:Addr1
-   ...
-   obj:*/libfreetype.so.*
-   ...
-   fun:FT_Load_Glyph
-   fun:get_glyph_outline
-    fun:freetype_GetTextExtentExPoint
-   fun:get_char_positions
-   fun:GetTextExtentExPointW
-   fun:TEXT_NextLineW
-   fun:DrawTextExW
-   fun:DrawTextW
-   fun:NC_DrawCaption
-   fun:NC_DoNCPaint
-   fun:NC_HandleNCActivate
-   fun:DEFWND_DefWinProc
-   fun:DefWindowProcW
-   ...
-}
-{
-   bug_36283_3
-   Memcheck:Addr1
-   ...
-   obj:*/libfreetype.so.*
-   ...
-   fun:FT_Get_Char_Index
-   fun:get_glyph_index
-   fun:get_glyph_index_linked
-   fun:get_glyph_outline
-   fun:freetype_GetTextExtentExPoint
-   fun:get_char_positions
-   fun:GetTextExtentExPointW
-   fun:GetTextExtentPoint32W
-   fun:GetTextExtentPointW
-   fun:GdiGetCharDimensions
-   fun:get_text_metr_size
-   fun:GetSystemMetrics
-   fun:GetSystemMetrics
-   fun:WINPOS_GetMinMaxInfo
-   fun:WIN_CreateWindowEx
-   fun:CreateWindowExA
-   ...
-}
-{
    bug_36286
    Memcheck:Addr4
    fun:memcpy
@@ -3974,16 +3673,6 @@
    fun:start_thread
    fun:start_thread
    fun:clone
-}
-{
-   bug_36290
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:malloc
-   obj:*/libfreetype.so.*
-   fun:ft_mem_qalloc
-   fun:ft_mem_alloc
-   ...
 }
 {
    bug_36293
@@ -4483,25 +4172,6 @@
    fun:test_samplegrabber
 }
 {
-   bug_36316
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:RtlInitializeCriticalSectionEx
-   fun:InitializeCriticalSectionEx
-   fun:InitializeCriticalSection
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   fun:CoCreateInstance
-   fun:create_avisplitter
-   fun:func_avisplitter
-   fun:run_test
-   fun:main
-}
-{
    bug_36319_1
    Memcheck:Leak
    ...
@@ -4607,17 +4277,6 @@
    fun:func_rpc_protseq
    fun:run_test
    fun:main
-}
-{
-   bug_36328_1
-   Memcheck:Leak
-   ...
-   obj:*/libfreetype.so.*
-   fun:ft_mem_qalloc
-   fun:ft_mem_alloc
-   ...
-   obj:*/dlls/ntdll/ntdll.dll.so
-   ...
 }
 {
    bug_36328_2
@@ -5149,41 +4808,6 @@
    fun:func_hlsl
    fun:run_test
    fun:main
-}
-{
-   bug_36354
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:ddraw7_CreatePalette
-   fun:ddraw1_CreatePalette
-   fun:PaletteTest
-   fun:func_dsurface
-   fun:run_test
-   fun:main
-}
-{
-   bug_36355
-   Memcheck:Cond
-   fun:ddraw_surface_create
-   fun:ddraw1_CreateSurface
-   ...
-   fun:func_dsurface
-   ...
-}
-{
-   bug_36356
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:func_device
-   ...
 }
 {
    bug_36360_1
@@ -6346,8 +5970,7 @@
    bug_36587
    Memcheck:Param
    write(buf)
-   fun:__write_nocancel
-   fun:send_request
+   ...
    fun:wine_server_call
    fun:send_hardware_message
    fun:SendInput
@@ -6439,8 +6062,9 @@
    bug_36609_2
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-*.so
+   ...
    fun:send_request
+   ...
    fun:wine_server_call
    fun:server_write_file
    fun:NtWriteFile
@@ -6454,9 +6078,7 @@
    obj:*/dlls/ntdll/ntdll.dll.so
    fun:call_thread_func
    obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
+   ...
 }
 {
    bug_36614_1
@@ -6803,6 +6425,7 @@
    writev(vector[...])
    ...
    fun:send_request
+   ...
    fun:wine_server_call
    fun:put_message_in_queue
    fun:send_inter_thread_message
@@ -7350,22 +6973,6 @@
    fun:main
 }
 {
-   bug_38671
-   Memcheck:Param
-   writev(vector[...])
-   obj:*/libc-*.so
-   fun:send_request
-   fun:wine_server_call
-   fun:FILE_CreateFile
-   fun:NtCreateFile
-   fun:CreateDirectoryW
-   fun:CreateDirectoryA
-   fun:test_CreateDirectoryA
-   fun:func_security
-   fun:run_test
-   fun:main
-}
-{
    bug_38673
    Memcheck:Param
    writev(vector[...])
@@ -7390,8 +6997,9 @@
    bug_38674
    Memcheck:Param
    writev(vector[...])
-   obj:*/libc-*.so
+   ...
    fun:send_request
+   ...
    fun:wine_server_call
    fun:wine_server_call_err
    fun:WriteConsoleInputW
@@ -7892,28 +7500,6 @@
    obj:*
 }
 {
-   bug_39279
-   Memcheck:Param
-   ioctl(arg)
-   fun:ioctl
-   fun:CDROM_StopAudio
-   fun:CDROM_DeviceIoControl
-   fun:NtDeviceIoControlFile
-   fun:DeviceIoControl
-   fun:MCICDA_Stop
-   fun:MCICDA_Close
-   fun:MCICDA_DriverProc
-   fun:DRIVER_SendMessage
-   fun:SendDriverMessage
-   fun:MCI_SendCommandFrom32
-   fun:MCI_Close
-   fun:MCI_SendCommand
-   fun:mciSendCommandW
-   fun:mciSendCommandA
-   fun:test_openclose
-   ...
-}
-{
    bug_39522
    Memcheck:Leak
    match-leak-kinds: definite
@@ -7923,110 +7509,6 @@
    fun:IFileDialogCustomize_fnAddControlItem
    fun:IFileDialogCustomize_AddControlItem
    fun:test_customize
-   ...
-}
-{
-   bug_43308_1
-   Memcheck:Param
-   writev(vector[...])
-   obj:*/libc-2*.so
-   fun:send_request
-   fun:wine_server_call
-   fun:NtCreateEvent
-   fun:CreateEventExW
-   fun:CreateEventExA
-   fun:CreateEventA
-}
-{
-   bug_43308_1
-   Memcheck:Param
-   writev(vector[...])
-   obj:*/libc-2*.so
-   fun:send_request
-   fun:wine_server_call
-   fun:NtDuplicateToken
-   fun:DuplicateTokenEx
-   ...
-}
-{
-   bug_43310_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:ConvertSidToStringSidA
-   fun:test_token_label
-   ...
-}
-{
-   bug_43310_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:GetSecurityInfo
-   fun:test_system_security_access
-   ...
-}
-{
-   bug_43310_3
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:GetSecurityInfo
-   fun:test_GetSecurityInfo
-   ...
-}
-{
-   bug_43310_4
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:ConvertSidToStringSidA
-   fun:test_token_label
-   ...
-}
-{
-   bug_43310_5
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:GetSecurityInfo
-   fun:test_system_security_access
-   ...
-}
-{
-   bug_43310_6
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:test_token_security_descriptor
-   ...
-}
-{
-   bug_43310_7
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:HeapAlloc
-   fun:LocalAlloc
-   fun:GetSecurityInfo
-   fun:test_GetSecurityInfo
    ...
 }
 {
@@ -8049,9 +7531,9 @@
    bug_43342
    Memcheck:Param
    writev(vector[...])
-   fun:__writev_nocancel
+   ...
    fun:send_request
-   fun:wine_server_call
+   ...
    fun:server_ioctl_file
    fun:NtDeviceIoControlFile
    fun:DeviceIoControl
@@ -8202,16 +7684,6 @@
    fun:main
 }
 {
-   bug_43379
-   Memcheck:Addr1
-   fun:virtual_check_buffer_for_write
-   fun:NtReadFile
-   fun:test_read_write
-   fun:func_file
-   fun:run_test
-   fun:main
-}
-{
    bug_43380_1
    Memcheck:Param
    write(buf)
@@ -8227,14 +7699,28 @@
    bug_43380_2
    Memcheck:Param
    writev(vector[...])
-   obj:*/libpthread-*.so
-   obj:*/libc-*.so
+   ...
    fun:send_request
-   fun:wine_server_call
+   ...
    fun:server_write_file
    fun:NtWriteFile
    fun:WriteFile
    fun:read_pipe_test
+   fun:func_pipe
+   fun:run_test
+   fun:main
+}
+{
+   bug_43380_3
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:virtual_locked_server_call
+   fun:server_ioctl_file
+   fun:NtFsControlFile
+   fun:test_transceive
    fun:func_pipe
    fun:run_test
    fun:main
@@ -8513,6 +7999,216 @@
    fun:func_xaudio2
    fun:run_test
    fun:main
+}
+{
+   bug_46338
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:create_process
+   fun:CreateProcessInternalW
+   fun:CreateProcessInternalA
+   fun:CreateProcessA
+   fun:test_process_security
+   fun:func_security
+   fun:run_test
+   fun:main
+}
+{
+   bug_46339
+   Memcheck:Addr2
+   fun:GlobalLock
+   fun:LocalLock
+   fun:EDIT_LockBuffer
+   fun:EDIT_WindowProc
+   obj:*/dlls/user32/user32.dll.so
+   fun:call_window_proc
+   fun:WINPROC_CallProcAtoW
+   fun:WINPROC_call_window
+   fun:call_window_proc
+   fun:send_message
+   fun:SendMessageA
+   fun:test_EM_GETHANDLE
+   fun:func_edit
+   fun:run_test
+   fun:main
+}
+{
+   bug_46340
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:SetClipboardData
+   ...
+}
+{
+   bug_46341
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:WriteFile
+   fun:_overlapped_write_async
+   fun:test_overlapped_transport
+   fun:func_pipe
+   fun:run_test
+   fun:main
+}
+{
+   bug_46342
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:virtual_locked_server_call
+   fun:server_ioctl_file
+   fun:NtFsControlFile
+   fun:TransactNamedPipe
+   fun:_overlapped_transact_failure
+   fun:test_TransactNamedPipe
+   fun:func_pipe
+   fun:run_test
+   fun:main
+}
+{  
+   bug_46343
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:NtWriteVirtualMemory
+   fun:WriteProcessMemory
+   fun:test_SuspendProcessState
+   fun:func_process
+   fun:run_test
+   fun:main
+}
+{
+   bug_46344
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:rpcrt4_conn_np_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   ...
+}
+{
+   bug_46345
+   Memcheck:Param
+   write(buf)
+   fun:write
+   fun:NtWriteFile
+   fun:WriteFile
+   fun:write_triggers
+   fun:MSTASK_IPersistFile_Save
+   fun:IPersistFile_Save
+   ...
+}
+{
+   bug_46346
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:virtual_locked_server_call
+   fun:server_ioctl_file
+   fun:NtDeviceIoControlFile
+   fun:DeviceIoControl
+   ...
+}
+{
+   bug_46347
+   Memcheck:Addr2
+   fun:GlobalFree
+   fun:get_stgmed_for_storage
+   fun:snapshot_GetData
+   fun:IDataObject_GetData
+   fun:test_flushed_getdata
+   fun:func_clipboard
+   fun:run_test
+   fun:main
+}
+{
+   bug_46348_1
+   Memcheck:Param
+   sendmsg(msg.msg_iov[0])
+   fun:sendmsg
+   fun:WS2_send
+   fun:WS2_sendto
+   fun:WS_send
+   fun:rpcrt4_conn_tcp_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   fun:I_RpcSend
+   fun:I_RpcSendReceive
+   fun:NdrSendReceive
+   fun:ip_test
+   fun:union_tests
+   fun:run_tests
+   fun:client
+   fun:func_server
+   fun:run_test
+   fun:main
+}
+{
+   bug_46348_2
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:rpcrt4_conn_np_write
+   fun:rpcrt4_conn_write
+   fun:RPCRT4_SendWithAuth
+   fun:RPCRT4_Send
+   fun:I_RpcSend
+   fun:I_RpcSendReceive
+   fun:NdrSendReceive
+   fun:ip_test
+   fun:union_tests
+   fun:run_tests
+   fun:client
+   fun:func_server
+   fun:run_test
+   fun:main
+}
+{
+   bug_46349
+   Memcheck:Param
+   sendmsg(msg.msg_iov[0])
+   fun:sendmsg
+   fun:WS2_send
+   fun:WS2_sendto
+   fun:WS_send
+   fun:server_thread
+   obj:*/dlls/ntdll/ntdll.dll.so
+   fun:call_thread_func
+   obj:*/dlls/ntdll/ntdll.dll.so
 }
 {
    fixme-bug-all-arm-tests

@@ -1597,6 +1597,16 @@
    fun:start_thread
    fun:clone
 }
+{
+   bug_43379
+   Memcheck:Addr1
+   fun:virtual_check_buffer_for_write
+   fun:NtReadFile
+   fun:test_read_write
+   fun:func_file
+   fun:run_test
+   fun:main
+}
 # GCC
 {
    gcc_value8
