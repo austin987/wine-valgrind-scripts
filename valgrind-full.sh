@@ -389,9 +389,22 @@ then
     touch programs/xcopy/tests/xcopy.ok # https://bugs.winehq.org/show_bug.cgi?id=36172
 fi
 
-if [ $skip_slow -eq 1 ]
-then
-    touch dlls/kernel32/tests/debugger.ok # https://bugs.winehq.org/show_bug.cgi?id=36672
+if [ $skip_slow -eq 1 ]; then
+    # sample times (/usr/bin/time) for the program test on my i7-7820HQ laptop:
+    # cmd:      0:53:45 elapsed
+    # regedit:  2:23:03 elapsed
+    # reg:      3:23:01 elapsed
+    # schtasks: 0:05:50 elapsed
+    # services: 0:00:30 elapsed
+    # wscript:  0:01:50 elapsed
+    # xcopy:    0:04:47 elapsed
+
+    # https://bugs.winehq.org/show_bug.cgi?id=36672
+    touch dlls/kernel32/tests/debugger.ok
+    # 2.5 hours:
+    touch programs/regedit/tests/regedit.ok
+    # 3.5 hours:
+    touch programs/reg/tests/reg.ok
 fi
 
 # Finally run the tests:
