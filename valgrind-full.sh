@@ -1,6 +1,6 @@
 #!/bin/sh
 # Script to run wine's conformance tests under valgrind
-# Usage: ./tools/valgrind/valgrind-full.sh [--fatal-warnings] [--rebuild] [--skip-crashes] [--skip-failures] [--skip-slow] [--suppress-known] [--virtual-desktop]
+# Usage: ./tools/valgrind/valgrind-full.sh [--fatal-warnings] [--no-exit-hang-hack] [--rebuild] [--skip-crashes] [--skip-failures] [--skip-slow] [--suppress-known] [--virtual-desktop]
 #
 # Copyright: 2014-2017 Austin English <austinenglish@gmail.com>
 #
@@ -32,6 +32,7 @@ usage() {
         printf "%s\\n" "--fatal-warnings: make all Valgrind warnings fatal"
         printf "%s\\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
         printf "%s\\n" "-h/--help: print this help"
+        printf "%s\\n" "--no-exit-hang-hack: disable hack to workaround Wine bug 39097 (enabled by default)"
         printf "%s\\n" "--only-definite-leaks: don't show possible leaks, only definite ones"
         # Doesn't work yet, see:
         # https://bugs.winehq.org/show_bug.cgi?id=46243
@@ -45,6 +46,7 @@ usage() {
         printf "%s\\n" "--virtual-desktop: run tests in a virtual desktop"
 }
 
+exit_hang_hack=1
 fatal_warnings=""
 gecko_pdb=0
 leak_style=""
@@ -103,6 +105,7 @@ while [ ! -z "$1" ] ; do
         # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
         --gecko-pdb) gecko_pdb=1;;
+        --no-exit-hang=hack) exit_hang_hack=0;;
         --only-definite-leaks) leak_style="--show-leak-kinds=definite";;
         # Doesn't work yet, see:
         # https://bugs.winehq.org/show_bug.cgi?id=46243
@@ -162,6 +165,13 @@ rm -rf "${WINEPREFIX}"
 # Build a fresh wine, if desired/needed:
 if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
     make distclean || true
+
+    if [ $exit_hang_hack = 1 ]; then
+        # revert 4a1629c4117fda9eca63b6f56ea45771dc9734ac
+        # See https://bugs.winehq.org/show_bug.cgi?id=39097
+        sed -i -e 's!_exit( exit_code )!exit( exit_code )!g' "${WINESRC}/dlls/ntdll/process.c"
+    fi
+
     ./configure CFLAGS="-g -ggdb -Og -fno-inline"
     time make -j"$(nproc)"
 fi
@@ -231,24 +241,59 @@ touch dlls/ddraw/tests/ddraw7.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddrawmodes.ok # test crashes https://bugs.winehq.org/show_bug.cgi?id=26130 / https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/kernel32/tests/thread.ok # valgrind crash https://bugs.winehq.org/show_bug.cgi?id=28817 / https://bugs.kde.org/show_bug.cgi?id=335563
 touch dlls/kernel32/tests/virtual.ok # valgrind assertion failure after https://bugs.winehq.org/show_bug.cgi?id=28816: valgrind: m_debuginfo/debuginfo.c:1261 (vgPlain_di_notify_pdb_debuginfo): Assertion 'di && !di->fsm.have_rx_map && !di->fsm.have_rw_map' failed.
+touch dlls/kernel32/tests/virtual.ok # https://bugs.winehq.org/show_bug.cgi?id=43352 infinite loop under valgrind
 touch dlls/msvcrt/tests/string.ok # valgrind wontfix: https://bugs.winehq.org/show_bug.cgi?id=36165
 
-# hanging bugs:
-# With valgrind-3.14.0.GIT-9608f6681d, wine-2.19-495-ga7ba456587, gcc-5.4.0 and glibc-2.25, not hanging
-#touch dlls/comdlg32/tests/filedlg.ok # FIXME: hangs, need bug
-#touch dlls/comdlg32/tests/itemdlg.ok # FIXME: hangs, need bug
-#touch dlls/dinput8/tests/device.ok # FIXME: hangs, need bug
-#touch dlls/dsound/tests/duplex.ok # FIXME: hangs, need bug
-#touch dlls/ieframe/tests/ie.ok # FIXME: hangs, need bug
-#touch dlls/kernel32/tests/virtual.ok # https://bugs.winehq.org/show_bug.cgi?id=43352 infinite loop under valgrind
-#touch dlls/mshtml/tests/events.ok # https://bugs.winehq.org/show_bug.cgi?id=37157 hangs under valgrind
-#touch dlls/mshtml/tests/htmldoc.ok # FIXME: hangs
-#touch dlls/mshtml/tests/htmllocation.ok # FIXME: hangs
-#touch dlls/ole32/tests/clipboard.ok # FIXME: hangs
-#touch dlls/ole32/tests/marshal.ok # FIXME: hangs
-#touch dlls/user32/tests/win.ok # https://bugzilla.redhat.com/show_bug.cgi?id=1248314
+# hangs with patch reverted (in 2.19) (FIXME retest in 4.0)
+touch dlls/ieframe/tests/ie.ok # hangs with 1% usage
 
-# These only hangs on my (arm32) chromebook:
+# FIXME: if true / what variable?
+if [ $exit_hang_hack = 0 ]; then
+    # These are caused by 4a1629c4117fda9eca63b6f56ea45771dc9734ac
+    # https://bugs.winehq.org/show_bug.cgi?id=39097
+    # FIXME: should just run a sed here to turn _exit to exit in dlls/ntdll/process.c, for now; easier than reverting cleanly
+    # FIXME: note if it's 0% or 100% CPU usage when hung
+
+    echo "======================================"
+    echo "disabling hanging bugs"
+
+    #touch dlls/dsound/tests/duplex.ok # FIXME: hangs
+    #touch dlls/mshtml/tests/htmldoc.ok # FIXME: hangs
+    #touch dlls/mshtml/tests/htmllocation.ok # FIXME: hangs
+    #touch dlls/ole32/tests/clipboard.ok # FIXME: hangs
+    #touch dlls/ole32/tests/marshal.ok # FIXME: hangs
+
+    touch dlls/comdlg32/tests/filedlg.ok # FIXME
+    touch dlls/comdlg32/tests/itemdlg.ok # FIXME
+    touch dlls/crypt32/tests/chain.ok # FIXME
+    touch dlls/dbghelp/tests/dbghelp.ok # FIXME
+    touch dlls/dinput8/tests/device.ok # hangs with 1% usage
+    touch dlls/mmdevapi/tests/propstore.ok # FIXME
+    touch dlls/mmdevapi/tests/mmdevenum.ok # FIXME
+    touch dlls/mmdevapi/tests/render.ok # hangs with 0.2% usage
+    touch dlls/msvcp140/tests/msvcp140.ok # FIXME
+    touch dlls/ole32/tests/dragdrop.ok # FIXME
+    touch dlls/ole32/tests/moniker.ok # FIXME
+    touch dlls/ole32/tests/ole_server.ok # hangs with 1% usage
+    touch dlls/oleaut32/tests/usrmarshal.ok # hangs with 0% usage
+    touch dlls/qmgr/tests/enum_files.ok # hangs with 1% usage
+    touch dlls/qmgr/tests/enum_jobs.ok # hangs with 0% usage
+    touch dlls/qmgr/tests/file.ok # hangs with 1.8% usage
+    touch dlls/qmgr/tests/job.ok # hangs with 1% usage
+    touch dlls/riched20/tests/editor.ok # hangs with 1% usage
+    touch dlls/rpcrt4/tests/ndr_marshall.ok # hangs with 0.1% usage
+    touch dlls/shell32/tests/ebrowser.ok # hangs with 0% usage
+    touch dlls/shell32/tests/shlview.ok # hangs with 0% usage
+    touch dlls/urlmon/tests/sec_mgr.ok # hangs with 1% usage
+    touch dlls/user32/tests/sysparams.ok # hangs with 1% usage
+    touch dlls/vcomp/tests/vcomp.ok # hangs with 1% usage
+
+    # FIXME next time one fails, see if lsof shows what's open still
+    # FIXME: are there more?
+    echo "======================================"
+fi
+
+# These only hang on my (arm32) chromebook:
 if [ "$arch" = "armv7l" ]; then
     touch dlls/comctl32/tests/imagelist.ok # hangs
     touch dlls/comctl32/tests/toolbar.ok # 10m errors
