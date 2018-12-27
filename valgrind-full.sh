@@ -166,6 +166,17 @@ if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
     time make -j"$(nproc)"
 fi
 
+# Run wineboot under valgrind, and remove the prefix (just in case that corrupts things)
+echo "================Running wineboot under valgrind================" >> "$logfile"
+"$WINETEST_WRAPPER" ./wine wineboot
+echo "================End of wineboot================" >> "$logfile"
+
+$WINESERVER -w
+
+echo "================Removing wineprefix ($WINEPREFIX)================" >> "$logfile"
+rm -rf "$WINEPREFIX"
+echo "================wineprefix $WINEPREFIX removed================" >> "$logfile"
+
 # Disable the crash dialog and enable heapchecking
 if [ ! -f winetricks ] ; then
     wget http://winetricks.org/winetricks
