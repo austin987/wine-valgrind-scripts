@@ -247,6 +247,10 @@ touch dlls/msvcrt/tests/string.ok # valgrind wontfix: https://bugs.winehq.org/sh
 # hangs with patch reverted (in 2.19) (FIXME retest in 4.0)
 touch dlls/ieframe/tests/ie.ok # hangs with 1% usage
 
+# makes a stray explorer process that prevents make test from exiting
+# https://bugs.winehq.org/show_bug.cgi?id=46380
+touch dlls/user32/tests/winstation.ok
+
 if [ $exit_hang_hack = 0 ]; then
     # These are caused by 4a1629c4117fda9eca63b6f56ea45771dc9734ac
     # https://bugs.winehq.org/show_bug.cgi?id=39097
