@@ -154,23 +154,20 @@ fi
 # We grep error messages, so make them all English
 LANG=C
 
-if [ -f "${WINESERVER}" ]
-then
+if [ -f "${WINESERVER}" ]; then
     "${WINESERVER}" -k || true
 fi
 rm -rf "${WINEPREFIX}"
 
 # Build a fresh wine, if desired/needed:
-if test ! -f Makefile || test "$rebuild_wine" = "1"
-then
+if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
     make distclean || true
     ./configure CFLAGS="-g -ggdb -Og -fno-inline"
     time make -j"$(nproc)"
 fi
 
 # Disable the crash dialog and enable heapchecking
-if test ! -f winetricks
-then
+if [ ! -f winetricks ] ; then
     wget http://winetricks.org/winetricks
 fi
 
@@ -184,8 +181,7 @@ sh winetricks nocrashdialog heapcheck $virtual_desktop
 #    wget http://downloads.sourceforge.net/project/wine/Wine%20Gecko/${gecko_version}/wine_gecko-${gecko_version}-x86-unstripped.tar.bz2
 #fi
 
-if [ $gecko_pdb -eq 1 ]
-then
+if [ $gecko_pdb -eq 1 ]; then
     if test ! -f wine_gecko-${gecko_version}-x86-dbg-msvc-pdb.tar.bz2
     then
         wget http://downloads.sourceforge.net/project/wine/Wine%20Gecko/${gecko_version}/wine_gecko-${gecko_version}-x86-dbg-msvc-pdb.tar.bz2
