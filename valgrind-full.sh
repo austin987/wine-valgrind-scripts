@@ -354,7 +354,6 @@ then
     touch dlls/kernel32/tests/debugger.ok # intentional
     touch dlls/ntdll/tests/exception.ok # https://bugs.winehq.org/show_bug.cgi?id=28735
     touch dlls/user32/tests/dde.ok # https://bugs.winehq.org/show_bug.cgi?id=39257
-    touch dlls/wbemprox/tests/query.ok # https://bugs.winehq.org/show_bug.cgi?id=43354
 fi
 
 if [ $skip_failures -eq 1 ]
