@@ -89,9 +89,11 @@ export WINETEST_WRAPPER="${WINETEST_WRAPPER:-/opt/valgrind/bin/valgrind}"
 
 arch="$(uname -m)"
 os="$(uname -s)"
+# FIXME: we don't support win64 yet, so hardcoding win32 for now:
+winbit="win32"
 
 mkdir -p "${WINESRC}/logs"
-logfile="${WINESRC}/logs/${wine_version}-${os}-${arch}.log"
+logfile="${WINESRC}/logs/${wine_version}-${winbit}-${os}-${arch}.log"
 
 while [ ! -z "$1" ] ; do
     arg="$1"
