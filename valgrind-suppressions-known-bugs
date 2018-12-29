@@ -4279,18 +4279,6 @@
    fun:main
 }
 {
-   bug_36328_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:RtlAllocateHeap
-   ...
-   fun:CryptCreateHash
-   fun:test_hashes
-   fun:func_rsaenh
-   fun:run_test
-   fun:main
-}
-{
    bug_36329_1
    Memcheck:Addr4
    fun:get_versionstring
@@ -6282,19 +6270,6 @@
    fun:ddraw_surface7_Blt
 }
 {
-   bug_36623
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:DirectDrawCreateClipper
-   fun:ddraw7_CreateClipper
-   ...
-   fun:func_ddraw7
-   fun:run_test
-   fun:main
-}
-{
    bug_36624_1
    Memcheck:Param
    writev(vector[...])
@@ -6582,31 +6557,6 @@
    fun:func_device
    fun:run_test
    fun:main
-}
-{
-   bug_36655
-   Memcheck:Param
-   writev(vector[...])
-   fun:writev
-   fun:send_request
-   fun:wine_server_call
-   fun:put_message_in_queue
-   fun:send_inter_thread_message
-   fun:send_message
-   fun:SendMessageTimeoutW
-   fun:bcast_childwindow
-   fun:EnumDesktopWindows
-   fun:bcast_desktop
-   fun:EnumDesktopsW
-   fun:bcast_winsta
-   fun:EnumWindowStationsW
-   fun:BroadcastSystemMessageExW
-   fun:BroadcastSystemMessageW
-   fun:send_notify
-   fun:add_dos_device
-   fun:udisks2_add_device
-   fun:udisks2_add_devices
-   fun:dbus_thread
 }
 {
    bug_36657
