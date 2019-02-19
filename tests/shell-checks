@@ -1,7 +1,7 @@
 #!/bin/sh
 # Wrapper around checkbashisms/shellcheck/whatever other shell checkers I can find
 #
-# Copyright (C) 2016-9 Austin English
+# Copyright (C) 2016-2019 Austin English
 #
 # This software comes with ABSOLUTELY NO WARRANTY.
 #
