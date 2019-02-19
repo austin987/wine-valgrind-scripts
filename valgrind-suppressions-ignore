@@ -1607,6 +1607,34 @@
    fun:run_test
    fun:main
 }
+# <julliard> austin987: yeah it's only once per process, i don't think it's worth the trouble
+# <julliard>  there are two, command line and dll path, they can both be ignored
+# <julliard> we'd have to free them from ntdll but that's a bit ugly
+{
+   wine_init_leak1_command_line
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:build_command_line
+   fun:__wine_kernel_init
+   fun:__wine_process_init
+   fun:wine_init
+   fun:main
+}
+{
+   wine_init_leak1_get_dll_load_path
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:HeapAlloc
+   fun:MODULE_get_dll_load_path
+   fun:__wine_kernel_init
+   fun:__wine_process_init
+   fun:wine_init
+   fun:main
+}
 # GCC
 {
    gcc_value8
