@@ -7,11 +7,22 @@ os:
 addons:
   apt:
     packages:
+    # for checkbashisms
+    - devscripts
+    # for bashate
+    - python-tz
     - valgrind
 
 before_install:
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then time brew update ; fi
     - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then time brew install --HEAD valgrind ; fi
+    - time sh ./.travis/travis-install-bashate-deb.sh || time sh ./.travis/travis-install-bashate-pip.sh
+      # "brew update" (or auto-update when installing) takes long time
+      # checkbashisms and shellcheck can be installed without this
+      # So installing with "HOMEBREW_NO_AUTO_UPDATE=1" considerably reduces
+      # job time on macOS
+      # If it fails retry with auto-update
+    - if [[ "$TRAVIS_OS_NAME" == "osx" ]] ; then time env HOMEBREW_NO_AUTO_UPDATE=1 brew install checkbashisms shellcheck || time brew install checkbashisms shellcheck ; fi
 
 script:
     - time sh ./tests/check-suppressions-syntax
