@@ -25,14 +25,12 @@ fi
 valgrind "$TRUE" || die "Valgrind failed for $TRUE"
 
 # Now, check that individual files are working:
-for file in valgrind-suppressions-*
-do
+for file in valgrind-suppressions-*; do
     valgrind --suppressions="$file" "$TRUE" || die "file $file appears broken"
 done
 
 # Avoid any absolute library paths:
-for file in valgrind-suppressions-*
-do
+for file in valgrind-suppressions-*; do
     if grep -e '/lib.*/' -e '/home/' "$file"; then
         die "file $file contains absolute library paths, should be relative"
     fi
@@ -40,10 +38,9 @@ done
 
 # Avoid any absolute library versions
 # (better to be overly broad with external libraries, some of which frequently change):
-for file in valgrind-suppressions-*
-do
+for file in valgrind-suppressions-*; do
     if grep '\.so.[0-9]' "$file"; then
-       die "file $file contains version specific suppressions; should be generic"
+        die "file $file contains version specific suppressions; should be generic"
     fi
 done
 

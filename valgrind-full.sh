@@ -148,8 +148,7 @@ echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "$logfile"
 
 cd "${WINESRC}"
 
-if test ! -f "${WINESRC}/configure"
-then
+if test ! -f "${WINESRC}/configure"; then
     echo "couldn't find ${WINESRC}/configure"
     exit 1
 fi
@@ -340,14 +339,12 @@ touch dlls/winmm/tests/mci.ok # https://bugs.winehq.org/show_bug.cgi?id=30557
 
 # wine hangs with pdb debug builds in dlls/ieframe/tests/ie.c (https://bugs.winehq.org/show_bug.cgi?id=38604)
 # and (sometimes) in dlls/atl100/tests/atl.c (https://bugs.winehq.org/show_bug.cgi?id=38594)
-if [ $gecko_pdb -eq 1 ]
-then
+if [ $gecko_pdb -eq 1 ]; then
     touch dlls/atl100/tests/atl.ok
     touch dlls/ieframe/tests/ie.ok
 fi
 
-if [ $skip_crashes -eq 1 ]
-then
+if [ $skip_crashes -eq 1 ]; then
     touch dlls/crypt32/tests/msg.ok # crashes https://bugs.winehq.org/show_bug.cgi?id=36200
     touch dlls/d2d1/tests/d2d1.ok # crashes https://bugs.winehq.org/show_bug.cgi?id=38481
     touch dlls/d3d8/tests/device.ok # test crashes https://bugs.winehq.org/show_bug.cgi?id=28800
@@ -359,11 +356,9 @@ then
     touch dlls/user32/tests/dde.ok # https://bugs.winehq.org/show_bug.cgi?id=39257
 fi
 
-if [ $skip_failures -eq 1 ]
-then
+if [ $skip_failures -eq 1 ]; then
     # Virtual desktop failures:
-    if [ ! -z $virtual_desktop ]
-    then
+    if [ -n "$virtual_desktop" ]; then
         touch dlls/comctl32/tests/propsheet.ok # https://bugs.winehq.org/show_bug.cgi?id=36238
         touch dlls/user32/tests/win.ok # https://bugs.winehq.org/show_bug.cgi?id=36682 win.c:2244: Test succeeded inside todo block: GetActiveWindow() = 0x1200c4
     fi
