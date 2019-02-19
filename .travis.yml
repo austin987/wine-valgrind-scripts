@@ -15,4 +15,4 @@ before_install:
 
 script:
     - time sh ./tests/check-suppressions-syntax
-    - time sh ./tests/shell-check
+    - time sh ./tests/shell-checks
