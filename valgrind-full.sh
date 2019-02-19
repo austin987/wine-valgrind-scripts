@@ -29,6 +29,7 @@ set -e
 usage() {
         printf "%s\\n" "$0: run Wine's conformance tests under Valgrind"
         printf "%s\\n" "Available options:"
+        printf "%s\\n" "--count: gives a summary of detected errors and used suppressions"
         printf "%s\\n" "--fatal-warnings: make all Valgrind warnings fatal"
         printf "%s\\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
         printf "%s\\n" "-h/--help: print this help"
@@ -104,6 +105,7 @@ while [ -n "$1" ] ; do
     case "${arg}" in
         -h|--help) usage; exit 0;;
         # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
+        --count) count="--show-error-list=yes";;
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
         --gecko-pdb) gecko_pdb=1;;
         --no-exit-hang=hack) exit_hang_hack=0;;
@@ -410,7 +412,7 @@ if [ $skip_slow -eq 1 ]; then
 fi
 
 # Finally run the tests:
-export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access"
+export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
@@ -418,5 +420,17 @@ export WINE_HEAP_TAIL_REDZONE=32
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
+
+if [ -n "$count" ]; then
+    echo "======================================================================="
+    echo "Used suppressions:" >> "$logfile"
+    grep used_suppression "$logfile" | cut -d / -f 1 | awk '{print $NF}' | sort -u
+    echo "======================================================================="
+
+    # FIXME: parse $VAGLRIND_OPTS for --suppression,
+    # grep -A 1 \{ (this won't work if there are comments though :/)
+    # and compare with `comm` to used_suppressions, for a list of unused ones for review
+    # Also maybe suppress _ignore list unless -v is used
+fi
 
 # vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
