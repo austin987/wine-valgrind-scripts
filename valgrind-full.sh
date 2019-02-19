@@ -236,6 +236,7 @@ make testclean
 touch dlls/ddraw/tests/ddraw1.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddraw2.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddraw4.ok # valgrind assertion failure https://bugs.winehq.org/show_bug.cgi?id=36261
+# ddraw/ddraw7 (in wine-4.1-108-gf7b3120991/bumblebee): General Protection Fault, but only with primusrun, optirun works fine
 touch dlls/ddraw/tests/ddraw7.ok # https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/ddraw/tests/ddrawmodes.ok # test crashes https://bugs.winehq.org/show_bug.cgi?id=26130 / https://bugs.kde.org/show_bug.cgi?id=264785
 touch dlls/kernel32/tests/thread.ok # valgrind crash https://bugs.winehq.org/show_bug.cgi?id=28817 / https://bugs.kde.org/show_bug.cgi?id=335563
@@ -354,6 +355,8 @@ if [ $skip_crashes -eq 1 ]; then
     touch dlls/kernel32/tests/debugger.ok # intentional
     touch dlls/ntdll/tests/exception.ok # https://bugs.winehq.org/show_bug.cgi?id=28735
     touch dlls/user32/tests/dde.ok # https://bugs.winehq.org/show_bug.cgi?id=39257
+
+    # FIXME: if video card detection is added, need to block a lot on intel/bumblebee https://bugs.winehq.org/show_bug.cgi?id=46321
 fi
 
 if [ $skip_failures -eq 1 ]; then
