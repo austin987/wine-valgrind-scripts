@@ -93,11 +93,12 @@ arch="$(uname -m)"
 os="$(uname -s)"
 # FIXME: we don't support win64 yet, so hardcoding win32 for now:
 winbit="win32"
+_time="$(command -v time)"
 
 mkdir -p "${WINESRC}/logs"
 logfile="${WINESRC}/logs/${wine_version}-${winbit}-${os}-${arch}.log"
 
-while [ ! -z "$1" ] ; do
+while [ -n "$1" ] ; do
     arg="$1"
     shift
     case "${arg}" in
@@ -172,7 +173,7 @@ if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
     fi
 
     ./configure CFLAGS="-g -ggdb -Og -fno-inline"
-    time make -j"$(nproc)"
+    "$_time" make -j"$(nproc)"
 fi
 
 # Run wineboot under valgrind, and remove the prefix (just in case that corrupts things)
@@ -413,7 +414,7 @@ export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --g
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
-time sh -c "make -k test 2>&1 | tee \"$logfile\" || true"
+"$_time" sh -c "make -k test 2>&1 | tee \"$logfile\" || true"
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
