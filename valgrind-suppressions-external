@@ -985,7 +985,7 @@
    fun:SECUR32_initSchannelSP
 }
 {
-   wine_secur32_ignore_fork_helper_leak
+   wine_secur32_fork_helper_leak
    Memcheck:Leak
    ...
    fun:RtlAllocateHeap
