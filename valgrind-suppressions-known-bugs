@@ -106,8 +106,7 @@
    bug_26044_5
    Memcheck:Param
    write(buf)
-   fun:__write_nocancel
-   fun:wine_server_call
+   ...
    fun:set_window_pos
    fun:USER_SetWindowPos
    fun:SetWindowPos
@@ -139,6 +138,47 @@
    fun:IOCS_Create
    fun:AtlAxAttachControl
    ...
+   fun:test_AtlAxAttachControl
+   fun:func_atl
+   fun:run_test
+   fun:main
+}
+{
+   bug_26044_8
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:set_window_pos
+   fun:USER_SetWindowPos
+   fun:SetWindowPos
+   fun:activate_inplace
+   fun:OleObject_DoVerb
+   fun:IOleObject_DoVerb
+   fun:IOCS_Init
+   fun:IOCS_Create
+   fun:AtlAxAttachControl
+   ...
+}
+{
+   bug_26044_9
+   Memcheck:Param
+   write(buf)
+   fun:write
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:set_window_pos
+   fun:USER_SetWindowPos
+   fun:SetParent
+   fun:SHSetParentHwnd
+   fun:OleObject_SetClientSite
+   fun:IOleObject_SetClientSite
+   fun:IOCS_Attach
+   fun:IOCS_Create
+   fun:AtlAxAttachControl
    fun:test_AtlAxAttachControl
    fun:func_atl
    fun:run_test
