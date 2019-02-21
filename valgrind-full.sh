@@ -34,6 +34,7 @@ usage() {
         printf "%s\\n" "--gecko-pdb: use MSVC built pdb debug files for wine-gecko (currently broken)"
         printf "%s\\n" "-h/--help: print this help"
         printf "%s\\n" "--no-exit-hang-hack: disable hack to workaround Wine bug 39097 (enabled by default)"
+        printf "%s\\n" "--no-leaks: don't check for memory leaks (disabled by default)"
         printf "%s\\n" "--only-definite-leaks: don't show possible leaks, only definite ones"
         # Doesn't work yet, see:
         # https://bugs.winehq.org/show_bug.cgi?id=46243
@@ -50,6 +51,7 @@ usage() {
 exit_hang_hack=1
 fatal_warnings=""
 gecko_pdb=0
+leak_check="--leak-check=full"
 leak_style=""
 rebuild_wine=0
 skip_crashes=0
@@ -109,6 +111,7 @@ while [ -n "$1" ] ; do
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
         --gecko-pdb) gecko_pdb=1;;
         --no-exit-hang=hack) exit_hang_hack=0;;
+        --no-leaks) leak_check="--leak-check=no";;
         --only-definite-leaks) leak_style="--show-leak-kinds=definite";;
         # Doesn't work yet, see:
         # https://bugs.winehq.org/show_bug.cgi?id=46243
@@ -412,7 +415,7 @@ if [ $skip_slow -eq 1 ]; then
 fi
 
 # Finally run the tests:
-export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings --leak-check=full $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
+export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings $leak_check $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
 export WINETEST_TIMEOUT=600
 export WINE_HEAP_TAIL_REDZONE=32
 
