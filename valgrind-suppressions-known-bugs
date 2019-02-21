@@ -8161,6 +8161,28 @@
    obj:*/dlls/ntdll/ntdll.dll.so
 }
 {
+   bug_46688_1
+   Memcheck:Jump
+   obj:*/libmpg123.so.*
+   ...
+   fun:__run_exit_handlers
+   fun:exit
+   fun:NtTerminateProcess
+   fun:RtlExitUserProcess
+   obj:*/kernel32.dll.so
+}
+{
+   bug_46688_2
+   Memcheck:Addr1
+   obj:*/libmpg123.so.*
+   ...
+   fun:__run_exit_handlers
+   fun:exit
+   fun:NtTerminateProcess
+   fun:RtlExitUserProcess
+   obj:*/kernel32.dll.so
+}
+{
    fixme-bug-all-arm-tests
    Memcheck:Param
    epoll_ctl(event)
