@@ -794,29 +794,6 @@
    obj:*/dlls/kernel32/kernel32.dll.so
 }
 {
-   twain_32_test_dsm_sane_useless_stack
-   Memcheck:Leak
-   ...
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-}
-{
    user32_class_x
    Memcheck:Addr2
    fun:init_handler
