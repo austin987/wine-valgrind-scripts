@@ -7616,10 +7616,7 @@
    fun:IDispatchEx_InvokeEx
    fun:call_disp_func
    fun:call_event_handlers
-   fun:fire_event_obj
-   fun:fire_event
-   fun:handle_load
-   obj:*
+   ...
 }
 {
    bug_43375
@@ -8154,13 +8151,7 @@
    fun:I_RpcSend
    fun:I_RpcSendReceive
    fun:NdrSendReceive
-   fun:ip_test
-   fun:union_tests
-   fun:run_tests
-   fun:client
-   fun:func_server
-   fun:run_test
-   fun:main
+   ...
 }
 {
    bug_46348_2
