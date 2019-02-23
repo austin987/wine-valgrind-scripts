@@ -1392,17 +1392,27 @@
    fun:main
 }
 {
-   useless_stack
-   Memcheck:Addr4
+   msvcrt_definite_leak_unknown_malloc
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:msvcrt_heap_alloc
+   fun:MSVCRT_malloc
    obj:*
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Value4
+   msvcrt_possible_leak_unknown_malloc
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:msvcrt_heap_alloc
+   fun:MSVCRT_malloc
    obj:*
 }
 {
-   <insert_a_suppression_name_here>
+   msvcrt_possible_leak_unknown_malloc2
    Memcheck:Leak
    match-leak-kinds: possible
    fun:notify_alloc
@@ -1413,7 +1423,7 @@
    obj:*
 }
 {
-   <insert_a_suppression_name_here>
+   msvcrt_possible_leak_unknown_realloc
    Memcheck:Leak
    match-leak-kinds: possible
    fun:notify_alloc
@@ -1424,17 +1434,7 @@
    obj:*
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:msvcrt_heap_alloc
-   fun:MSVCRT_malloc
-   obj:*
-}
-{
-   <insert_a_suppression_name_here>
+   unknown_call_thread_func_definite_leak
    Memcheck:Leak
    match-leak-kinds: definite
    fun:notify_alloc
@@ -1449,18 +1449,18 @@
    fun:clone
 }
 {
-   <insert_a_suppression_name_here>
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:msvcrt_heap_alloc
-   fun:MSVCRT_malloc
+   unknown_addr4
+   Memcheck:Addr4
    obj:*
 }
 {
-   <insert_a_suppression_name_here>
+   unknown_cond
    Memcheck:Cond
+   obj:*
+}
+{
+   unknown_value4
+   Memcheck:Value4
    obj:*
 }
 {

@@ -1017,7 +1017,7 @@
    obj:*/libpthread-*.so
 }
 {
-   <insert_a_suppression_name_here>
+   nvidia_glcore_cond
    Memcheck:Cond
    obj:*libnvidia-glcore.so.*
    ...
