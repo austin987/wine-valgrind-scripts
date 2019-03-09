@@ -418,7 +418,7 @@ if [ $skip_slow -eq 1 ]; then
 fi
 
 # Finally run the tests:
-"$_time" sh -c "make -k test 2>&1 | tee \"$logfile\" || true"
+"$_time" sh -c "make -k test 2>&1 | tee -a \"$logfile\" || true"
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
