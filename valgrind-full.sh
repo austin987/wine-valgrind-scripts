@@ -416,7 +416,6 @@ fi
 
 # Finally run the tests:
 export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings $leak_check $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
-export WINE_HEAP_TAIL_REDZONE=32
 
 "$_time" sh -c "make -k test 2>&1 | tee \"$logfile\" || true"
 
