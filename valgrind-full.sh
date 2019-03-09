@@ -1,4 +1,6 @@
 #!/bin/sh
+# shellcheck disable=SC2129
+#
 # Script to run wine's conformance tests under valgrind
 # Usage: ./tools/valgrind/valgrind-full.sh [--fatal-warnings] [--no-exit-hang-hack] [--rebuild] [--skip-crashes] [--skip-failures] [--skip-slow] [--suppress-known] [--virtual-desktop]
 #
@@ -137,8 +139,6 @@ export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --g
 export WINEDEBUG=-all
 
 echo "started with: $0 $*" > "$logfile"
-
-# shellcheck disable=SC2129
 echo "HEAD is:" >> "$logfile"
 git log -n 1 HEAD >> "$logfile"
 
