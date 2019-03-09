@@ -186,7 +186,7 @@ fi
 
 # Run wineboot under valgrind, and remove the prefix (just in case that corrupts things)
 echo "================Running wineboot under valgrind================" >> "$logfile"
-"$_time" "$WINETEST_WRAPPER" ./wine wineboot
+"$_time" "$WINETEST_WRAPPER" ./wine wineboot >> "$logfile" 2>&1
 echo "================End of wineboot================" >> "$logfile"
 
 $WINESERVER -w
