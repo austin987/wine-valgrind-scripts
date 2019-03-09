@@ -140,6 +140,7 @@ export WINEDEBUG=-all
 
 echo "started with: $0 $*" > "$logfile"
 echo "HEAD is:" >> "$logfile"
+echo "================Wine info================" >> "$logfile"
 git log -n 1 HEAD >> "$logfile"
 
 echo "origin/master is:" >> "$logfile"
@@ -150,6 +151,7 @@ git log origin/master..HEAD >> "$logfile"
 
 echo "git diff between origin/master and HEAD:" >> "$logfile"
 git diff origin/master HEAD >> "$logfile"
+echo "================End Wine info================" >> "$logfile"
 
 # Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
 # https://bugs.kde.org/show_bug.cgi?id=352395
