@@ -150,10 +150,6 @@ echo "git diff between origin/master and HEAD:" >> "$logfile"
 git diff origin/master HEAD >> "$logfile"
 echo "================End Wine info================" >> "$logfile"
 
-# Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
-# https://bugs.kde.org/show_bug.cgi?id=352395
-echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "$logfile"
-
 # Get some bacic info about the graphics setup:
 echo "================GPU info================" >> "$logfile"
 echo "Graphics card info (glxinfo -B):" >> "$logfile"
@@ -175,6 +171,13 @@ echo "================End of GPU info================" >> "$logfile"
 
 # valgrind options
 export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $graphics_suppressions $suppress_known $fatal_warnings $leak_check $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
+
+echo "================Valgrind info================" >> "$logfile"
+# Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
+# https://bugs.kde.org/show_bug.cgi?id=352395
+echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "$logfile"
+echo "Valgrind options: $VALGRIND_OPTS" >> "$logfile"
+echo "================End Valgrind info================" >> "$logfile"
 
 cd "${WINESRC}"
 
