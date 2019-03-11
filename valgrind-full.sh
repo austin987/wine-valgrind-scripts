@@ -360,7 +360,6 @@ if [ $skip_crashes -eq 1 ]; then
     touch dlls/crypt32/tests/msg.ok # crashes https://bugs.winehq.org/show_bug.cgi?id=36200
     touch dlls/d2d1/tests/d2d1.ok # crashes https://bugs.winehq.org/show_bug.cgi?id=38481
     touch dlls/d3d8/tests/device.ok # test crashes https://bugs.winehq.org/show_bug.cgi?id=28800
-    touch dlls/d3dx9_36/tests/mesh.ok # test fails on intel/nvidia https://bugs.winehq.org/show_bug.cgi?id=28810
     touch dlls/ddraw/tests/d3d.ok # test crashes on nvidia https://bugs.winehq.org/show_bug.cgi?id=36660
     touch dlls/ddrawex/tests/surface.ok # valgrind segfaults on nvidia https://bugs.winehq.org/show_bug.cgi?id=36689 / https://bugs.kde.org/show_bug.cgi?id=335907
     touch dlls/kernel32/tests/debugger.ok # intentional
