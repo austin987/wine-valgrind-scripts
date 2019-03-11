@@ -365,8 +365,6 @@ if [ $skip_crashes -eq 1 ]; then
     touch dlls/kernel32/tests/debugger.ok # intentional
     touch dlls/ntdll/tests/exception.ok # https://bugs.winehq.org/show_bug.cgi?id=28735
     touch dlls/user32/tests/dde.ok # https://bugs.winehq.org/show_bug.cgi?id=39257
-
-    # FIXME: if video card detection is added, need to block a lot on intel/bumblebee https://bugs.winehq.org/show_bug.cgi?id=46321
 fi
 
 if [ $skip_failures -eq 1 ]; then
