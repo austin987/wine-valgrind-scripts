@@ -606,14 +606,14 @@
    fun:main
 }
 {
-   ntlm_auth_leaks
+   ntlm_auth_leak_1
    Memcheck:Leak
    ...
    fun:poptGetNextOpt
    fun:main
 }
 {
-   ntlm_auth_leaks
+   ntlm_auth_leak_2
    Memcheck:Leak
    ...
    obj:*ntlm_auth*
@@ -642,7 +642,7 @@
    fun:main
 }
 {
-   rpcrt4_ndr_marshal_bug_36706
+   rpcrt4_ndr_marshal_bug_36706_1
    Memcheck:Addr1
    ...
    obj:*libgcc_s.so.*
@@ -658,7 +658,7 @@
    fun:clone
 }
 {
-   rpcrt4_ndr_marshal_bug_36706
+   rpcrt4_ndr_marshal_bug_36706_2
    Memcheck:Addr4
    ...
    obj:*libgcc_s.so.*
@@ -687,63 +687,15 @@
    obj:*/dlls/kernel32/kernel32.dll.so
 }
 {
-   user32_class_x
+   addr2_libpthread_user32_class
    Memcheck:Addr2
-   fun:init_handler
-   fun:segv_handler
+   ...
    obj:*/libpthread-2*.so
 }
 {
-   user32_class_x
-   Memcheck:Addr2
-   fun:segv_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
+   addr4_libpthread_user32_class
    Memcheck:Addr4
-   fun:get_error_code
-   fun:segv_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:get_trap_code
-   fun:segv_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:init_handler
-   fun:quit_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:init_handler
-   fun:segv_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:quit_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:setup_exception_record
-   fun:segv_handler
-   obj:*/libpthread-*.so
-}
-{
-   user32_class_x
-   Memcheck:Addr4
-   fun:__x86.get_pc_thunk.bx
+   ...
    obj:*/libpthread-*.so
 }
 {
@@ -864,7 +816,7 @@
    fun:SECUR32_initializeProviders
 }
 {
-   winhttp_notification_bug_36613
+   winhttp_notification_bug_36613_1
    Memcheck:Addr1
    ...
    obj:*/libnss_dns*.so
@@ -877,7 +829,7 @@
    obj:*/dlls/kernel32/kernel32.dll.so
 }
 {
-   winhttp_notification_bug_36613
+   winhttp_notification_bug_36613_2
    Memcheck:Addr2
    ...
    obj:*/libnss_dns*.so
