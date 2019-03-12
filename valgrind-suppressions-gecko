@@ -46,38 +46,38 @@
    ...
 }
 {
-   bug_36904_x
+   bug_36904_1
    Memcheck:Cond
    fun:js::frontend::FunctionBox::FunctionBox<js::frontend::FullParseHandler>
    ...
 }
 {
-   bug_36904_x
+   bug_36904_2
    Memcheck:Cond
    fun:js::frontend::Parser<js::frontend::FullParseHandler>::leaveFunction
 }
 {
-   bug_36904_x
+   bug_36904_3
    Memcheck:Cond
    fun:js::frontend::Parser<js::frontend::FullParseHandler>::memberExpr
 }
 {
-   bug_36904_x
+   bug_36904_4
    Memcheck:Cond
    fun:js::frontend::Parser<js::frontend::FullParseHandler>::newFunction
 }
 {
-   bug_36904_x
+   bug_36904_5
    Memcheck:Cond
    fun:js::frontend::Parser<js::frontend::FullParseHandler>::primaryExpr
 }
 {
-   bug_36905_x
+   bug_36905_1
    Memcheck:Cond
    fun:nsGlobalWindow::Release
 }
 {
-   bug_36905_x
+   bug_36905_2
    Memcheck:Cond
    fun:nsGlobalWindow::Release
    fun:nsWebBrowser::Create
@@ -106,12 +106,12 @@
    fun:nsDocument::Release
 }
 {
-   bug_36907_x
+   bug_36907_1
    Memcheck:Cond
    fun:nsEventStateManager::Release
 }
 {
-   bug_36907_x
+   bug_36907_2
    Memcheck:Cond
    fun:nsEventStateManager::Release
    ...
@@ -123,34 +123,16 @@
    obj:*
 }
 {
-   bug_36908_x
+   bug_36908
    Memcheck:Cond
    fun:nsWindowRoot::Release
+   ...
 }
 {
-   bug_36908_x
-   Memcheck:Cond
-   fun:nsWindowRoot::Release
-   fun:nsGlobalWindow::SetNewDocument
-   fun:nsDocumentViewer::InitInternal
-   fun:nsDocumentViewer::Init
-   fun:nsCOMPtr_base::assign_from_qi_with_error
-   obj:*
-}
-{
-   bug_36909_x
+   bug_36909
    Memcheck:Cond
    fun:nsJSContext::Release
-   fun:mozilla::AutoCxPusher::AutoCxPusher
-   fun:nsDocumentViewer::InitInternal
-   fun:nsDocumentViewer::Init
-   fun:nsCOMPtr_base::assign_from_qi_with_error
-   obj:*
-}
-{
-   bug_36909_x
-   Memcheck:Cond
-   fun:nsJSContext::Release
+   ...
 }
 {
    bug_36910
@@ -184,130 +166,44 @@
    fun:randomByte
 }
 {
-   bug_36920_x
+   bug_36920_1
    Memcheck:Cond
    fun:nsCSSStyleSheet::Release
+   ...
 }
 {
-   bug_36920_x
-   Memcheck:Cond
-   fun:nsCSSStyleSheet::Release
-   fun:PresShell::SetPrefNoScriptRule
-   fun:PresShell::SetPreferenceStyleRules
-   fun:nsDocument::doCreateShell
-   fun:nsHTMLDocument::CreateShell
-   fun:nsDocumentViewer::InitPresentationStuff
-   fun:nsDocumentViewer::InitInternal
-   fun:nsDocumentViewer::Init
-   fun:nsCOMPtr_base::assign_from_qi_with_error
-   obj:*
-}
-{
-   bug_36920_x
-   Memcheck:Cond
-   fun:nsCSSStyleSheet::Release
-   fun:PresShell::SetPrefLinkRules
-   fun:nsWeakReference::QueryReferent
-}
-{
-   bug_36921_x
+   bug_36921
    Memcheck:Cond
    fun:mozilla::Selection::Release
-   fun:nsDocumentViewer::InitInternal
-   fun:nsDocumentViewer::Init
-   fun:nsCOMPtr_base::assign_from_qi_with_error
-   obj:*
+   ...
 }
 {
-   bug_36921_x
-   Memcheck:Cond
-   fun:mozilla::Selection::Release
-   fun:PresShell::Init
-   fun:nsDocument::doCreateShell
-   fun:nsHTMLDocument::CreateShell
-   fun:nsDocumentViewer::InitPresentationStuff
-   fun:nsDocumentViewer::InitInternal
-   fun:nsDocumentViewer::Init
-   fun:nsCOMPtr_base::assign_from_qi_with_error
-   obj:*
-}
-{
-   bug_36921_x
-   Memcheck:Cond
-   fun:mozilla::Selection::Release
-}
-{
-   bug_36922_x
+   bug_36922
    Memcheck:Cond
    fun:nsDOMEvent::Release
+   ...
 }
 {
-   bug_36922_x
-   Memcheck:Cond
-   fun:nsDOMEvent::Release
-   fun:nsGlobalWindow::DispatchDOMWindowCreated
-   obj:*
-}
-{
-   bug_36923_x
+   bug_36923
    Memcheck:Cond
    fun:nsEventListenerManager::Release
+   ...
 }
 {
-   bug_36923_x
-   Memcheck:Cond
-   fun:nsEventListenerManager::Release
-   obj:*
-}
-{
-   bug_36924_x
+   bug_36924
    Memcheck:Cond
    fun:nsPresContext::Release
+   ...
 }
 {
-   bug_36924_x
-   Memcheck:Cond
-   fun:nsPresContext::Release
-   obj:*
-}
-{
-   bug_36924_x
-   Memcheck:Cond
-   fun:nsPresContext::Release
-   fun:nsDocument::OnPageHide
-   fun:nsDocumentViewer::PageHide
-   fun:nsDocShell::FirePageHideNotification
-   fun:nsDocShell::CreateContentViewer
-   fun:nsDSURIContentListener::DoContent
-   fun:nsDocumentOpenInfo::TryContentListener
-   fun:nsDocumentOpenInfo::DispatchContent
-   obj:*
-}
-{
-   bug_36924_x
-   Memcheck:Cond
-   fun:nsPresContext::Release
-   fun:nsContentUtils::DispatchEvent
-   fun:nsContentUtils::DispatchTrustedEvent
-   fun:nsDocument::UpdateVisibilityState
-   fun:nsDocument::OnPageHide
-   fun:nsDocumentViewer::PageHide
-   fun:nsDocShell::FirePageHideNotification
-   fun:nsDocShell::CreateContentViewer
-   fun:nsDSURIContentListener::DoContent
-   fun:nsDocumentOpenInfo::TryContentListener
-   fun:nsDocumentOpenInfo::DispatchContent
-   obj:*
-}
-{
-   bug_36925_x
+   bug_36925_1
    Memcheck:Cond
    fun:bestBtreeIndex
    fun:sqlite3WhereBegin
    fun:sqlite3Select
 }
 {
-   bug_36925_x
+   bug_36925_2
    Memcheck:Cond
    fun:bestOrClauseIndex
    fun:bestBtreeIndex
@@ -315,7 +211,7 @@
    fun:sqlite3Select
 }
 {
-   bug_36928_x
+   bug_36928_1
    Memcheck:Cond
    fun:ccref_decr
    fun:htmldoc_release
@@ -339,7 +235,7 @@
    fun:create_object
 }
 {
-   bug_36928_x
+   bug_36928_2
    Memcheck:Cond
    fun:HTMLDOMNode_Release
    fun:htmldoc_release
@@ -363,7 +259,7 @@
    fun:create_object
 }
 {
-   bug_36928_x
+   bug_36928_3
    Memcheck:Cond
    fun:ccref_decr
    fun:htmldoc_release
@@ -387,7 +283,7 @@
    fun:ProtocolSinkHandler_ReportData
 }
 {
-   bug_36928_x
+   bug_36928_4
    Memcheck:Cond
    fun:HTMLDOMNode_Release
    fun:htmldoc_release
