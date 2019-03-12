@@ -1041,7 +1041,7 @@
    ...
 }
 {
-   bug_36096_11
+   bug_36096_12
    Memcheck:Leak
    ...
    fun:init_format_fbo_compat_info
@@ -3139,7 +3139,7 @@
    ...
 }
 {
-   bug_36249_3
+   bug_36249_4
    Memcheck:Leak
    match-leak-kinds: possible
    ...
@@ -3149,7 +3149,7 @@
    fun:main
 }
 {
-   bug_36249_4
+   bug_36249_5
    Memcheck:Leak
    match-leak-kinds: definite
    fun:RtlAllocateHeap
@@ -8278,7 +8278,7 @@
    fun:main
 }
 {
-   fixme-bug-all-arm-tests
+   fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
    fun:epoll_ctl
@@ -8288,7 +8288,7 @@
    fun:main
 }
 {
-   fixme-bug-all-arm-tests
+   fixme-bug-all-arm-tests_2
    Memcheck:Leak
    match-leak-kinds: possible
    fun:RtlAllocateHeap
