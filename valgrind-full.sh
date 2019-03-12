@@ -458,7 +458,8 @@ if [ -n "$count" ]; then
     echo "======================================================================="
 
     # FIXME: parse $VAGLRIND_OPTS for --suppression,
-    # grep -A 1 \{ (this won't work if there are comments though :/)
+    # grep -v -e ":" -e "{" -e "}" -e "#" -e "\.\.\." -e "("
+    # FIXME: there are some duplicate names, need to rename (append _1 or so)
     # and compare with `comm` to used_suppressions, for a list of unused ones for review
     # Also maybe suppress _ignore list unless -v is used
 fi
