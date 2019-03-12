@@ -1788,18 +1788,6 @@
    Memcheck:Addr4
    obj:*wine_gecko*
 }
-
-
-
-
-
-
-
-
-
-
-
-
 {
    bug_36219_10
    Memcheck:Leak
@@ -2705,7 +2693,6 @@
    fun:SendMessageW
    ...
 }
-
 {
    bug_36219_6
    Memcheck:Leak
@@ -3225,7 +3212,6 @@
    fun:start_thread
    fun:clone
 }
-
 {
    ieframe_test_ie_x
    Memcheck:Cond

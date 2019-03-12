@@ -1,6 +1,5 @@
 # Bugs are filed, not yet fixed (or marked as intentional)
 # Not suppressed by default
-
 {
    bug_14078
    Memcheck:Leak
@@ -4727,7 +4726,6 @@
    fun:wined3d_swapchain_create
    ...
 }
-
 {
    bug_36349
    Memcheck:Leak
@@ -7826,7 +7824,6 @@
    fun:start_process
    obj:*/libwine.so.*
 }
-
 {
    bug_43385_2
    Memcheck:Leak
