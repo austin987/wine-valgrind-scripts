@@ -1,0 +1,232 @@
+# FIXME: these should probably be reported to upstream mesa;
+# but first I'd like to talk to Emil more first
+# and get a clean run (maybe not leaks, at first)
+# (and probably try upgrading to latest unstable)
+{
+   addr1_mesa_GetTexImage
+   Memcheck:Addr1
+   fun:convert_ubyte
+   fun:_mesa_swizzle_and_convert
+   fun:_mesa_format_convert
+   fun:get_tex_rgba_uncompressed
+   fun:get_tex_rgba
+   fun:_mesa_GetTexSubImage_sw
+   fun:_mesa_meta_GetTexSubImage
+   fun:intel_get_tex_sub_image
+   fun:get_texture_image
+   fun:_mesa_GetTexImage
+   ...
+}
+{
+   addr1_mesa_LinkProgram
+   Memcheck:Addr1
+   fun:bcmp
+   fun:brw_lookup_prog
+   fun:brw_upload_cache
+   ...
+   fun:brw_link_shader
+   fun:_mesa_glsl_link_shader
+   fun:link_program
+   fun:link_program_error
+   fun:_mesa_LinkProgram
+   ...
+}
+{
+   addr1_mesa_TexImage1D
+   Memcheck:Addr1
+   fun:unpack_ubyte_a8b8g8r8_unorm
+   fun:_mesa_unpack_ubyte_rgba_row
+   fun:_mesa_format_convert
+   fun:texstore_rgba
+   fun:_mesa_texstore
+   fun:store_texsubimage
+   ...
+   fun:intel_upload_tex
+   fun:intelTexImage
+   fun:teximage
+   fun:teximage_err
+   fun:_mesa_TexImage1D
+   ...
+}
+{
+   addr1_mesa_TexSubImage2D
+   Memcheck:Addr1
+   ...
+   fun:store_texsubimage
+   fun:_mesa_store_texsubimage
+   fun:intel_upload_tex
+   fun:intelTexSubImage
+   fun:texture_sub_image
+   fun:texsubimage_err
+   fun:_mesa_TexSubImage2D
+   ...
+}
+{
+   addr1_vbo_exec_DrawElementsBaseVertex
+   Memcheck:Addr1
+   fun:bcmp
+   fun:brw_lookup_prog
+   fun:brw_upload_cache
+   fun:read_and_upload
+   fun:brw_disk_cache_upload_program
+   fun:brw_upload_vs_prog
+   fun:brw_upload_programs
+   fun:brw_upload_pipeline_state
+   fun:brw_upload_render_state
+   fun:brw_draw_single_prim
+   fun:brw_draw_prims
+   fun:vbo_validated_drawrangeelements
+   fun:vbo_exec_DrawElementsBaseVertex
+   ...
+}
+{
+   dxgi_device_i965
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   fun:call_init.part.0
+   fun:_dl_init
+   fun:dl_open_worker
+   fun:_dl_catch_error
+   fun:_dl_open
+   fun:dlopen_doit
+   fun:_dl_catch_error
+   fun:_dlerror_run
+   fun:dlopen@@GLIBC_*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
+   obj:*/libGL.so.*
+   fun:glXChooseVisual
+   fun:X11DRV_WineGL_InitOpenglInfo
+}
+{
+   addr8_intel_upload_tex
+   Memcheck:Addr8
+   fun:_mm_store_si128
+   fun:rgba8_copy_16_aligned_dst
+   fun:rgba8_copy_aligned_dst
+   fun:linear_to_ytiled
+   fun:linear_to_ytiled_faster
+   fun:linear_to_tiled
+   fun:intel_texsubimage_tiled_memcpy
+   fun:intel_upload_tex
+   ...
+}
+{
+   addr16_intel_get_tex_sub_image
+   Memcheck:Addr16
+   fun:_mm_load_si128
+   fun:rgba8_copy_16_aligned_src
+   fun:rgba8_copy_aligned_src
+   fun:ytiled_to_linear
+   fun:ytiled_to_linear_faster
+   fun:tiled_to_linear
+   fun:intel_gettexsubimage_tiled_memcpy
+   fun:intel_get_tex_sub_image
+   ...
+}
+{
+   definite_leak_drm_intel_bo_map
+   Memcheck:Leak
+   match-leak-kinds: definite
+   obj:*/libdrm_intel.so.*
+   fun:drm_intel_bo_map
+   ...
+}
+{
+   i965_drm_intel_bo_gem_export_to_prime
+   Memcheck:Param
+   ioctl(generic)
+   fun:ioctl
+   fun:drmIoctl
+   fun:drmPrimeHandleToFD
+   fun:drm_intel_bo_gem_export_to_prime
+   obj:*/i965_dri.so
+   ...
+}
+{
+   i965_d3d8_visual_fog_test
+   Memcheck:Cond
+   fun:bcmp
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   obj:*/i965_dri.so
+   fun:glClear
+   fun:device_clear_render_targets
+   fun:wined3d_cs_exec_clear
+   fun:wined3d_cs_st_submit
+   fun:wined3d_cs_emit_clear
+   fun:wined3d_device_clear
+   fun:d3d8_device_Clear
+   fun:test_fog_interpolation
+   fun:func_visual
+}
+{
+   mesa_1
+   Memcheck:Addr4
+   ...
+   obj:*/i965_dri.so
+   ...
+   fun:glXCreateContext
+   fun:X11DRV_WineGL_InitOpenglInfo
+   fun:has_opengl
+   fun:get_glx_driver
+   fun:X11DRV_wine_get_wgl_driver
+   fun:__wine_get_wgl_driver
+   fun:wined3d_adapter_init
+   fun:wined3d_init
+   fun:wined3d_create
+   fun:ddraw_init
+   fun:DDRAW_Create
+   fun:DirectDrawCreate
+   fun:create_directdraw
+   fun:test_media_streams
+}
+{
+   mesa_2
+   Memcheck:Param
+   ioctl(generic)
+   ...
+   obj:*/libdrm_intel.so.*
+   ...
+   fun:glXChooseVisual
+   fun:X11DRV_WineGL_InitOpenglInfo
+   fun:has_opengl
+   fun:get_glx_driver
+   fun:X11DRV_wine_get_wgl_driver
+   ...
+}
+{
+   possible_leak_drm_intel_bo_alloc_tiled
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:calloc
+   obj:*/libdrm_intel.so.*
+   fun:drm_intel_bo_alloc_tiled
+   ...
+}
+{
+   possible_leak_glXChooseVisual
+   Memcheck:Leak
+   match-leak-kinds: possible
+   ...
+   fun:intelInitScreen2
+   fun:driCreateNewScreen2
+   fun:dri3_create_screen
+   fun:AllocAndFetchScreenConfigs
+   fun:__glXInitialize
+   fun:GetGLXPrivScreenConfig
+   fun:glXChooseVisual
+}

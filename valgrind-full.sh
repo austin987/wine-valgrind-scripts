@@ -132,9 +132,6 @@ done
 # disable BSTR cache
 export OANOCACHE=1
 
-# valgrind options
-export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $suppress_known $fatal_warnings $leak_check $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
-
 # reduce spam:
 export WINEDEBUG=-all
 
@@ -156,6 +153,28 @@ echo "================End Wine info================" >> "$logfile"
 # Valgrind only reports major version info (or -SVN, but no rev #, to get that, use -v):
 # https://bugs.kde.org/show_bug.cgi?id=352395
 echo "Using $(${WINETEST_WRAPPER} -v --version)" >> "$logfile"
+
+# Get some bacic info about the graphics setup:
+echo "================GPU info================" >> "$logfile"
+echo "Graphics card info (glxinfo -B):" >> "$logfile"
+glxinfo -B >> "$logfile"
+
+# Now, get the vendor and graphics card, so we can selectively skip tests
+# FIXME: in the future, move suppressions for these to vendor dependent ones, and only included when needed
+graphics_card="$(glxinfo | grep 'OpenGL renderer string:' | cut -d: -f2)"
+vendor="$(glxinfo | grep 'OpenGL vendor string:' | cut -d: -f2)"
+    case "$vendor" in
+    # FIXME: amd/nouveau/etc.
+    *Intel*|*INTEL*|*intel*) graphics_vendor="intel"; graphics_suppressions="--suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-intel";;
+    *Nvidia*|*NVIDIA*|*nvidia*) graphics_vendor="nvidia";;
+    *) "echo unknown graphics vendor!" ; graphics_vendor="unknown";;
+esac
+
+echo "graphics vendor is $graphics_vendor / graphics card is $graphics_card"
+echo "================End of GPU info================" >> "$logfile"
+
+# valgrind options
+export VALGRIND_OPTS="$verbose_mode --trace-children=yes --track-origins=yes --gen-suppressions=all --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-external --suppressions=$WINESRC/tools/valgrind/valgrind-suppressions-ignore $graphics_suppressions $suppress_known $fatal_warnings $leak_check $leak_style --num-callers=20 $progress --workaround-gcc296-bugs=yes --vex-iropt-register-updates=allregs-at-mem-access $count"
 
 cd "${WINESRC}"
 
@@ -261,6 +280,13 @@ touch dlls/ieframe/tests/ie.ok # hangs with 1% usage
 # makes a stray explorer process that prevents make test from exiting
 # https://bugs.winehq.org/show_bug.cgi?id=46380
 touch dlls/user32/tests/winstation.ok
+
+# Hang on my intel laptop:
+if [ "$graphics_vendor" = "intel" ]; then
+    touch dlls/d3d9/tests/visual.ok
+    touch dlls/d3d10core/tests/d3d10core.ok
+    touch dlls/d3d11/tests/d3d11.ok
+fi
 
 if [ $exit_hang_hack = 0 ]; then
     # These are caused by 4a1629c4117fda9eca63b6f56ea45771dc9734ac

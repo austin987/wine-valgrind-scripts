@@ -126,53 +126,6 @@
    obj:*/libpthread-*.so
 }
 {
-   d3d8_visual
-   Memcheck:Leak
-   match-leak-kinds: definite
-   obj:*/libdrm_intel.so.*
-   fun:drm_intel_bo_map
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   fun:shared_dispatch_stub_372
-   fun:wined3d_volume_upload_data
-   fun:device_update_volume
-   fun:wined3d_device_update_texture
-   fun:d3d8_device_UpdateTexture
-   fun:volume_v16u16_test
-   fun:func_visual
-   fun:run_test
-   fun:main
-}
-{
-   d3d8_visual
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:calloc
-   obj:*/libdrm_intel.so.*
-   fun:drm_intel_bo_alloc_tiled
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   fun:shared_dispatch_stub_371
-   fun:wined3d_volume_allocate_texture
-   fun:wined3d_volume_load
-   fun:texture3d_sub_resource_load
-   fun:wined3d_texture_load
-   fun:context_preload_texture
-   fun:context_preload_textures
-   fun:context_apply_draw_state
-   fun:draw_primitive
-}
-{
    d3d9_device_1
    Memcheck:Cond
    ...
@@ -317,31 +270,6 @@
    ddrawex/tests/surface
    Memcheck:Addr4
    obj:*/.gl*
-}
-{
-   dxgi_device
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:calloc
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   fun:call_init.part.0
-   fun:_dl_init
-   fun:dl_open_worker
-   fun:_dl_catch_error
-   fun:_dl_open
-   fun:dlopen_doit
-   fun:_dl_catch_error
-   fun:_dlerror_run
-   fun:dlopen@@GLIBC_*
-   obj:*/libGL.so.*
-   obj:*/libGL.so.*
-   obj:*/libGL.so.*
-   obj:*/libGL.so.*
-   fun:glXChooseVisual
-   fun:X11DRV_WineGL_InitOpenglInfo
 }
 {
    glib_1
@@ -604,41 +532,6 @@
    obj:*/libglib-2.0.so.*
    fun:start_thread
    fun:clone
-}
-{
-   mesa_1
-   Memcheck:Addr4
-   ...
-   obj:*/i965_dri.so
-   ...
-   fun:glXCreateContext
-   fun:X11DRV_WineGL_InitOpenglInfo
-   fun:has_opengl
-   fun:get_glx_driver
-   fun:X11DRV_wine_get_wgl_driver
-   fun:__wine_get_wgl_driver
-   fun:wined3d_adapter_init
-   fun:wined3d_init
-   fun:wined3d_create
-   fun:ddraw_init
-   fun:DDRAW_Create
-   fun:DirectDrawCreate
-   fun:create_directdraw
-   fun:test_media_streams
-}
-{
-   mesa_2
-   Memcheck:Param
-   ioctl(generic)
-   ...
-   obj:*/libdrm_intel.so.*
-   ...
-   fun:glXChooseVisual
-   fun:X11DRV_WineGL_InitOpenglInfo
-   fun:has_opengl
-   fun:get_glx_driver
-   fun:X11DRV_wine_get_wgl_driver
-   ...
 }
 {
    nvidia_1
@@ -1047,41 +940,6 @@
    fun:fflush
    obj:*libnvidia-glcore.so.*
    ...
-}
-{
-   i965_drm_intel_bo_gem_export_to_prime
-   Memcheck:Param
-   ioctl(generic)
-   fun:ioctl
-   fun:drmIoctl
-   fun:drmPrimeHandleToFD
-   fun:drm_intel_bo_gem_export_to_prime
-   obj:*/i965_dri.so
-   ...
-}
-{
-   i965_d3d8_visual_fog_test
-   Memcheck:Cond
-   fun:bcmp
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   obj:*/i965_dri.so
-   fun:glClear
-   fun:device_clear_render_targets
-   fun:wined3d_cs_exec_clear
-   fun:wined3d_cs_st_submit
-   fun:wined3d_cs_emit_clear
-   fun:wined3d_device_clear
-   fun:d3d8_device_Clear
-   fun:test_fog_interpolation
-   fun:func_visual
 }
 {
    crypt32_msg
