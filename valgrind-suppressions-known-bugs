@@ -8278,6 +8278,56 @@
    fun:main
 }
 {
+   bug_46826_1
+   Memcheck:Param
+   writev(vector[...])
+   fun:writev
+   fun:send_request
+   fun:server_call_unlocked
+   fun:wine_server_call
+   fun:server_write_file
+   fun:NtWriteFile
+   fun:WriteFile
+   fun:process_send_command
+   fun:process_send_control
+   fun:process_send_start_message
+   fun:service_start
+   fun:service_start_process
+   fun:service_start
+   fun:svcctl_StartServiceW
+   fun:svcctl_svcctl_StartServiceW
+   fun:process_request_packet
+   fun:RPCRT4_process_packet
+   fun:RPCRT4_worker_thread
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+}
+{
+   bug_46826_2
+   Memcheck:Param
+   write(buf)
+   fun:write
+   fun:send_request
+   fun:server_call_unlocked
+   fun:virtual_locked_server_call
+   fun:server_read_file
+   fun:NtReadFile
+   fun:ReadFile
+   fun:process_send_command
+   fun:process_send_control
+   fun:process_send_start_message
+   fun:service_start
+   fun:service_start_process
+   fun:service_start
+   fun:svcctl_StartServiceW
+   fun:svcctl_svcctl_StartServiceW
+   fun:process_request_packet
+   fun:RPCRT4_process_packet
+   fun:RPCRT4_worker_thread
+   fun:process_rtl_work_item
+   fun:threadpool_worker_proc
+}
+{
    fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
