@@ -1605,6 +1605,20 @@
    fun:run_test
    fun:main
 }
+{
+   bug_43390
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:create_voice
+   fun:IXAudio2Impl_CreateSourceVoice
+   fun:IXAudio2_CreateSourceVoice
+   fun:test_simple_streaming
+   fun:func_xaudio2
+   fun:run_test
+   fun:main
+}
 # <julliard> austin987: yeah it's only once per process, i don't think it's worth the trouble
 # <julliard>  there are two, command line and dll path, they can both be ignored
 # <julliard> we'd have to free them from ntdll but that's a bit ugly
