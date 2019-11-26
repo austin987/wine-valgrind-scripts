@@ -201,7 +201,8 @@ if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
     if [ $exit_hang_hack = 1 ]; then
         # revert 4a1629c4117fda9eca63b6f56ea45771dc9734ac
         # See https://bugs.winehq.org/show_bug.cgi?id=39097
-        sed -i -e 's!_exit( exit_code )!exit( exit_code )!g' "${WINESRC}/dlls/ntdll/process.c"
+        # Changed in 044461e8a6f4c1a29c1d72119d2ed207e9d0573b, support both for now so we can run on old wine if needed
+        sed -i -e 's!_exit( exit_code )!exit( exit_code )!g' -e 's!_exit( get_unix_exit_code( exit_code ))!exit( get_unix_exit_code( exit_code ))!g' "${WINESRC}/dlls/ntdll/process.c"
     fi
 
     ./configure CFLAGS="-g -ggdb -Og -fno-inline"
