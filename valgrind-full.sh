@@ -61,6 +61,8 @@ fatal_warnings=""
 gecko_pdb=0
 leak_check="--leak-check=full"
 leak_style=""
+# defaults to enable on newer wine, but need to check valgrind's support
+mingw="--without-mingw"
 rebuild_wine=0
 skip_crashes=0
 skip_failures=0
@@ -112,6 +114,7 @@ while [ -n "$1" ] ; do
         --count) count="--show-error-list=yes";;
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
         --gecko-pdb) gecko_pdb=1;;
+        --mingw) mingw="--with-mingw";;
         --no-exit-hang=hack) exit_hang_hack=0;;
         --no-leaks) leak_check="--leak-check=no";;
         --only-definite-leaks) leak_style="--show-leak-kinds=definite";;
@@ -206,7 +209,7 @@ if [ ! -f Makefile ] || [ "$rebuild_wine" = "1" ]; then
         sed -i -e 's!_exit( exit_code )!exit( exit_code )!g' -e 's!_exit( get_unix_exit_code( exit_code ))!exit( get_unix_exit_code( exit_code ))!g' "${WINESRC}/dlls/ntdll/process.c"
     fi
 
-    ./configure CFLAGS="-g -ggdb -Og -fno-inline"
+    ./configure "$mingw" CFLAGS="-g -ggdb -Og -fno-inline"
     "$_time" make -j"$(nproc)"
 fi
 
