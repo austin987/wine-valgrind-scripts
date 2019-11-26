@@ -87,6 +87,11 @@ export WINETEST_WRAPPER="${WINETEST_WRAPPER:-/opt/valgrind/bin/valgrind}"
 #export WINETEST_WRAPPER=valgrind
 #export WINETEST_WRAPPER="${HOME}/src/valgrind/vg-in-place"
 
+if command -v timeout 2>/dev/null; then
+    export WINETEST_WRAPPER="timeout --verbose --foreground --kill-after=1m 1h ${WINETEST_WRAPPER}"
+    timeout_enabled=1
+fi
+
 # In theory, wine + valgrind can work on (at least):
 # win32/linux86 (worked a long time ago, haven't tested recently)
 # win32/linux64 (works, usual platform)
@@ -456,6 +461,11 @@ fi
 
 # Kill off winemine and any stragglers
 "$WINESERVER" -k || true
+
+if [ -n "$timeout_enabled" ]; then
+    echo "These are the tests that timeout killed:"
+    grep 'make.*Error 124' "$logfile"
+fi
 
 if [ -n "$count" ]; then
     echo "======================================================================="
