@@ -8272,6 +8272,17 @@
    fun:threadpool_worker_proc
 }
 {
+   bug_47414
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:open_builtin_file
+   fun:find_builtin_dll
+   fun:load_builtin_dll
+   ...
+}
+{
    fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
