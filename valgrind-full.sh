@@ -50,6 +50,12 @@ usage() {
         printf "%s\\n" "--virtual-desktop: run tests in a virtual desktop"
 }
 
+arch="$(uname -m)"
+os="$(uname -s)"
+# FIXME: we don't support win64 yet, so hardcoding win32 for now:
+winbit="win32"
+_time="$(command -v time)"
+
 exit_hang_hack=1
 fatal_warnings=""
 gecko_pdb=0
@@ -93,12 +99,6 @@ export WINETEST_WRAPPER="${WINETEST_WRAPPER:-/opt/valgrind/bin/valgrind}"
 # So we need arch/os to:
 # A) distinguish logs
 # B) allow for platform specific workarounds/bugs
-
-arch="$(uname -m)"
-os="$(uname -s)"
-# FIXME: we don't support win64 yet, so hardcoding win32 for now:
-winbit="win32"
-_time="$(command -v time)"
 
 mkdir -p "${WINESRC}/logs"
 logfile="${WINESRC}/logs/${wine_version}-${winbit}-${os}-${arch}.log"
