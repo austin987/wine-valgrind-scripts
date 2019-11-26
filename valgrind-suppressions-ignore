@@ -1341,13 +1341,7 @@
    fun:init_load_order
    fun:get_load_order
    fun:load_dll
-   fun:LdrLoadDll
-   fun:load_library
-   fun:LoadLibraryExW
-   fun:__wine_kernel_init
-   fun:__wine_process_init
-   fun:wine_init
-   fun:main
+   ...
 }
 {
    bug_36095_4
