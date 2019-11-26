@@ -4109,34 +4109,6 @@
    fun:PointerUnmarshall
 }
 {
-   bug_36313_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:PropertyStore_CreateInstance
-   fun:InMemoryPropertyStoreFactory_CreateInstance
-   fun:CoCreateInstance
-   fun:test_persistserialized
-   fun:func_propstore
-   fun:run_test
-   fun:main
-}
-{
-   bug_36313_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:test_inmemorystore
-   fun:func_propstore
-   fun:run_test
-   fun:main
-}
-{
    bug_36315_1
    Memcheck:Leak
    match-leak-kinds: possible
