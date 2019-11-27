@@ -5212,23 +5212,6 @@
    fun:main
 }
 {
-   bug_36658
-   Memcheck:Addr4
-   obj:*/.gl*
-   fun:fixup_extensions
-   fun:wined3d_adapter_init_gl_caps
-   fun:wined3d_adapter_init
-   fun:wined3d_init
-   fun:wined3d_create
-   fun:ddraw_init
-   fun:DDRAW_Create
-   fun:DirectDrawCreate
-   fun:CapsTest
-   fun:func_d3d
-   fun:run_test
-   fun:main
-}
-{
    bug_36670
    Memcheck:Cond
    ...
