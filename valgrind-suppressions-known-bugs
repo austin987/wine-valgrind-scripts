@@ -1221,17 +1221,6 @@
    ...
 }
 {
-   bug_36114
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:RtlAllocateAndInitializeSid
-   fun:AllocateAndInitializeSid
-   fun:is_process_limited
-   ...
-}
-{
    bug_36116_1
    Memcheck:Leak
    match-leak-kinds: possible
