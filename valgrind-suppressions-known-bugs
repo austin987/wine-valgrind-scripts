@@ -4363,18 +4363,6 @@
    fun:main
 }
 {
-   bug_36342
-   Memcheck:Cond
-   fun:GetRegionData
-   fun:ddraw_clipper_GetClipList
-   fun:ddraw_surface7_Blt
-   fun:ddraw_surface4_Blt
-   fun:test_clipper_blt
-   fun:func_ddraw4
-   fun:run_test
-   fun:main
-}
-{
    bug_36343_1
    Memcheck:Leak
    match-leak-kinds: definite
