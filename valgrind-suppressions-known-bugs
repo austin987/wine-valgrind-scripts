@@ -5828,29 +5828,6 @@
    fun:main
 }
 {
-   bug_38728
-   Memcheck:Cond
-   fun:strlenW
-   fun:WideCharToMultiByte
-   fun:intern_atoms
-   fun:X11DRV_SelectionRequest_TARGETS
-   fun:X11DRV_HandleSelectionRequest
-   fun:X11DRV_SelectionRequest
-   fun:call_event_handler
-   fun:process_events
-   fun:X11DRV_MsgWaitForMultipleObjectsEx
-   fun:wait_message
-   fun:wait_objects
-   fun:MsgWaitForMultipleObjectsEx
-   fun:selection_thread_proc
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
    bug_38729_1
    Memcheck:Leak
    match-leak-kinds: possible
