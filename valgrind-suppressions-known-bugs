@@ -5514,27 +5514,13 @@
    match-leak-kinds: possible
    ...
    fun:RtlAllocateHeap
-   fun:rpcrt4_protseq_sock_alloc
-   fun:alloc_serverprotoseq
-   fun:RPCRT4_get_or_create_serverprotseq
+   fun:rpcrt4_conn_np_alloc
+   fun:RPCRT4_CreateConnection
+   fun:rpcrt4_protseq_ncacn_np_open_endpoint
+   fun:RPCRT4_use_protseq
    fun:RpcServerUseProtseqA
    fun:test_RpcServerUseProtseq
-   fun:func_rpc_protseq
-   fun:run_test
-   fun:main
-}
-{
-   bug_36570_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:rpcrt4_protseq_np_alloc
-   fun:alloc_serverprotoseq
-   fun:RPCRT4_get_or_create_serverprotseq
-   fun:RpcServerUseProtseqA
-   fun:test_RpcServerUseProtseq
-   fun:func_rpc_protseq
+   fun:func_rpc
    fun:run_test
    fun:main
 }
