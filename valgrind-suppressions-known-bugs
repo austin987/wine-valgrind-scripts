@@ -780,17 +780,6 @@
    fun:main
 }
 {
-   bug_28754
-   Memcheck:Cond
-   ...
-   fun:update_layout
-   ...
-   fun:test_basics
-   fun:func_itemdlg
-   fun:run_test
-   fun:main
-}
-{
    bug_28824
    Memcheck:Cond
    fun:__mktime_internal
