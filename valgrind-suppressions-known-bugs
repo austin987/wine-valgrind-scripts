@@ -3798,19 +3798,6 @@
    fun:main
 }
 {
-   bug_36382
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:func_ddraw7
-   fun:main
-}
-{
    bug_36383
    Memcheck:Cond
    fun:ddraw_surface_create
