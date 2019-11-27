@@ -5046,17 +5046,6 @@
    fun:main
 }
 {
-   bug_36404
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:RtlAllocateHeap
-   fun:RtlAllocateAndInitializeSid
-   fun:AllocateAndInitializeSid
-   fun:func_faultrep
-   fun:run_test
-   fun:main
-}
-{
    bug_36407
    Memcheck:Leak
    match-leak-kinds: possible
