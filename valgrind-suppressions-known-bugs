@@ -5057,35 +5057,6 @@
    fun:main
 }
 {
-   bug_36405_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:RtlAllocateHeap
-   fun:update_cp_events
-   fun:HTMLDocument_on_advise
-   fun:ConnectionPoint_Advise
-   fun:test_Load
-   fun:func_xmlview
-   fun:run_test
-   fun:main
-}
-{
-   bug_36405_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:heap_alloc_zero
-   fun:get_event_target
-   fun:update_cp_events
-   fun:HTMLDocument_on_advise
-   fun:ConnectionPoint_Advise
-   fun:test_Load
-   fun:func_xmlview
-   fun:run_test
-   fun:main
-}
-{
    bug_36407
    Memcheck:Leak
    match-leak-kinds: possible
