@@ -1286,23 +1286,6 @@
    fun:main
 }
 {
-   bug_36125
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:alloc_bstr
-   fun:SysAllocStringLen
-   fun:SysAllocString
-   fun:FontEventsDisp_Invoke
-   fun:OLEFont_SendNotify
-   fun:OLEFontImpl_put_Bold
-   fun:test_font_events_disp
-   fun:func_olefont
-   fun:run_test
-   fun:main
-}
-{
    bug_36126
    Memcheck:Leak
    ...
