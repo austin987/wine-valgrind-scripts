@@ -3798,32 +3798,6 @@
    fun:main
 }
 {
-   bug_36381_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:func_ddraw2
-   fun:main
-}
-{
-   bug_36381_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:d3d3_CreateViewport
-   fun:d3d2_CreateViewport
-   fun:create_viewport.constprop.3
-   fun:test_lighting_interface_versions
-   fun:func_ddraw2
-   fun:main
-}
-{
    bug_36382
    Memcheck:Leak
    match-leak-kinds: possible
