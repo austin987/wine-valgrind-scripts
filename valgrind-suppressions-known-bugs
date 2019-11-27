@@ -5481,21 +5481,6 @@
    ...
 }
 {
-   bug_38685
-   Memcheck:Addr2
-   fun:check_gamma_ramps
-   fun:SetDeviceGammaRamp
-   fun:wined3d_swapchain_set_gamma_ramp
-   fun:swapchain_cleanup
-   fun:wined3d_swapchain_decref
-   fun:wined3d_device_uninit_3d
-   fun:d3d9_device_Release
-   fun:test_user_memory_getdc
-   fun:func_d3d9ex
-   fun:run_test
-   fun:main
-}
-{
    bug_38716
    Memcheck:Leak
    match-leak-kinds: possible
