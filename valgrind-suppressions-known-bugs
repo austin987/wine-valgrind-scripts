@@ -3798,15 +3798,6 @@
    fun:main
 }
 {
-   bug_36383
-   Memcheck:Cond
-   fun:ddraw_surface_create
-   fun:ddraw1_CreateSurface
-   ...
-   fun:func_dsurface
-   fun:main
-}
-{
    bug_36393
    Memcheck:Leak
    match-leak-kinds: possible
