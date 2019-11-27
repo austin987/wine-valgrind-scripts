@@ -3631,39 +3631,6 @@
    fun:main
 }
 {
-   bug_36329_1
-   Memcheck:Addr4
-   fun:get_versionstring
-   fun:filesys_GetFileVersion
-   fun:test_GetFileVersion
-   fun:func_filesystem
-   fun:run_test
-   fun:main
-}
-{
-   bug_36329_2
-   Memcheck:Addr2
-   fun:create_file
-   fun:filesys_GetFile
-   ...
-   fun:func_filesystem
-   fun:run_test
-   fun:main
-}
-{
-   bug_36329_3
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:func_filesystem
-   fun:run_test
-   fun:main
-}
-{
    bug_36330_1
    Memcheck:Leak
    match-leak-kinds: possible
