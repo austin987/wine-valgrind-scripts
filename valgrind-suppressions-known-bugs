@@ -2143,30 +2143,6 @@
    fun:main
 }
 {
-   bug_36170
-   Memcheck:Value4
-   fun:wcstombs_sbcs_slow
-   fun:wine_cp_wcstombs
-   fun:WideCharToMultiByte
-   fun:WCMD_output_asis_len
-   fun:WCMD_output_stderr
-   fun:WCMD_assoc
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   fun:WCMD_batch
-   fun:WCMD_run_program
-   fun:WCMD_execute
-   fun:WCMD_process_commands
-   fun:wmain
-   fun:__wine_spec_exe_wentry
-   obj:*/dlls/kernel32/kernel32.dll.so
-   fun:start_process
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_process
-}
-{
    bug_36173_1
    Memcheck:Leak
    match-leak-kinds: definite
