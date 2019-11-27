@@ -3892,14 +3892,6 @@
    ...
 }
 {
-   bug_36400
-   Memcheck:Cond
-   fun:CryptMsgOpenToEncode
-   fun:CryptSignMessage
-   fun:func_message
-   ...
-}
-{
    bug_36401_1
    Memcheck:Cond
    fun:wined3d_swapchain_decref
