@@ -5227,19 +5227,6 @@
    fun:main
 }
 {
-   bug_36431
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:apartment_getclassobject
-   fun:get_inproc_class_object
-   fun:CoGetClassObject
-   fun:CoCreateInstance
-   fun:func_ebrowser
-   fun:run_test
-   fun:main
-}
-{
    bug_36433_1
    Memcheck:Leak
    match-leak-kinds: definite
