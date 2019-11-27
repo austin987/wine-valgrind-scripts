@@ -3217,18 +3217,6 @@
    fun:clone
 }
 {
-   bug_36297
-   Memcheck:Cond
-   fun:dump_Variant
-   fun:dump_DispParms
-   fun:ITypeInfo_fnInvoke
-   fun:DispatchEx_InvokeEx
-   fun:DispatchEx_Invoke
-   fun:test_dispex
-   fun:func_domdoc
-   ...
-}
-{
    bug_36301_1
    Memcheck:Addr1
    ...
