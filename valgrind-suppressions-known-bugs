@@ -4990,26 +4990,6 @@
    fun:main
 }
 {
-   bug_36631
-   Memcheck:Leak
-   match-leak-kinds: definite
-   obj:*/libdrm_intel.so.*
-   fun:drm_intel_bo_map
-   obj:*/i965_dri.so
-   ...
-   fun:glTexSubImage2D
-   fun:surface_upload_data
-   fun:surface_load_texture
-   fun:surface_load_location
-   fun:surface_load
-   fun:texture2d_sub_resource_load
-   fun:wined3d_texture_load
-   fun:context_apply_blit_state
-   fun:arbfp_blit_surface
-   fun:wined3d_surface_blt
-   fun:ddraw_surface_blt_clipped
-}
-{
    bug_36632
    Memcheck:Addr4
    ...
