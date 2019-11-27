@@ -4809,18 +4809,6 @@
    fun:main
 }
 {
-   bug_36384
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:ddraw7_CreatePalette
-   fun:ddraw1_CreatePalette
-   fun:PaletteTest
-   fun:func_dsurface
-   fun:main
-}
-{
    bug_36393
    Memcheck:Leak
    match-leak-kinds: possible
