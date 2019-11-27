@@ -780,17 +780,6 @@
    fun:main
 }
 {
-   bug_28824
-   Memcheck:Cond
-   fun:__mktime_internal
-   fun:mktime
-   ...
-   fun:TRASH_EnumItems
-   fun:SHQueryRecycleBinW
-   fun:SHQueryRecycleBinA
-   ...
-}
-{
    bug_28831
    Memcheck:Cond
    fun:schan_InitializeSecurityContextW
