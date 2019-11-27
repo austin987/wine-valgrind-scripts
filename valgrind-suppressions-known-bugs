@@ -708,28 +708,6 @@
    fun:main
 }
 {
-   bug_28696
-   Memcheck:Param
-   write(buf)
-   fun:__write_nocancel
-   fun:NtWriteFile
-   fun:WriteFile
-   fun:FileLockBytesImpl_WriteAt
-   ...
-   fun:StorageImpl_WriteBigBlock
-   fun:BlockChainStream_Flush
-   fun:StorageImpl_Flush
-   ...
-   fun:PropertyStorage_WritePropertyToStream
-   fun:PropertyStorage_PropertiesWriter
-   fun:dictionary_enumerate
-   ...
-   fun:test_ReadAndWriteProperties
-   ...
-   fun:func_intshcut
-   fun:run_test
-}
-{
    bug_28735_1
    Memcheck:Addr4
    ...
@@ -787,19 +765,6 @@
    fun:func_dde
    fun:run_test
    fun:main
-}
-{
-   bug_28741
-   Memcheck:Cond
-   ...
-   fun:RtlTimeToTimeFields
-   fun:FileTimeToSystemTime
-   fun:MONTHCAL_CalculateDayOfWeek
-   fun:MONTHCAL_GetMonth
-   fun:MONTHCAL_GetPrevMonth
-   fun:MONTHCAL_HitTest
-   fun:MONTHCAL_WindowProc
-   ...
 }
 {
    bug_28745
