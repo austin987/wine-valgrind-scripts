@@ -3727,25 +3727,6 @@
    ...
 }
 {
-   bug_36349
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:calloc
-   obj:*/libdrm_intel.so.*
-   fun:drm_intel_bo_alloc
-   obj:*/i965_dri.so
-   ...
-   fun:X11DRV_wglCreateContextAttribsARB
-   fun:wglCreateContextAttribsARB
-   fun:context_create
-   fun:wined3d_swapchain_create
-   fun:d3d9_swapchain_create
-   fun:d3d9_device_CreateAdditionalSwapChain
-   fun:switch_render_target
-   fun:execute_test_chain
-   ...
-}
-{
    bug_36352_1
    Memcheck:Leak
    match-leak-kinds: possible
