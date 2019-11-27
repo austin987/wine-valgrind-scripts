@@ -1248,18 +1248,6 @@
    ...
 }
 {
-   bug_36120
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:Direct3DCreate9
-   fun:init_d3d9
-   fun:func_vertexdeclaration
-   fun:run_test
-   fun:main
-}
-{
    bug_36122_1
    Memcheck:Leak
    match-leak-kinds: possible
