@@ -791,18 +791,6 @@
    fun:main
 }
 {
-   bug_36061
-   Memcheck:Leak
-   ...
-   fun:ImmCreateIMCC
-   ...
-   fun:ImmProcessKey
-   fun:process_keyboard_message
-   fun:process_hardware_message
-   fun:peek_message
-   ...
-}
-{
    bug_36094
    Memcheck:Param
    writev(vector[...])
