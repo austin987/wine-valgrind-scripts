@@ -1,19 +1,6 @@
 # Bugs are filed, not yet fixed (or marked as intentional)
 # Not suppressed by default
 {
-   bug_14078
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:deserialize_param
-   fun:xCall
-   obj:*
-   fun:func_tmarshal
-   fun:run_test
-   fun:main
-}
-{
    bug_20545
    Memcheck:Leak
    ...
