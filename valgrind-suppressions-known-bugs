@@ -6483,19 +6483,6 @@
    ...
 }
 {
-   bug_46346
-   Memcheck:Param
-   writev(vector[...])
-   fun:writev
-   fun:send_request
-   fun:server_call_unlocked
-   fun:virtual_locked_server_call
-   fun:server_ioctl_file
-   fun:NtDeviceIoControlFile
-   fun:DeviceIoControl
-   ...
-}
-{
    bug_46347
    Memcheck:Addr2
    fun:GlobalFree
