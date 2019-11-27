@@ -1248,29 +1248,6 @@
    ...
 }
 {
-   bug_36119_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:RtlDosPathNameToNtPathName_U
-   fun:test_NtCreateFile
-   fun:func_file
-   fun:run_test
-   fun:main
-}
-{
-   bug_36119_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlDosPathNameToNtPathName_U
-   fun:create_file_test
-   fun:func_file
-   fun:run_test
-   fun:main
-}
-{
    bug_36120
    Memcheck:Leak
    match-leak-kinds: definite
