@@ -3402,20 +3402,6 @@
    fun:test_Load
 }
 {
-   bug_36311
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:heap_alloc
-   fun:create_db_init
-   fun:datainit_GetDataSource
-   ...
-   fun:test_database
-   fun:func_database
-   ...
-}
-{
    bug_36312_1
    Memcheck:Leak
    match-leak-kinds: possible
