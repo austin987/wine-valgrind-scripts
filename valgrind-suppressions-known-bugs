@@ -1248,26 +1248,6 @@
    ...
 }
 {
-   bug_36118
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:xmlstrdupW
-   ...
-   fun:parse_assembly_elem
-   fun:parse_manifest_buffer
-   fun:parse_manifest
-   fun:get_manifest_in_manifest_file
-   fun:RtlCreateActivationContext
-   fun:CreateActCtxW
-   fun:test_create
-   fun:test_actctx
-   fun:func_actctx
-   fun:run_test
-   fun:main
-}
-{
    bug_36119_1
    Memcheck:Leak
    match-leak-kinds: definite
