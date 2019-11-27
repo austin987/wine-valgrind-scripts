@@ -4736,63 +4736,6 @@
    fun:main
 }
 {
-   bug_36597_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:DIALOG_get_info
-   fun:DIALOG_CreateIndirect
-   fun:CreateDialogIndirectParamAorW
-   fun:CreateDialogIndirectParamA
-   fun:CreateDialogParamA
-   fun:test_dialog_messages
-   fun:func_msg
-   fun:run_test
-   fun:main
-}
-{
-   bug_36597_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:DIALOG_get_info
-   fun:DIALOG_CreateIndirect
-   fun:CreateDialogIndirectParamAorW
-   fun:CreateDialogIndirectParamA
-   fun:CreateDialogParamA
-   fun:test_EndDialog
-   fun:func_msg
-   fun:run_test
-   fun:main
-}
-{
-   bug_36597_4
-   Memcheck:Cond
-   ...
-   fun:func_msg
-   fun:run_test
-   fun:main
-}
-{
-   bug_36597_5
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:create_window_handle
-   fun:WIN_CreateWindowEx
-   fun:CreateWindowExA
-   fun:create_grand_child_thread
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:call_thread_func
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
    bug_36609_1
    Memcheck:Param
    write(buf)
