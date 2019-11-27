@@ -3326,39 +3326,6 @@
    fun:clone
 }
 {
-   bug_36266_1
-   Memcheck:Leak
-   ...
-   fun:func_dmusic
-   fun:run_test
-   fun:main
-}
-{
-   bug_36266_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:IMalloc_fnAlloc
-   fun:CoTaskMemAlloc
-   fun:AudioClient_GetMixFormat
-   fun:set_format
-   fun:load_driver_devices
-   fun:MMDevEnum_Create
-   fun:MMCF_CreateInstance
-   fun:CoCreateInstance
-   fun:MMDRV_Init
-   fun:MMDRV_InitSingleType
-   fun:MMDRV_GetNum
-   fun:midiOutGetNumDevs
-   fun:create_system_ports_list
-   fun:DMUSIC_CreateDirectMusicImpl
-   fun:ClassFactory_CreateInstance
-   fun:CoCreateInstance
-   fun:missing_dmusic
-   fun:func_dmusic
-}
-{
    bug_36267_1
    Memcheck:Addr4
    fun:memcpy
