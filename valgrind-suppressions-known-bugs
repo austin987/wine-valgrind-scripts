@@ -5264,36 +5264,6 @@
    fun:main
 }
 {
-   bug_37159_1
-   Memcheck:Value4
-   fun:wcstombs_sbcs
-   fun:wine_cp_wcstombs
-   fun:RtlUnicodeToMultiByteN
-   fun:WINPROC_CallProcWtoA
-   fun:WINPROC_call_window
-   fun:call_window_proc
-   fun:send_message
-   fun:SendMessageW
-   fun:test_EM_FINDWORDBREAK_A
-   fun:func_editor
-   fun:run_test
-   fun:main
-}
-{
-   bug_37159_2
-   Memcheck:Cond
-   fun:strlenW
-   fun:WINPROC_CallProcWtoA
-   fun:WINPROC_call_window
-   fun:call_window_proc
-   fun:send_message
-   fun:SendMessageW
-   fun:test_EM_FINDWORDBREAK_A
-   fun:func_editor
-   fun:run_test
-   fun:main
-}
-{
    bug_38438
    Memcheck:Addr4
    fun:NtCurrentTeb
