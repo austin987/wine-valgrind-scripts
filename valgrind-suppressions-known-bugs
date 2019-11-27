@@ -4535,17 +4535,6 @@
    fun:main
 }
 {
-   bug_36344
-   Memcheck:Cond
-   fun:GetRegionData
-   fun:ddraw_clipper_GetClipList
-   fun:ddraw_surface7_Blt
-   ...
-   fun:func_ddraw7
-   fun:run_test
-   fun:main
-}
-{
    bug_36346_1
    Memcheck:Leak
    ...
