@@ -6713,16 +6713,6 @@
    obj:*/libwine.so.*
 }
 {
-   bug_38670
-   Memcheck:Cond
-   fun:winetest_vok
-   fun:winetest_ok
-   fun:test_reg_query_info
-   fun:func_registry
-   fun:run_test
-   fun:main
-}
-{
    bug_38673
    Memcheck:Param
    writev(vector[...])
