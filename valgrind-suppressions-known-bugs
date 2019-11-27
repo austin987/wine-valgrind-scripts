@@ -1419,15 +1419,6 @@
    fun:main
 }
 {
-   bug_36121
-   Memcheck:Leak
-   match-leak-kinds: definite
-   ...
-   fun:RtlAllocateHeap
-   fun:NtNotifyChangeDirectoryFile
-   ...
-}
-{
    bug_36122_1
    Memcheck:Leak
    match-leak-kinds: possible
