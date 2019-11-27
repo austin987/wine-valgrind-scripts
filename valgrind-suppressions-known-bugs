@@ -3217,15 +3217,6 @@
    fun:clone
 }
 {
-   bug_36301_1
-   Memcheck:Addr1
-   ...
-   fun:_bstr_
-   ...
-   fun:func_saxreader
-   ...
-}
-{
    bug_36303_1
    Memcheck:Leak
    match-leak-kinds: definite
