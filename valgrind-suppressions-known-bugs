@@ -6423,23 +6423,6 @@
    ...
 }
 {
-   bug_46341
-   Memcheck:Param
-   writev(vector[...])
-   fun:writev
-   fun:send_request
-   fun:server_call_unlocked
-   fun:wine_server_call
-   fun:server_write_file
-   fun:NtWriteFile
-   fun:WriteFile
-   fun:_overlapped_write_async
-   fun:test_overlapped_transport
-   fun:func_pipe
-   fun:run_test
-   fun:main
-}
-{
    bug_46342
    Memcheck:Param
    writev(vector[...])
