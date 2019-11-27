@@ -493,23 +493,6 @@
    fun:main
 }
 {
-   bug_26119
-   Memcheck:Param
-   writev(vector[...])
-   ...
-   fun:send_request
-   fun:wine_server_call
-   ...
-   fun:NtWaitForSingleObject
-   fun:server_ioctl_file
-   fun:NtFsControlFile
-   fun:ConnectNamedPipe
-   ...
-   fun:start_thread
-   fun:start_thread
-   fun:clone
-}
-{
    bug_26130_1
    Memcheck:Leak
    match-leak-kinds: possible
