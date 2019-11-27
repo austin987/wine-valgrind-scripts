@@ -3003,35 +3003,6 @@
    fun:clone
 }
 {
-   bug_36267_1
-   Memcheck:Addr4
-   fun:memcpy
-   fun:wined3d_device_set_ps_consts_f
-   fun:wined3d_stateblock_apply
-   fun:ddraw_set_cooperative_level
-   fun:ddraw7_SetCooperativeLevel
-   fun:ddraw_destroy
-   fun:ddraw4_Release
-   fun:test_surface_interface_mismatch
-   fun:func_ddraw4
-   fun:run_test
-   fun:main
-}
-{
-   bug_36267_2
-   Memcheck:Addr4
-   fun:update_heap_entry
-   fun:shader_glsl_update_float_vertex_constants
-   fun:wined3d_device_set_vs_consts_f
-   fun:wined3d_stateblock_apply
-   fun:ddraw_set_cooperative_level
-   fun:ddraw4_SetCooperativeLevel
-   fun:test_coop_level_create_device_window
-   fun:func_ddraw4
-   fun:run_test
-   fun:main
-}
-{
    bug_36268_1
    Memcheck:Leak
    ...
