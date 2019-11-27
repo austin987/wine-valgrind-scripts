@@ -1674,22 +1674,6 @@
    fun:main
 }
 {
-   bug_36149
-   Memcheck:Cond
-   ...
-   fun:interp_end_finally
-   fun:enter_bytecode
-   fun:exec_source
-   fun:exec_global_code
-   fun:JScriptParse_ParseScriptText
-   fun:parse_script
-   fun:run_from_res
-   fun:run_tests
-   fun:func_run
-   fun:run_test
-   fun:main
-}
-{
    # atl/registrar, browseui/autocomplete ...
    # (only with a virtual desktop)
    bug_36155
