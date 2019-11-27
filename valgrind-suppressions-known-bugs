@@ -3647,31 +3647,6 @@
    fun:main
 }
 {
-   bug_36295
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:MSVCRT_operator_new
-   fun:MSVCP_allocator_char_allocate
-   fun:basic_string_char__Grow
-   fun:basic_string_char_assign_cstr_len
-   fun:basic_string_char_assign_cstr
-   fun:basic_string_char_ctor_cstr_alloc
-   fun:basic_string_char_ctor_cstr
-   fun:locale__Init
-   fun:locale_ctor
-   fun:basic_streambuf_char_ctor
-   fun:basic_filebuf_char_ctor_file
-   fun:init_io
-   fun:DllMain
-   fun:__wine_spec_dll_entry
-   obj:*/dlls/ntdll/ntdll.dll.so
-   fun:MODULE_InitDLL
-   fun:process_attach
-   fun:LdrLoadDll
-}
-{
    bug_36296
    Memcheck:Leak
    match-leak-kinds: possible
