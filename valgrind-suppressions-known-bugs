@@ -2666,35 +2666,6 @@
    ...
 }
 {
-   bug_36201_1
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:RtlAllocateHeap
-   fun:CryptMemAlloc
-   fun:Context_CreateLinkContext
-   fun:Cert_clone
-   fun:CRYPT_CollectionAdvanceEnum
-   fun:Collection_enumCert
-   fun:CertEnumCertificatesInStore
-   fun:testCollectionStore
-   fun:func_store
-   ...
-}
-{
-   bug_36201_2
-   Memcheck:Leak
-   match-leak-kinds: definite
-   fun:notify_alloc
-   fun:RtlAllocateHeap
-   fun:CryptMemAlloc
-   fun:Context_CreateDataContext
-   fun:CertCreateCertificateContext
-   fun:testEmptyStore
-   fun:func_store
-   fun:run_test
-   fun:main
-}
-{
    bug_36239
    Memcheck:Leak
    match-leak-kinds: possible
