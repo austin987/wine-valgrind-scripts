@@ -6545,6 +6545,20 @@
    fun:threadpool_worker_proc
 }
 {
+   bug_48186
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:notify_alloc
+   fun:RtlAllocateHeap
+   fun:RtlCreateUnicodeString
+   fun:get_image_path
+   fun:init_user_process_params
+   fun:__wine_process_init
+   fun:wine_init
+   fun:main
+}
+
+{
    fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
