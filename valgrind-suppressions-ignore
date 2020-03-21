@@ -1711,6 +1711,13 @@
    fun:main
 }
 {
+   bug_36272
+   Memcheck:Leak
+   ...
+   fun:MMDRV_Init
+   ...
+}
+{
    bug_36288
    Memcheck:Addr4
    fun:set_test_val
