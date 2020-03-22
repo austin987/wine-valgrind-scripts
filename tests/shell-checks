@@ -86,7 +86,6 @@ for shellscript in $files_to_check; do
 
     echo "Checking ${shellscript} with bashate:"
 
-    # Can't ignore individual things for now, filed bug:
-    # https://bugs.launchpad.net/bash8/+bug/1698088
-    w_try "$bashate" "${shellscript}"
+    # E006: Line too long
+    w_try "$bashate" -i E006 "${shellscript}"
 done
