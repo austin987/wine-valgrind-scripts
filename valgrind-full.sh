@@ -29,6 +29,7 @@ set -e
 # https://bugs.kde.org/show_bug.cgi?id=380869
 
 usage() {
+        set +x
         printf "%s\\n" "$0: run Wine's conformance tests under Valgrind"
         printf "%s\\n" "Available options:"
         printf "%s\\n" "--count: gives a summary of detected errors and used suppressions"
@@ -48,6 +49,7 @@ usage() {
         printf "%s\\n" "--suppress-known: suppress known bugs in Wine"
         printf "%s\\n" "--verbose: use valgrind verbose mode (-v -v -v) instead of --quiet"
         printf "%s\\n" "--virtual-desktop: run tests in a virtual desktop"
+        exit 0
 }
 
 arch="$(uname -m)"
@@ -114,7 +116,7 @@ while [ -n "$1" ] ; do
     arg="$1"
     shift
     case "${arg}" in
-        -h|--help) usage; exit 0;;
+        -h|--help) usage;;
         # FIXME: Add an option to not skip any tests (move touch foo to a wrapper, check for variable, make no-op and log it)
         --count) count="--show-error-list=yes";;
         --fatal-warnings) fatal_warnings="--error-exitcode=1";;
