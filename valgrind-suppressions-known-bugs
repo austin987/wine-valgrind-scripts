@@ -6406,22 +6406,6 @@
    obj:*/dlls/ntdll/ntdll.dll.so
 }
 {
-   bug_46396
-   Memcheck:Free
-   fun:notify_free
-   fun:RtlFreeHeap
-   fun:IMalloc_fnFree
-   fun:IMalloc_Free
-   fun:CoTaskMemFree
-   ...
-   fun:IMoniker_Release
-   fun:find_moniker
-   fun:test_dmo
-   fun:func_devenum
-   fun:run_test
-   fun:main
-}
-{
    bug_46688_1
    Memcheck:Jump
    obj:*/libmpg123.so.*
