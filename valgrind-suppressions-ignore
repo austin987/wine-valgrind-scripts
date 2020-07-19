@@ -1731,3 +1731,13 @@
    fun:start_thread
    fun:clone
 }
+{
+   bug_49585
+   Memcheck:Leak
+   match-leak-kinds: possible
+   fun:malloc
+   fun:read_nls_file
+   fun:init_environment
+   fun:__wine_main
+   fun:main
+}
