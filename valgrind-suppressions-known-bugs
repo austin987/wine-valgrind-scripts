@@ -6537,6 +6537,20 @@
    fun:threadpool_worker_proc
 }
 {
+   bug_49586
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:get_dynamic_environment
+   fun:set_wow64_environment
+   fun:init_user_process_params
+   fun:__wine_process_init
+   fun:__wine_set_unix_funcs
+   fun:start_main_thread
+   fun:__wine_main
+   fun:main
+}
+{
    fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
