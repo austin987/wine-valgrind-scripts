@@ -1062,23 +1062,6 @@
    ...
 }
 {
-   bug_36116_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:MsiInstallProductW
-   fun:MsiInstallProductA
-   ...
-}
-{
-   bug_36116_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:MSI_IterateRecords
-   ...
-}
-{
    # also seen in dlls/oleaut32/tests/olepicture.c
    bug_36117
    Memcheck:Leak
