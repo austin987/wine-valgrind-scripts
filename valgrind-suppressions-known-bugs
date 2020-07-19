@@ -767,21 +767,6 @@
    fun:main
 }
 {
-   bug_36094
-   Memcheck:Param
-   writev(vector[...])
-   fun:writev
-   fun:send_request
-   fun:wine_server_call
-   fun:FILE_CreateFile
-   fun:NtCreateFile
-   fun:CreateDirectoryW
-   fun:CreateDirectoryA
-   fun:test_CreateDirectoryA
-   fun:func_security
-   ...
-}
-{
    # kernel32/tests/{loader,pipe}.c and ole32/tests/marshal.c
    bug_36103_1
    Memcheck:Addr4
