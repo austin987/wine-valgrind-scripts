@@ -1741,3 +1741,14 @@
    fun:__wine_main
    fun:main
 }
+{
+   bug_38447
+   Memcheck:Addr2
+   fun:GlobalLock
+   fun:HGLOBALStreamImpl_Read
+   fun:IStream_Read
+   fun:test_freed_hglobal
+   fun:func_hglobalstream
+   fun:run_test
+   fun:main
+}
