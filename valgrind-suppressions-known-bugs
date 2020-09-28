@@ -6072,14 +6072,6 @@
    fun:main
 }
 {
-   bug_45090
-   Memcheck:Leak
-   ...
-   fun:TERM_Init
-   fun:CONSOLE_Init
-   ...
-}
-{
    bug_46338
    Memcheck:Param
    writev(vector[...])
