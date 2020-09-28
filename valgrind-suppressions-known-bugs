@@ -6369,6 +6369,16 @@
    fun:threadpool_worker_proc
 }
 {
+   bug_49904
+   Memcheck:Leak
+   match-leak-kinds: definite
+   fun:malloc
+   fun:build_path
+   fun:load_libwine
+   fun:__wine_main
+   fun:main
+}
+{
    fixme-bug-all-arm-tests_1
    Memcheck:Param
    epoll_ctl(event)
