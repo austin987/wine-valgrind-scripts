@@ -3348,38 +3348,6 @@
    fun:test_samplegrabber
 }
 {
-   bug_36319_1
-   Memcheck:Leak
-   ...
-   fun:func_misc
-   ...
-}
-{
-   bug_36319_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   fun:RtlAllocateHeap
-   fun:alloc_bstr
-   fun:SysAllocStringLen
-   fun:MSFT_ReadValue
-   fun:MSFT_CustData
-   fun:ITypeLib2_Constructor_MSFT
-    fun:LoadTypeLibEx
-   fun:LoadTypeLib
-   fun:LoadRegTypeLib
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   fun:CoCreateInstance
-   obj:*
-   obj:*
-   obj:*
-   obj:*
-   fun:CoCreateInstance
-   fun:test_aggregation
-}
-{
    bug_36320
    Memcheck:Leak
    ...
