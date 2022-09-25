@@ -3226,54 +3226,6 @@
    fun:test_Load
 }
 {
-   bug_36312_1
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:IMalloc_fnAlloc
-   fun:CoTaskMemAlloc
-   fun:NdrOleAllocate
-   fun:NdrAllocate
-   fun:array_read_variance_and_unmarshall
-   fun:NdrConformantArrayUnmarshall
-   fun:PointerUnmarshall
-   fun:NdrPointerUnmarshall
-   fun:PointerUnmarshall
-   fun:NdrPointerUnmarshall
-   obj:*
-   obj:*
-   fun:test_IDBProperties
-   fun:func_marshal
-   fun:run_test
-   fun:main
-}
-{
-   bug_36312_2
-   Memcheck:Leak
-   match-leak-kinds: possible
-   ...
-   fun:RtlAllocateHeap
-   fun:alloc_bstr
-   fun:SysAllocStringLen
-   fun:SysReAllocStringLen
-   fun:BSTR_UserUnmarshal
-   fun:VARIANT_UserUnmarshal
-   fun:NdrUserMarshalUnmarshall
-   fun:ComplexUnmarshall
-   fun:NdrComplexStructUnmarshall
-   fun:ComplexUnmarshall
-   fun:array_read_variance_and_unmarshall
-   fun:NdrComplexArrayUnmarshall
-   fun:PointerUnmarshall
-   fun:EmbeddedPointerUnmarshall
-   fun:array_read_variance_and_unmarshall
-   fun:NdrConformantArrayUnmarshall
-   fun:PointerUnmarshall
-   fun:NdrPointerUnmarshall
-   fun:PointerUnmarshall
-}
-{
    bug_36315_1
    Memcheck:Leak
    match-leak-kinds: possible
